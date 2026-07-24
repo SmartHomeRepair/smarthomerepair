@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us – Smart Home  Kochi (Kakkanad){% endblock %}
+
+{% block content %}
+
+<!-- BANNER -->
+<section class="cont-banner">
+  <img src="{{ url_for('static', filename='images/ac_repair_2.jpg') }}" alt="Contact Smart Home" class="cnt-bg">
+  <h1 class="cnt-ttl">Contact Us</h1>
+</section>
+
+<!-- CONTACT GRID -->
+<section class="cont-sec">
+  <div class="cont-grid">
+    <div class="cont-l rv-l">
+      <div class="lbl">Find Us</div>
+      <h2 class="h2">Visit our headquarters or reach out directly</h2>
+      
+      <div class="cont-map">
+       <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3930.1084325017896!2d76.31155017503016!3d9.924926790176672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwNTUnMjkuNyJOIDc2wrAxOCc1MC45IkU!5e0!3m2!1sen!2sin!4v1784906922594!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+
+      <div class="soc-grid">
+        <!-- <a href="https://www.instagram.com/bestcoolcare?utm_source=qr&igsh=MWttYTJwYWdnb25ucw==" class="soc-card">
+          <span class="sc-ico sc-ig" aria-hidden="true">IG</span>
+          <div class="sc-n">Instagram</div>
+          <div class="sc-u">@bestcoolcare</div>
+        </a> -->
+        <!-- <a href="#" class="soc-card">
+          <span class="sc-ico sc-fb" aria-hidden="true">FB</span>
+          <div class="sc-n">Facebook</div>
+          <div class="sc-u">fb.com/bestcoolcare</div>
+        </a> -->
+
+        <a href="https://wa.me/916238054003" class="soc-card">
+          <span class="sc-ico sc-wa" aria-hidden="true">WA</span>
+          <div class="sc-n">WhatsApp</div>
+          <div class="sc-u">+91 6238054003</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="cont-r rv-r" style="background:var(--white); padding:48px; border-radius:32px; box-shadow:var(--sh2); border:1px solid var(--border)">
+      <div class="lbl">Inquiry Form</div>
+      <h2 class="h2" style="font-size:2.2rem; margin:12px 0 24px">Book Your Slot</h2>
+      <p class="body" style="margin-bottom:32px">Fill in your details for a 2-hour rapid response service any locality in Kochi.</p>
+      
+      <div class="f-group">
+        <label>Your Full Name</label>
+        <input type="text" id="cName" placeholder="Enter your name">
+      </div>
+      <div class="f-group">
+        <label>Phone Number</label>
+        <input type="tel" id="cPhone" placeholder="Enter your mobile number">
+      </div>
+      <div class="f-group">
+        <label>Select Locality</label>
+        <select id="cArea">
+          <option value="">Select Area in Kochi</option>
+          <option value="Edappally">Edappally</option>
+          <option value="Kakkanad">Kakkanad</option>
+          <option value="Palarivattom">Palarivattom</option>
+          <option value="Vyttila">Vyttila</option>
+          <option value="Aluva">Aluva</option>
+          <option value="Kalamassery">Kalamassery</option>
+          <option value="Panampilly Nagar">Panampilly Nagar</option>
+          <option value="Tripunithura">Tripunithura</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+      <div class="f-group">
+        <label>Service / Problem Details</label>
+        <textarea id="cDetails" placeholder="Example: Split AC gas refill or Washing Machine making noise"></textarea>
+      </div>
+
+      <button onclick="submitToWhatsapp()" style="width:100%; justify-content:center; padding:18px" class="btn btn-sky">Confirm Booking via WhatsApp</button>
+      
+      <div style="margin-top:32px; padding-top:32px; border-top:1px solid var(--border)">
+        <div style="display:flex; gap:20px; align-items:center">
+          <div style="width:44px; height:44px; background:var(--frost); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--sky)">📍</div>
+          <div>
+            <div style="font-weight:700; font-size:0.9rem">Main Office</div>
+            <div style="font-size:0.84rem; color:var(--muted)">Kakkanad, Ernakulam,
+Kerala</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:20px; align-items:center; margin-top:20px">
+          <div style="width:44px; height:44px; background:var(--frost); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--sky)">🕒</div>
+          <div>
+            <div style="font-weight:700; font-size:0.9rem">Service Hours</div>
+            <div style="font-size:0.84rem; color:var(--muted)">Mon – Sun: 8:00 AM – 9:00 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

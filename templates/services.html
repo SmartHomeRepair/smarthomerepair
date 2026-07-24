@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}Our Services – Smart Home  Kochi (Kakkanad){% endblock %}
+
+{% block content %}
+
+<!-- BANNER -->
+<section class="srv-banner">
+  <img src="{{ url_for('static', filename='images/ac_repair_2.jpg') }}" alt="Smart Home Services" class="sb-bg" fetchpriority="high">
+  <h1 class="sb-ttl">Our Services</h1>
+</section>
+
+<!-- AIR CONDITIONING -->
+<div id="cooling" class="srv-sec">
+  <div class="srv-row">
+    <div class="srv-item">
+        <div class="srv-img-w rv-l"><img loading="lazy" src="{{ url_for('static', filename='images/services/split_and_window_air_conditioners.jpg') }}" alt="Split AC" class="srv-img"></div>
+        <div class="srv-txt rv-r">
+        <div class="lbl">Expert Cooling</div>
+        <h3 class="srv-ttl">Split & Window Air Conditioners</h3>
+        <p class="srv-desc">From annual deep cleaning to complex PCB repairs and gas refills, we provide end-to-end support for all residential AC brands in Kochi.</p>
+        <ul class="srv-points">
+            <li>Chemical Jet Wash</li>
+            <li>Gas Refill (Eco Friendly)</li>
+            <li>PCB & Sensor Repair</li>
+            <li>Drainage Unblocking</li>
+            <li>Energy Efficiency Audit</li>
+            <li>Copper Piping Fix</li>
+        </ul>
+        <a href="/#contact" class="btn btn-sky">Book Now</a>
+        <a href="https://wa.me/916238054003" class="btn btn-outline" style="margin-left:12px">WhatsApp</a>
+        </div>
+    </div>
+  </div>
+
+  <div class="srv-row">
+    <div class="srv-item rev">
+        <div class="srv-img-w rv-r"><img loading="lazy" src="{{ url_for('static', filename='images/services/cassette_air_conditioners.png') }}" alt="Cassette AC" class="srv-img"></div>
+        <div class="srv-txt rv-l">
+        <div class="lbl">Aesthetic Cooling</div>
+        <h3 class="srv-ttl">Cassette AC Maintenance</h3>
+        <p class="srv-desc">Precision servicing for ceiling-mounted cassette units. Ideal for high-end homes, showrooms, and offices where aesthetics are priorities.</p>
+        <ul class="srv-points">
+            <li>Internal Motor Tuning</li>
+            <li>Four-Way Vane Check</li>
+            <li>Pump System Cleaning</li>
+            <li>Anti-Leak Sealing</li>
+            <li>Air Filter Sterilization</li>
+            <li>Noise Dampening</li>
+        </ul>
+        <a href="/#contact" class="btn btn-sky">Book Now</a>
+        <a href="https://wa.me/916238054003" class="btn btn-outline" style="margin-left:12px">WhatsApp</a>
+        </div>
+    </div>
+  </div>
+
+  <div class="srv-row">
+    <div class="srv-item">
+        <div class="srv-img-w rv-l"><img loading="lazy" src="{{ url_for('static', filename='images/services/vrv_vrf_commercial_ac.jpg') }}" alt="VRV AC" class="srv-img"></div>
+        <div class="srv-txt rv-r">
+        <div class="lbl">Industrial Grade</div>
+        <h3 class="srv-ttl">VRV / VRF Central Systems</h3>
+        <p class="srv-desc">Advanced centralized cooling solutions for business institutions and large-scale residential projects. We handle full system diagnostics.</p>
+        <ul class="srv-points">
+            <li>Outdoor Load Balancing</li>
+            <li>Refnet Piping Check</li>
+            <li>Central Control Logic</li>
+            <li>Oil Level Inspection</li>
+            <li>Communication Error Fix</li>
+            <li>Full Grid Maintenance</li>
+        </ul>
+        <a href="/#contact" class="btn btn-sky">Book Now</a>
+        <a href="https://wa.me/916238054003" class="btn btn-outline" style="margin-left:12px">WhatsApp</a>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOME APPLIANCES -->
+<div id="washing" class="srv-sec">
+  <div class="srv-row">
+    <div class="srv-item rev">
+        <div class="srv-img-w rv-r"><img loading="lazy" src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=900&q=80&fit=crop" alt="Washing Machine" class="srv-img"></div>
+        <div class="srv-txt rv-l">
+        <div class="lbl">Appliance Expert</div>
+        <h3 class="srv-ttl">Washing Machines</h3>
+        <p class="srv-desc">Whether it's a drum issue in your front-load or a motor stalling in your top-load, we provide factory-standard repairs for all brands.</p>
+        <ul class="srv-points">
+            <li>Drum Bearing Repair</li>
+            <li>PCB Circuit Service</li>
+            <li>Heating Coil Check</li>
+            <li>Water Valve Fix</li>
+            <li>Belt Replacement</li>
+            <li>Deep Descaling</li>
+        </ul>
+        <a href="/#contact" class="btn btn-sky">Book Now</a>
+        <a href="https://wa.me/916238054003" class="btn btn-outline" style="margin-left:12px">WhatsApp</a>
+        </div>
+    </div>
+  </div>
+
+  <div id="refrigerator" class="srv-row">
+    <div class="srv-item">
+        <div class="srv-img-w rv-l"><img loading="lazy" src="{{ url_for('static', filename='images/services/refrigerator_repair.jpg') }}" alt="Refrigerator" class="srv-img"></div>
+        <div class="srv-txt rv-r">
+        <div class="lbl">Freshness Check</div>
+        <h3 class="srv-ttl">Refrigerator & Freezers</h3>
+        <p class="srv-desc">Specialized cooling technicians focused on domestic and commercial refrigeration. Rapid response times to prevent food spoilage.</p>
+        <ul class="srv-points">
+            <li>Compressor Servicing</li>
+            <li>Thermostat Tuning</li>
+            <li>Gas Level Check</li>
+            <li>Defrost Timer Fix</li>
+            <li>Condenser Cleaning</li>
+            <li>Gasket Replacement</li>
+        </ul>
+        <a href="/#contact" class="btn btn-sky">Book Now</a>
+        <a href="https://wa.me/916238054003" class="btn btn-outline" style="margin-left:12px">WhatsApp</a>
+        </div>
+    </div>
+  </div>
+
+  <div id="microwave" class="srv-row">
+    <div class="srv-item rev">
+        <div class="srv-img-w rv-r"><img loading="lazy" src="{{ url_for('static', filename='images/services/microwave_repair.jpg') }}" alt="Microwave" class="srv-img"></div>
+        <div class="srv-txt rv-l">
+        <div class="lbl">Smart Kitchen</div>
+        <h3 class="srv-ttl">Microwave Oven Repair</h3>
+        <p class="srv-desc">Safe and specialized electrical repair for solo and convection ovens. We handle magnetron and keypad issues with precision.</p>
+        <ul class="srv-points">
+            <li>Magnetron Test</li>
+            <li>Turntable Motor Fix</li>
+            <li>Touchpad Service</li>
+            <li>Electrical Grounding</li>
+            <li>Door Catch Repair</li>
+            <li>Radiation Safety Check</li>
+        </ul>
+        <a href="/#contact" class="btn btn-sky">Book Now</a>
+        <a href="https://wa.me/916238054003" class="btn btn-outline" style="margin-left:12px">WhatsApp</a>
+        </div>
+    </div>
+  </div>
+
+  <div id="geyser" class="srv-row">
+    <div class="srv-item">
+        <div class="srv-img-w rv-l"><img loading="lazy" src="{{ url_for('static', filename='images/services/geyser_and_water_heater.jpg') }}" alt="Geyser" class="srv-img"></div>
+        <div class="srv-txt rv-r">
+        <div class="lbl">Hot Water Flow</div>
+        <h3 class="srv-ttl">Geyser & Water Heaters</h3>
+        <p class="srv-desc">Installation and repair focusing on electrical safety and pressure valve stability to ensure long-term unit safety.</p>
+        <ul class="srv-points">
+            <li>Coil Scale Removal</li>
+            <li>Pressure Valve Inspection</li>
+            <li>Thermal Cut-off Fix</li>
+            <li>Heating Element Setup</li>
+            <li>Airtight Leak Test</li>
+            <li>Copper Tank Repair</li>
+        </ul>
+        <a href="/#contact" class="btn btn-sky">Book Now</a>
+        <a href="https://wa.me/916238054003" class="btn btn-outline" style="margin-left:12px">WhatsApp</a>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- CALL TO ACTION -->
+<section class="about-cta rv">
+  <div class="lbl" style="color:#fff; margin-bottom:12px">24/7 Priority Support</div>
+  <h2 class="h2">Expert repairs are just a click away</h2>
+  <p class="body" style="max-width:550px">Our certified engineers are currently operating across all Kochi major localities with a 2-hour rapid response guarantee.</p>
+  <div class="hero-ctas" style="justify-content:center">
+    <a href="/#contact" class="btn btn-sky">Book Now</a>
+    <a href="tel:6238054003" class="btn btn-ghost">Call 6238054003</a>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<nav id="nb">
+  <a href="/" class="nav-logo">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Smart Home">
+    <span class="nav-wordmark">SmartHome <span style="color: var(--sky);">Repair</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:6238054003" class="btn btn-navy">Call Now</a>
+    <a href="https://wa.me/916238054003" class="btn btn-sky">Book Service</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mob-menu" id="mm">
+  <div class="mm-close" onclick="closeMM()">✕</div>
+  <a href="/" onclick="closeMM()">Home</a>
+  <a href="/about" onclick="closeMM()">About</a>
+  <a href="/services" onclick="closeMM()">Services</a>
+
+  <a href="/contact" onclick="closeMM()">Contact Us</a>
+  <a href="tel:6238054003" class="btn btn-navy" onclick="closeMM()">Call Now</a>
+  <a href="https://wa.me/916238054003" class="btn btn-sky" onclick="closeMM()">Book Service</a>
+</div>

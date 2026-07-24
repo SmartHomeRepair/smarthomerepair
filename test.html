@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArcticCool – AC & Appliance Services Bangalore</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#f7f5f0;--white:#fff;--navy:#0e1e35;--navy2:#132842;
+  --sky:#1a8cff;--sky2:#0070e0;--frost:#ddeeff;--warm:#f2ede4;
+  --muted:#6b7280;--border:#e4dfd5;--accent:#ff6b2b;--green:#16a34a;
+  --r:14px;--r2:22px;
+  --sh:0 2px 20px rgba(14,30,53,.07);
+  --sh2:0 8px 40px rgba(14,30,53,.13);
+  --sh3:0 20px 64px rgba(14,30,53,.18);
+  --fh:'Instrument Serif',Georgia,serif;
+  --fb:'Manrope',sans-serif;
+}
+body{font-family:var(--fb);background:var(--bg);color:var(--navy);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--fb);cursor:pointer;border:none;background:none}
+
+/* TYPOGRAPHY */
+.lbl{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sky)}
+.h1{font-family:var(--fh);font-size:clamp(2.6rem,5.5vw,4.8rem);line-height:1.08;font-weight:400;color:var(--navy)}
+.h2{font-family:var(--fh);font-size:clamp(2rem,4vw,3.2rem);line-height:1.14;font-weight:400;color:var(--navy)}
+.h3{font-family:var(--fh);font-size:clamp(1.2rem,2vw,1.5rem);font-weight:400;color:var(--navy)}
+.body{font-size:.97rem;line-height:1.78;color:var(--muted)}
+.small{font-size:.83rem;color:var(--muted)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:9px;font-size:.88rem;font-weight:700;border-radius:50px;padding:13px 28px;transition:.22s;cursor:pointer;border:none}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-dark:hover{background:#1a3055;transform:translateY(-2px);box-shadow:0 8px 28px rgba(14,30,53,.28)}
+.btn-sky{background:var(--sky);color:#fff;box-shadow:0 4px 18px rgba(26,140,255,.35)}
+.btn-sky:hover{background:var(--sky2);transform:translateY(-2px);box-shadow:0 10px 30px rgba(26,140,255,.45)}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff;transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--navy)}
+.btn-white:hover{background:#f0f4fa;transform:translateY(-2px)}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)}
+.btn-ghost:hover{background:rgba(255,255,255,.22)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:0 6%;height:70px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,box-shadow .3s}
+nav.bg{background:rgba(247,245,240,.95);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--border)}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{width:40px;height:40px;border-radius:10px;object-fit:cover}
+.nav-wordmark{font-family:var(--fh);font-size:1.25rem;color:var(--navy)}
+.nav-wordmark span{color:var(--sky)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:.86rem;font-weight:600;color:var(--navy);opacity:.7;transition:.2s}
+.nav-links a:hover{opacity:1;color:var(--sky)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-phone{font-size:.86rem;font-weight:700;color:var(--navy)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:6px;cursor:pointer}
+.hamburger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
+.mob-menu{display:none;position:fixed;top:70px;left:0;right:0;background:#fff;padding:22px 6%;border-bottom:1px solid var(--border);flex-direction:column;gap:14px;z-index:899;box-shadow:var(--sh2)}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:.97rem;font-weight:600;color:var(--navy);padding:8px 0;border-bottom:1px solid var(--border)}
+
+/* HERO */
+#hero{min-height:100vh;padding-top:70px;display:grid;grid-template-columns:1fr 1fr;background:var(--white);overflow:hidden}
+.hero-l{padding:80px 5% 80px 7%;display:flex;flex-direction:column;justify-content:center}
+.hero-pill{display:inline-flex;align-items:center;gap:9px;background:var(--frost);border-radius:50px;padding:7px 16px;margin-bottom:26px;font-size:.76rem;font-weight:700;color:var(--sky2);letter-spacing:.06em;text-transform:uppercase}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:var(--sky);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-l .h1{margin-bottom:18px}
+.hero-l .body{max-width:440px;margin-bottom:32px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:44px}
+.hero-strip{display:flex;flex-wrap:wrap;gap:22px;padding-top:26px;border-top:1px solid var(--border)}
+.hs-item{display:flex;flex-direction:column;gap:2px}
+.hs-num{font-family:var(--fh);font-size:1.65rem;color:var(--navy)}
+.hs-lbl{font-size:.76rem;font-weight:600;color:var(--muted)}
+.hero-r{height:100%;min-height:600px;position:relative;background:var(--warm)}
+.hero-img-main{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hbc{position:absolute;background:#fff;border-radius:var(--r);box-shadow:var(--sh2);display:flex;align-items:center;gap:12px;padding:14px 20px}
+.hbc-1{bottom:80px;left:-24px}
+.hbc-2{top:36px;right:20px;background:var(--sky);color:#fff;flex-direction:column;align-items:flex-start;gap:4px;min-width:150px}
+.hbc-img{width:44px;height:44px;border-radius:9px;object-fit:cover;flex-shrink:0}
+.hbc-title{font-size:.8rem;font-weight:700;color:var(--navy)}
+.hbc-sub{font-size:.71rem;color:var(--muted)}
+.hbc-2 .hbc-num{font-family:var(--fh);font-size:2rem;line-height:1;color:#fff}
+.hbc-2 .hbc-lbl{font-size:.73rem;font-weight:600;opacity:.85;color:rgba(255,255,255,.85)}
+.hbc-rating{position:absolute;right:20px;bottom:50px;background:#fff;border-radius:var(--r);padding:12px 16px;box-shadow:var(--sh2);text-align:center}
+.hbc-stars{color:#f59e0b;font-size:.95rem;letter-spacing:2px}
+.hbc-rlbl{font-size:.72rem;font-weight:600;color:var(--muted);margin-top:3px}
+
+/* ANNOUNCE */
+.announce{background:var(--navy);color:rgba(255,255,255,.75);padding:14px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.announce span{font-size:.84rem;font-weight:500}
+.announce strong{color:#fff}
+.ann-badge{background:var(--sky);color:#fff;font-size:.73rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;border-radius:50px}
+
+/* SECTION */
+.sec{padding:96px 6%}
+.sec-inner{max-width:1200px;margin:0 auto}
+.sec-head{margin-bottom:56px}
+.sec-head.center{text-align:center}
+.sec-head.center .body{max-width:540px;margin:12px auto 0}
+.sec-head .body{margin-top:12px}
+.sec-head .lbl{margin-bottom:8px}
+.sec-head .h2{margin-top:6px}
+
+/* ABOUT */
+#about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative}
+.ab-big{border-radius:var(--r2);object-fit:cover;height:460px;width:100%;grid-row:1/3}
+.ab-sm{border-radius:var(--r);object-fit:cover;height:220px;width:100%}
+.ab-float{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);background:var(--sky);color:#fff;border-radius:var(--r);padding:16px 26px;display:flex;gap:26px;box-shadow:0 12px 40px rgba(26,140,255,.4);white-space:nowrap;z-index:2}
+.ab-stat .sn{font-family:var(--fh);font-size:1.9rem;line-height:1}
+.ab-stat .sl{font-size:.73rem;font-weight:600;opacity:.82}
+.about-content .h2{margin:8px 0 16px}
+.ab-points{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+.ab-pt{display:flex;align-items:flex-start;gap:14px}
+.ap-img{width:50px;height:50px;border-radius:11px;object-fit:cover;flex-shrink:0}
+.ap-t{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:3px}
+.ap-d{font-size:.85rem;color:var(--muted);line-height:1.65}
+.about-ctas{display:flex;gap:11px;margin-top:32px;flex-wrap:wrap}
+
+/* SERVICES */
+#services{background:var(--bg)}
+.cat-label{font-family:var(--fh);font-size:1.2rem;color:var(--muted);margin-bottom:20px;font-weight:400;margin-top:0}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-bottom:48px}
+.svc-card{background:#fff;border-radius:var(--r2);overflow:hidden;border:1px solid var(--border);transition:transform .28s,box-shadow .28s}
+.svc-card:hover{transform:translateY(-6px);box-shadow:var(--sh3)}
+.svc-img-w{position:relative;overflow:hidden;height:210px}
+.svc-card-img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.svc-card:hover .svc-card-img{transform:scale(1.06)}
+.svc-badge{position:absolute;top:14px;left:14px;background:rgba(14,30,53,.72);backdrop-filter:blur(6px);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.05em;padding:4px 11px;border-radius:50px}
+.svc-body{padding:22px 22px 26px}
+.svc-body .h3{margin-bottom:7px}
+.svc-body .body{font-size:.88rem;margin-bottom:16px}
+.svc-list{list-style:none;margin-bottom:18px;display:flex;flex-direction:column;gap:6px}
+.svc-list li{display:flex;align-items:center;gap:9px;font-size:.84rem;color:var(--navy);font-weight:500}
+.svc-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0}
+.svc-tag{display:inline-block;background:var(--frost);color:var(--sky2);font-size:.71rem;font-weight:700;padding:4px 12px;border-radius:50px}
+
+/* WHY US */
+#why{background:var(--white)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.why-imgs{position:relative}
+.why-main{width:100%;height:520px;object-fit:cover;border-radius:var(--r2)}
+.why-accent{position:absolute;bottom:-26px;right:-26px;width:195px;height:195px;border-radius:var(--r2);object-fit:cover;border:6px solid #fff;box-shadow:var(--sh2)}
+.why-exp{position:absolute;top:26px;left:-26px;background:var(--accent);color:#fff;border-radius:var(--r);padding:14px 20px;box-shadow:0 8px 28px rgba(255,107,43,.4)}
+.why-exp .we-n{font-family:var(--fh);font-size:2.1rem;line-height:1}
+.why-exp .we-l{font-size:.73rem;font-weight:700;opacity:.9}
+.why-pts{display:flex;flex-direction:column}
+.why-pt{display:flex;align-items:flex-start;gap:18px;padding:22px 0;border-bottom:1px solid var(--border)}
+.why-pt:last-child{border-bottom:none}
+.wp-img{width:54px;height:54px;border-radius:var(--r);object-fit:cover;flex-shrink:0}
+.wp-t{font-size:.97rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.wp-d{font-size:.86rem;color:var(--muted);line-height:1.65}
+
+/* PROCESS */
+#process{background:var(--bg)}
+.proc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.proc-card{background:#fff;border-radius:var(--r2);overflow:hidden;border:1px solid var(--border);position:relative;transition:transform .28s,box-shadow .28s}
+.proc-card:hover{transform:translateY(-5px);box-shadow:var(--sh2)}
+.proc-img{width:100%;height:175px;object-fit:cover}
+.proc-num{position:absolute;top:12px;left:12px;width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fh);font-size:1.05rem;display:grid;place-items:center}
+.proc-body{padding:20px 20px 26px}
+.proc-body .h3{margin-bottom:8px}
+
+/* GALLERY */
+#gallery{background:var(--white);overflow:hidden;padding:96px 0}
+.gallery-head{padding:0 6%;max-width:1200px;margin:0 auto 36px}
+.gal-bento{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:260px 260px;gap:12px;padding:0 6%;max-width:1200px;margin:0 auto}
+.gi{border-radius:var(--r2);overflow:hidden;position:relative;cursor:pointer}
+.gi:nth-child(1){grid-column:1/3;grid-row:1/3}
+.gi:nth-child(4){grid-column:3/5}
+.gi:nth-child(6){grid-column:3/5}
+.gi-img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gi:hover .gi-img{transform:scale(1.07)}
+.gi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,30,53,.72) 0%,transparent 55%);opacity:0;transition:.3s;display:flex;align-items:flex-end;padding:18px;color:#fff;font-size:.88rem;font-weight:700}
+.gi:hover .gi-ov{opacity:1}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--bg)}
+.testi-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;margin-bottom:40px}
+.testi-pill{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:12px 18px;box-shadow:var(--sh)}
+.tp-avs{display:flex}
+.tp-avs img{width:32px;height:32px;border-radius:50%;border:2px solid #fff;margin-left:-7px;object-fit:cover}
+.tp-avs img:first-child{margin-left:0}
+.tp-t{font-size:.78rem;font-weight:600;color:var(--navy)}
+.tp-s{color:#f59e0b;font-size:.78rem}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.tc{background:#fff;border-radius:var(--r2);padding:28px;border:1px solid var(--border);transition:transform .28s,box-shadow .28s;position:relative}
+.tc:hover{transform:translateY(-4px);box-shadow:var(--sh2)}
+.tc-feat{background:var(--navy)}
+.tc-qt{position:absolute;top:20px;right:22px;font-family:Georgia,serif;font-size:4.2rem;line-height:1;color:var(--frost);opacity:.55}
+.tc-feat .tc-qt{color:rgba(255,255,255,.1);opacity:1}
+.tc-stars{color:#f59e0b;font-size:.86rem;margin-bottom:12px}
+.tc-txt{font-size:.92rem;line-height:1.75;color:var(--muted);margin-bottom:20px}
+.tc-feat .tc-txt{color:rgba(255,255,255,.68)}
+.tc-auth{display:flex;align-items:center;gap:12px}
+.tc-av{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.tc-n{font-size:.91rem;font-weight:700;color:var(--navy)}
+.tc-feat .tc-n{color:#fff}
+.tc-l{font-size:.76rem;color:var(--muted)}
+.tc-feat .tc-l{color:rgba(255,255,255,.45)}
+
+/* AMC */
+#amc{background:var(--navy);position:relative;overflow:hidden}
+.amc-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.07}
+.amc-in{position:relative;z-index:1;max-width:1200px;margin:0 auto}
+.amc-hd{text-align:center;margin-bottom:52px}
+.amc-hd .lbl{color:var(--frost)}
+.amc-hd .h2{color:#fff;margin-top:8px}
+.amc-hd .body{color:rgba(255,255,255,.58);max-width:500px;margin:10px auto 0}
+.amc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.amc-card{border-radius:var(--r2);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);padding:32px 28px;position:relative;transition:transform .28s,background .28s;overflow:hidden}
+.amc-card:hover{transform:translateY(-5px);background:rgba(255,255,255,.09)}
+.amc-card.pop{background:rgba(26,140,255,.2);border-color:rgba(26,140,255,.45)}
+.amc-pop-tag{position:absolute;top:0;right:0;background:var(--sky);color:#fff;font-size:.69rem;font-weight:800;letter-spacing:.1em;padding:6px 16px;border-radius:0 var(--r2) 0 12px}
+.amc-card-img{width:100%;height:155px;object-fit:cover;border-radius:var(--r);margin-bottom:22px}
+.amc-plan-lbl{font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--frost);margin-bottom:7px}
+.amc-card h3{font-family:var(--fh);font-size:1.4rem;color:#fff;margin-bottom:6px}
+.amc-price{font-family:var(--fh);font-size:2.4rem;color:var(--sky);line-height:1}
+.amc-price span{font-family:var(--fb);font-size:.88rem;color:rgba(255,255,255,.4)}
+.amc-desc{font-size:.83rem;color:rgba(255,255,255,.52);margin:9px 0 22px;line-height:1.6}
+.amc-feats{list-style:none;margin-bottom:26px;display:flex;flex-direction:column;gap:9px}
+.amc-feats li{display:flex;align-items:center;gap:9px;font-size:.86rem;color:rgba(255,255,255,.76)}
+.amc-feats li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0}
+.amc-cta{display:block;text-align:center;padding:12px;border-radius:10px;font-weight:700;font-size:.86rem;background:rgba(255,255,255,.09);color:#fff;border:1px solid rgba(255,255,255,.18);transition:.2s}
+.amc-cta:hover{background:var(--sky);border-color:var(--sky)}
+.amc-card.pop .amc-cta{background:var(--sky);border-color:var(--sky)}
+
+/* BRANDS */
+#brands{background:var(--white);padding:64px 6%}
+.brands-in{max-width:1050px;margin:0 auto;text-align:center}
+.brands-in .body{margin:8px auto 32px;max-width:460px}
+.brands-row{display:flex;flex-wrap:wrap;justify-content:center;gap:9px}
+.brand-p{padding:9px 20px;border-radius:50px;font-size:.84rem;font-weight:700;border:1.5px solid var(--border);background:var(--bg);color:var(--navy);transition:.2s}
+.brand-p:hover{border-color:var(--sky);color:var(--sky);background:#f0f7ff;transform:translateY(-2px)}
+
+/* COVERAGE */
+#coverage{background:var(--bg)}
+.cov-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.cov-img-w{position:relative}
+.cov-img{width:100%;border-radius:var(--r2);height:420px;object-fit:cover}
+.cov-cap{position:absolute;bottom:-18px;right:-18px;background:#fff;border-radius:var(--r);padding:14px 20px;box-shadow:var(--sh2);font-size:.83rem;font-weight:600;color:var(--navy)}
+.cov-cap strong{font-size:1.35rem;display:block;font-family:var(--fh);color:var(--sky)}
+.areas-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:24px}
+.area-chip{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:.84rem;font-weight:600;color:var(--navy);transition:.2s;display:flex;align-items:center;gap:8px}
+.area-dot{width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0}
+.area-chip:hover{border-color:var(--sky);color:var(--sky);transform:translateX(3px)}
+
+/* CTA BANNER */
+#ctabanner{position:relative;overflow:hidden}
+.cta-img{width:100%;height:400px;object-fit:cover;display:block;filter:brightness(.45)}
+.cta-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 6%}
+.cta-ov .h2{color:#fff;margin:10px 0 14px}
+.cta-ov .body{color:rgba(255,255,255,.68);max-width:460px;margin-bottom:28px}
+.cta-ov .lbl{color:var(--frost)}
+.cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+/* FAQ */
+#faq{background:var(--white)}
+.faq-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.faq-img-col{position:sticky;top:96px}
+.faq-img1{width:100%;border-radius:var(--r2);height:440px;object-fit:cover}
+.faq-img2{margin-top:12px;width:100%;border-radius:var(--r2);height:175px;object-fit:cover}
+.faq-list{display:flex;flex-direction:column;gap:7px}
+.faq-item{border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.faq-item:hover,.faq-item.open{border-color:#b5d4f5;box-shadow:0 2px 16px rgba(26,140,255,.1)}
+.faq-q{width:100%;text-align:left;background:#fff;border:none;padding:17px 19px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:var(--fb);font-size:.93rem;font-weight:700;color:var(--navy);cursor:pointer;transition:background .2s}
+.faq-item.open .faq-q{background:var(--frost)}
+.faq-arr{width:28px;height:28px;border-radius:50%;background:var(--bg);flex-shrink:0;display:grid;place-items:center;font-size:.72rem;transition:transform .3s,background .2s}
+.faq-item.open .faq-arr{transform:rotate(180deg);background:var(--sky);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.25,.8,.25,1),padding .28s;font-size:.89rem;color:var(--muted);line-height:1.75;padding:0 19px}
+.faq-item.open .faq-a{max-height:220px;padding:0 19px 17px}
+
+/* CONTACT */
+#contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-left .h2{margin:8px 0 14px}
+.contact-left .body{margin-bottom:28px}
+.c-img{width:100%;border-radius:var(--r2);height:215px;object-fit:cover;margin-bottom:26px}
+.c-details{display:flex;flex-direction:column;gap:16px}
+.cd{display:flex;align-items:flex-start;gap:13px}
+.cd-thumb{width:46px;height:46px;border-radius:var(--r);object-fit:cover;flex-shrink:0}
+.cd-lbl{font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.cd-val{font-size:.95rem;font-weight:700;color:var(--navy)}
+.cf-box{background:#fff;border-radius:var(--r2);padding:36px 32px;border:1px solid var(--border);box-shadow:var(--sh2)}
+.cf-title{font-family:var(--fh);font-size:1.45rem;color:var(--navy);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:.79rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.fg input,.fg select,.fg textarea{width:100%;padding:11px 15px;border:1.5px solid var(--border);border-radius:10px;font-family:var(--fb);font-size:.91rem;color:var(--navy);background:#fafaf8;outline:none;transition:.2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--sky);box-shadow:0 0 0 3px rgba(26,140,255,.1);background:#fff}
+.fg textarea{resize:vertical;min-height:90px}
+.btn-form{width:100%;padding:14px;border-radius:10px;background:var(--navy);color:#fff;font-family:var(--fh);font-size:1.05rem;cursor:pointer;border:none;transition:.22s}
+.btn-form:hover{background:var(--sky);transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,140,255,.35)}
+
+/* FOOTER */
+footer{background:var(--navy2);color:rgba(255,255,255,.6);padding:66px 6% 26px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:44px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.08)}
+.fb-img{width:42px;height:42px;border-radius:9px;object-fit:cover;margin-bottom:12px}
+.fb-name{font-family:var(--fh);font-size:1.25rem;color:#fff;margin-bottom:12px}
+.fb-name span{color:var(--sky)}
+.fb-desc{font-size:.87rem;line-height:1.7;margin-bottom:20px}
+.soc-row{display:flex;gap:9px}
+.soc-b{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.09);display:grid;place-items:center;color:rgba(255,255,255,.65);font-size:.78rem;font-weight:800;transition:.2s}
+.soc-b:hover{background:var(--sky);color:#fff;transform:translateY(-2px)}
+.fc h4{font-family:var(--fh);font-size:.97rem;color:#fff;margin-bottom:16px}
+.fl{list-style:none;display:flex;flex-direction:column;gap:9px}
+.fl a{font-size:.85rem;color:rgba(255,255,255,.52);transition:.18s}
+.fl a:hover{color:var(--sky)}
+.footer-bot{max-width:1200px;margin:22px auto 0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;font-size:.81rem}
+.fbl{display:flex;gap:18px}
+.fbl a{color:rgba(255,255,255,.38);transition:.18s}
+.fbl a:hover{color:#fff}
+
+/* FLOATING */
+.float-w{position:fixed;bottom:24px;right:24px;z-index:800;display:flex;flex-direction:column;gap:9px;align-items:flex-end}
+.fl-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:50px;font-size:.83rem;font-weight:700;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.18);transition:.22s}
+.fl-btn:hover{transform:translateY(-3px)}
+.fl-call{background:#111827;color:#fff}
+.fl-wa{background:#25d366;color:#fff}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .65s,transform .65s}
+.rv.in{opacity:1;transform:none}
+.rv-l{opacity:0;transform:translateX(-26px);transition:opacity .65s,transform .65s}
+.rv-l.in{opacity:1;transform:none}
+.rv-r{opacity:0;transform:translateX(26px);transition:opacity .65s,transform .65s}
+.rv-r.in{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  #hero{grid-template-columns:1fr}
+  .hero-r{display:none}
+  .hero-l{padding:80px 6% 70px}
+  .about-grid,.why-grid,.cov-grid,.faq-layout,.contact-grid{grid-template-columns:1fr;gap:38px}
+  .about-imgs{max-width:540px}
+  .why-accent{right:6px;bottom:6px}
+  .faq-img-col{position:static}
+  .amc-grid{grid-template-columns:1fr 1fr}
+  footer .footer-grid{grid-template-columns:1fr 1fr}
+  .gal-bento{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
+  .gi:nth-child(1){grid-column:1/3;grid-row:auto}
+  .gi:nth-child(4),.gi:nth-child(6){grid-column:auto}
+}
+@media(max-width:768px){
+  .nav-links,.nav-right .btn{display:none}
+  .hamburger{display:flex}
+  .sec{padding:66px 5%}
+  .amc-grid,.svc-grid,.testi-grid{grid-template-columns:1fr}
+  footer .footer-grid{grid-template-columns:1fr}
+  .proc-grid{grid-template-columns:1fr 1fr}
+  .areas-grid{grid-template-columns:1fr 1fr}
+  .ab-float{flex-direction:column;gap:10px;left:50%;transform:translateX(-50%);bottom:-56px}
+  .about-imgs{padding-bottom:66px}
+  .form-row{grid-template-columns:1fr}
+  .why-exp{left:8px;top:8px}
+  .why-accent{width:125px;height:125px}
+  .gal-bento{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .gal-bento{grid-template-columns:1fr}
+  .gi:nth-child(1){grid-column:1}
+  .proc-grid{grid-template-columns:1fr}
+  .areas-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nb">
+  <div class="nav-logo">
+    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=80&h=80&q=80&fit=crop" alt="ArcticCool">
+    <span class="nav-wordmark">Arctic<span>Cool</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#amc">AMC Plans</a></li>
+    <li><a href="#coverage">Coverage</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-phone">6238054003</span>
+    <a href="#contact" class="btn btn-sky">Book Service</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-menu" id="mm">
+  <a href="#about" onclick="closeMM()">About</a>
+  <a href="#services" onclick="closeMM()">Services</a>
+  <a href="#why" onclick="closeMM()">Why Us</a>
+  <a href="#amc" onclick="closeMM()">AMC Plans</a>
+  <a href="#faq" onclick="closeMM()">FAQ</a>
+  <a href="#contact" onclick="closeMM()">Book Service</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-l">
+    <div class="hero-pill"><span class="hero-dot"></span>Bangalore's Most Trusted Since 2012</div>
+    <h1 class="h1">Fast, reliable AC repair &amp; installation</h1>
+    <p class="body">Expert AC services, home appliance repairs &amp; annual maintenance contracts across Bangalore. Certified technicians at your door in under 2 hours.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-dark">Book a Service</a>
+      <a href="tel:6238054003" class="btn btn-outline">6238054003</a>
+    </div>
+    <div class="hero-strip">
+      <div class="hs-item"><span class="hs-num">12K+</span><span class="hs-lbl">Happy Customers</span></div>
+      <div class="hs-item"><span class="hs-num">4.9★</span><span class="hs-lbl">Google Rating</span></div>
+      <div class="hs-item"><span class="hs-num">90-Day</span><span class="hs-lbl">Warranty</span></div>
+      <div class="hs-item"><span class="hs-num">50+</span><span class="hs-lbl">Technicians</span></div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&q=85&fit=crop" alt="Expert AC technician Bangalore" class="hero-img-main">
+    <div class="hbc hbc-1">
+      <img class="hbc-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=100&q=80&fit=crop" alt="">
+      <div><div class="hbc-title">2-Hour Response</div><div class="hbc-sub">Guaranteed across Bangalore</div></div>
+    </div>
+    <div class="hbc hbc-2">
+      <div class="hbc-num">98%</div>
+      <div class="hbc-lbl">Satisfaction Rate</div>
+    </div>
+    <div class="hbc-rating">
+      <div class="hbc-stars">★★★★★</div>
+      <div class="hbc-rlbl">4.9 · 2,100+ reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- ANNOUNCE -->
+<div class="announce">
+  <span>📞 <strong>Emergency Service 24/7 —</strong> Call for urgent AC repair: <strong>6238054003</strong></span>
+  <span class="ann-badge">Free Site Visit</span>
+</div>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-imgs rv-l">
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=920&q=80&fit=crop" alt="Expert AC technician Bangalore" class="ab-big">
+        <div>
+          <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=220&q=80&fit=crop" alt="Cassette AC system" class="ab-sm" style="margin-bottom:12px">
+          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=400&h=220&q=80&fit=crop" alt="Commercial AC office" class="ab-sm">
+        </div>
+        <div class="ab-float">
+          <div class="ab-stat"><div class="sn">15+</div><div class="sl">Years Experience</div></div>
+          <div style="width:1px;background:rgba(255,255,255,.22)"></div>
+          <div class="ab-stat"><div class="sn">98%</div><div class="sl">Satisfaction Rate</div></div>
+        </div>
+      </div>
+      <div class="about-content rv-r">
+        <div class="lbl">About ArcticCool</div>
+        <h2 class="h2">We're the experts you trust every time</h2>
+        <p class="body">With over 15 years of experience serving Bangalore homes and businesses, ArcticCool has built a reputation on skilled technicians, honest pricing, and guaranteed results — from a simple AC gas refill to full VRV commercial system installations.</p>
+        <div class="ab-points">
+          <div class="ab-pt">
+            <img class="ap-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=100&q=80&fit=crop" alt="certified technician">
+            <div><div class="ap-t">Certified Technicians</div><div class="ap-d">All engineers are factory-trained and background-verified before joining our team.</div></div>
+          </div>
+          <div class="ab-pt">
+            <img class="ap-img" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=100&q=80&fit=crop" alt="90 day warranty">
+            <div><div class="ap-t">90-Day Service Warranty</div><div class="ap-d">Every repair is covered — if the same issue returns within 90 days, we fix it free of charge.</div></div>
+          </div>
+          <div class="ab-pt">
+            <img class="ap-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=100&q=80&fit=crop" alt="genuine parts">
+            <div><div class="ap-t">100% Genuine Spare Parts</div><div class="ap-d">We source only OEM-approved parts for every brand — no duplicates, no substandard components, ever.</div></div>
+          </div>
+        </div>
+        <div class="about-ctas">
+          <a href="#contact" class="btn btn-dark">Book a Service</a>
+          <a href="#why" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="sec-inner">
+    <div class="sec-head rv">
+      <div class="lbl">What We Fix</div>
+      <h2 class="h2">All services under one roof</h2>
+      <p class="body" style="margin-top:12px">From residential split ACs to commercial VRV systems, washing machines to geysers — our certified technicians cover it all.</p>
+    </div>
+
+    <p class="cat-label rv">❄️ Cooling Systems</p>
+    <div class="svc-grid rv">
+      <div class="svc-card">
+        <div class="svc-img-w">
+          <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=600&h=420&q=80&fit=crop" alt="Split AC" class="svc-card-img">
+          <span class="svc-badge">Split / Window AC</span>
+        </div>
+        <div class="svc-body">
+          <h3 class="h3">Split & Window Air Conditioners</h3>
+          <p class="body">Complete residential AC service — installation, gas refills, PCB repairs and deep cleaning.</p>
+          <ul class="svc-list">
+            <li>Installation & uninstallation</li>
+            <li>Gas refill & leakage repair</li>
+            <li>Cooling issue diagnosis & fixing</li>
+            <li>PCB (circuit board) repair</li>
+            <li>Regular servicing & deep cleaning</li>
+          </ul>
+          <span class="svc-tag">Starting ₹399</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-img-w">
+          <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&h=420&q=80&fit=crop" alt="Cassette AC" class="svc-card-img">
+          <span class="svc-badge">Cassette AC</span>
+        </div>
+        <div class="svc-body">
+          <h3 class="h3">Cassette Air Conditioners</h3>
+          <p class="body">Ceiling-mounted cassette AC installation, drainage cleaning and cooling optimization.</p>
+          <ul class="svc-list">
+            <li>Ceiling-mounted installation</li>
+            <li>Drainage system cleaning</li>
+            <li>Gas charging & top-up</li>
+            <li>Airflow & cooling optimization</li>
+          </ul>
+          <span class="svc-tag">Starting ₹699</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-img-w">
+          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=420&q=80&fit=crop" alt="VRV AC" class="svc-card-img">
+          <span class="svc-badge">VRV / VRF Systems</span>
+        </div>
+        <div class="svc-body">
+          <h3 class="h3">VRV / VRF Commercial AC</h3>
+          <p class="body">Advanced centralized cooling for offices, malls, hospitals and hotels.</p>
+          <ul class="svc-list">
+            <li>System design & full installation</li>
+            <li>Centralized cooling setup</li>
+            <li>AMC / maintenance contracts</li>
+            <li>Advanced fault diagnosis</li>
+            <li>Compressor & control panel repair</li>
+          </ul>
+          <span class="svc-tag">For offices, malls, hotels</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="cat-label rv">🧺 Home Appliances</p>
+    <div class="svc-grid rv">
+      <div class="svc-card">
+        <div class="svc-img-w">
+          <img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&h=420&q=80&fit=crop" alt="Washing Machine" class="svc-card-img">
+          <span class="svc-badge">Washing Machine</span>
+        </div>
+        <div class="svc-body">
+          <h3 class="h3">Washing Machine Repair</h3>
+          <p class="body">Front-load and top-load washing machine repairs, installation and PCB servicing.</p>
+          <ul class="svc-list">
+            <li>Installation of new units</li>
+            <li>Drum & motor repair</li>
+            <li>Water leakage fixing</li>
+            <li>PCB repair & replacement</li>
+            <li>Noise & vibration issues</li>
+          </ul>
+          <span class="svc-tag">Starting ₹299</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-img-w">
+          <img src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&h=420&q=80&fit=crop" alt="Refrigerator" class="svc-card-img">
+          <span class="svc-badge">Refrigerator</span>
+        </div>
+        <div class="svc-body">
+          <h3 class="h3">Refrigerator Repair</h3>
+          <p class="body">All fridge brands — cooling issues, gas refills, compressor and thermostat repairs.</p>
+          <ul class="svc-list">
+            <li>Cooling issue diagnosis</li>
+            <li>Gas refill & leak repair</li>
+            <li>Compressor repair & replacement</li>
+            <li>Thermostat replacement</li>
+            <li>Ice buildup / defrost issues</li>
+          </ul>
+          <span class="svc-tag">Starting ₹349</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-img-w">
+          <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&h=420&q=80&fit=crop" alt="Geyser" class="svc-card-img">
+          <span class="svc-badge">Geyser / Water Heater</span>
+        </div>
+        <div class="svc-body">
+          <h3 class="h3">Geyser & Water Heater</h3>
+          <p class="body">Geyser installation, heating element replacement, leakage repair and descaling.</p>
+          <ul class="svc-list">
+            <li>New unit installation</li>
+            <li>Heating element replacement</li>
+            <li>Thermostat repair</li>
+            <li>Leakage fixing & sealing</li>
+            <li>Descaling & maintenance</li>
+          </ul>
+          <span class="svc-tag">Starting ₹249</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="cat-label rv">🔧 Common Services — Across All Appliances</p>
+    <div class="svc-grid rv">
+      <div class="svc-card">
+        <div class="svc-img-w">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=420&q=80&fit=crop" alt="Repair" class="svc-card-img">
+          <span class="svc-badge">Repair Services</span>
+        </div>
+        <div class="svc-body">
+          <h3 class="h3">Repair Services</h3>
+          <p class="body">End-to-end fault diagnosis and emergency repairs using genuine spare parts for all appliances.</p>
+          <ul class="svc-list">
+            <li>Comprehensive fault diagnosis</li>
+            <li>Genuine spare parts replacement</li>
+            <li>Emergency same-day repair</li>
+          </ul>
+          <span class="svc-tag">Emergency Available</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-img-w">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=420&q=80&fit=crop" alt="Maintenance" class="svc-card-img">
+          <span class="svc-badge">Maintenance</span>
+        </div>
+        <div class="svc-body">
+          <h3 class="h3">Maintenance Services</h3>
+          <p class="body">Scheduled servicing, preventive maintenance and deep cleaning to extend appliance life and efficiency.</p>
+          <ul class="svc-list">
+            <li>Regular scheduled servicing</li>
+            <li>Deep cleaning & tuning</li>
+            <li>Preventive maintenance checks</li>
+          </ul>
+          <span class="svc-tag">Extends Appliance Life</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-img-w">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=420&q=80&fit=crop" alt="Installation" class="svc-card-img">
+          <span class="svc-badge">Installation</span>
+        </div>
+        <div class="svc-body">
+          <h3 class="h3">Installation Services</h3>
+          <p class="body">New unit installation and re-installation for home-shifting needs across Bangalore.</p>
+          <ul class="svc-list">
+            <li>New unit installation</li>
+            <li>Re-installation (home shifting)</li>
+          </ul>
+          <span class="svc-tag">Same-Day Available</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="sec" id="why">
+  <div class="sec-inner">
+    <div class="why-grid">
+      <div class="why-imgs rv-l">
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&h=1040&q=80&fit=crop" alt="Expert technician at work" class="why-main">
+        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=400&q=80&fit=crop" alt="AC system" class="why-accent">
+        <div class="why-exp"><div class="we-n">15+</div><div class="we-l">Years in Bangalore</div></div>
+      </div>
+      <div class="rv-r">
+        <div class="lbl">Why Choose Us</div>
+        <h2 class="h2" style="margin:8px 0 14px">Why we're the best for AC services</h2>
+        <p class="body">Our commitment to quality and customer satisfaction sets us apart — every single time you need us.</p>
+        <div class="why-pts" style="margin-top:24px">
+          <div class="why-pt">
+            <img class="wp-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=110&h=110&q=80&fit=crop" alt="certified">
+            <div><div class="wp-t">Certified Technicians</div><div class="wp-d">All our engineers are factory-trained, certified and background-verified before they reach your door.</div></div>
+          </div>
+          <div class="why-pt">
+            <img class="wp-img" src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=110&h=110&q=80&fit=crop" alt="quick">
+            <div><div class="wp-t">2-Hour Response Guarantee</div><div class="wp-d">We guarantee a technician at your doorstep within 2 hours across all 30+ coverage areas in Bangalore.</div></div>
+          </div>
+          <div class="why-pt">
+            <img class="wp-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=110&h=110&q=80&fit=crop" alt="pricing">
+            <div><div class="wp-t">Transparent Upfront Pricing</div><div class="wp-d">No hidden charges — ever. Clear cost estimate before any work begins. You only pay what you approve.</div></div>
+          </div>
+          <div class="why-pt">
+            <img class="wp-img" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=110&h=110&q=80&fit=crop" alt="parts">
+            <div><div class="wp-t">100% Genuine Spare Parts</div><div class="wp-d">Only OEM-approved, manufacturer-certified spare parts for all brands — never duplicates or substandard components.</div></div>
+          </div>
+          <div class="why-pt">
+            <img class="wp-img" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=110&h=110&q=80&fit=crop" alt="warranty">
+            <div><div class="wp-t">90-Day Service Warranty</div><div class="wp-d">Every repair is covered with a 90-day service warranty. Same issue returns? We fix it free — no questions asked.</div></div>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-dark" style="margin-top:30px">Book a Service Today</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="process">
+  <div class="sec-inner">
+    <div class="sec-head center rv">
+      <div class="lbl">How It Works</div>
+      <h2 class="h2">Service in 4 simple steps</h2>
+      <p class="body">Getting your appliance fixed is quick, hassle-free and fully transparent with ArcticCool.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-card rv">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=350&q=80&fit=crop" alt="Book online" class="proc-img">
+        <div class="proc-num">1</div>
+        <div class="proc-body"><h3 class="h3">Book Online or Call</h3><p class="body">Fill our quick form or call us. Choose your preferred time — same-day slots available.</p></div>
+      </div>
+      <div class="proc-card rv">
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=350&q=80&fit=crop" alt="Technician dispatched" class="proc-img">
+        <div class="proc-num">2</div>
+        <div class="proc-body"><h3 class="h3">Technician Dispatched</h3><p class="body">A certified technician is assigned and reaches you within 2 hours anywhere in Bangalore.</p></div>
+      </div>
+      <div class="proc-card rv">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=350&q=80&fit=crop" alt="Diagnosis" class="proc-img">
+        <div class="proc-num">3</div>
+        <div class="proc-body"><h3 class="h3">Diagnosis & Transparent Quote</h3><p class="body">The technician diagnoses the issue and gives a detailed, upfront quote before starting any work.</p></div>
+      </div>
+      <div class="proc-card rv">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=350&q=80&fit=crop" alt="Repair done" class="proc-img">
+        <div class="proc-num">4</div>
+        <div class="proc-body"><h3 class="h3">Repair Done + Warranty</h3><p class="body">Work completed professionally with a 90-day service warranty — backed by our guarantee.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-head rv">
+    <div class="lbl">Our Work</div>
+    <h2 class="h2" style="margin-top:6px">See us in action across Bangalore</h2>
+  </div>
+  <div class="gal-bento rv">
+    <div class="gi"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&h=700&q=80&fit=crop" alt="AC installation Koramangala" class="gi-img"><div class="gi-ov">AC Installation — Koramangala</div></div>
+    <div class="gi"><img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=400&h=300&q=80&fit=crop" alt="Split AC servicing" class="gi-img"><div class="gi-ov">Split AC Servicing</div></div>
+    <div class="gi"><img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=400&h=300&q=80&fit=crop" alt="Washing machine repair" class="gi-img"><div class="gi-ov">Washing Machine Repair</div></div>
+    <div class="gi"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&h=300&q=80&fit=crop" alt="Cassette AC commercial" class="gi-img"><div class="gi-ov">Cassette AC — Commercial Office</div></div>
+    <div class="gi"><img src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=400&h=300&q=80&fit=crop" alt="Refrigerator repair" class="gi-img"><div class="gi-ov">Refrigerator Repair</div></div>
+    <div class="gi"><img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&h=300&q=80&fit=crop" alt="Geyser installation" class="gi-img"><div class="gi-ov">Geyser Installation — HSR Layout</div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" id="testimonials">
+  <div class="sec-inner">
+    <div class="testi-top rv">
+      <div>
+        <div class="lbl">Customer Reviews</div>
+        <h2 class="h2" style="margin-top:6px">What Bangalore says about us</h2>
+      </div>
+      <div class="testi-pill">
+        <div class="tp-avs">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=68&h=68&q=80&fit=crop&crop=face" alt="r1">
+          <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=68&h=68&q=80&fit=crop&crop=face" alt="r2">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=68&h=68&q=80&fit=crop&crop=face" alt="r3">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=68&h=68&q=80&fit=crop&crop=face" alt="r4">
+        </div>
+        <div><div class="tp-t">12,000+ happy customers</div><div class="tp-s">★★★★★ 4.9 / 5</div></div>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="tc tc-feat rv">
+        <div class="tc-qt">"</div>
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-txt">Got my split AC serviced within 2 hours of booking. The technician was extremely professional, explained every step clearly, and now the AC cools better than ever. ArcticCool is my go-to for all appliance issues.</p>
+        <div class="tc-auth"><img class="tc-av" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=88&h=88&q=80&fit=crop&crop=face" alt="Rahul"><div><div class="tc-n">Rahul Kumar</div><div class="tc-l">Indiranagar, Bangalore</div></div></div>
+      </div>
+      <div class="tc rv">
+        <div class="tc-qt">"</div>
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-txt">My fridge stopped cooling for 2 days. ArcticCool came the same evening, diagnosed a compressor issue and fixed it the next morning with original parts. Outstanding, transparent service!</p>
+        <div class="tc-auth"><img class="tc-av" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=88&h=88&q=80&fit=crop&crop=face" alt="Priya"><div><div class="tc-n">Priya Sharma</div><div class="tc-l">Whitefield, Bangalore</div></div></div>
+      </div>
+      <div class="tc rv">
+        <div class="tc-qt">"</div>
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-txt">Signed an AMC for our office VRF system. Maintenance is always on time, the team is very knowledgeable, and our AC downtime has reduced by over 80%. Excellent business partnership!</p>
+        <div class="tc-auth"><img class="tc-av" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=88&h=88&q=80&fit=crop&crop=face" alt="Arun"><div><div class="tc-n">Arun Nair</div><div class="tc-l">MG Road, Bangalore</div></div></div>
+      </div>
+      <div class="tc rv">
+        <div class="tc-qt">"</div>
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-txt">Washing machine had a terrible noise — bearing replaced in under an hour with a fair upfront quote. Clean job, no mess, 90-day warranty on the fix. Will definitely book ArcticCool again!</p>
+        <div class="tc-auth"><img class="tc-av" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=88&h=88&q=80&fit=crop&crop=face" alt="Sunita"><div><div class="tc-n">Sunita Menon</div><div class="tc-l">Jayanagar, Bangalore</div></div></div>
+      </div>
+      <div class="tc rv">
+        <div class="tc-qt">"</div>
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-txt">Called for geyser installation at 9 AM and by 11 AM it was done perfectly. Very clean work, zero mess left behind, and the quoted price was honoured exactly. Highly responsive team!</p>
+        <div class="tc-auth"><img class="tc-av" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=88&h=88&q=80&fit=crop&crop=face" alt="Vikram"><div><div class="tc-n">Vikram Rao</div><div class="tc-l">HSR Layout, Bangalore</div></div></div>
+      </div>
+      <div class="tc rv">
+        <div class="tc-qt">"</div>
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-txt">ArcticCool manages all ACs across my 3 properties under their AMC plan. No more summer breakdown surprises. Their priority support line is genuinely worth every rupee. Best in Bangalore!</p>
+        <div class="tc-auth"><img class="tc-av" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=88&h=88&q=80&fit=crop&crop=face" alt="Kavitha"><div><div class="tc-n">Kavitha Pillai</div><div class="tc-l">Bannerghatta Road, Bangalore</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMC PLANS -->
+<section class="sec" id="amc">
+  <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600&q=50&fit=crop" alt="background" class="amc-bg">
+  <div class="amc-in">
+    <div class="amc-hd rv">
+      <div class="lbl">AMC Plans</div>
+      <h2 class="h2">Annual Maintenance Contracts</h2>
+      <p class="body">Protect your appliances year-round with structured AMC plans — priority service, scheduled maintenance, major savings.</p>
+    </div>
+    <div class="amc-grid">
+      <div class="amc-card rv">
+        <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=600&h=310&q=80&fit=crop" alt="Basic AMC" class="amc-card-img">
+        <div class="amc-plan-lbl">Basic Plan</div>
+        <h3>Essential Care</h3>
+        <div class="amc-price">₹1,499 <span>/ year</span></div>
+        <p class="amc-desc">Perfect for a single AC unit or one home appliance</p>
+        <ul class="amc-feats">
+          <li>2 scheduled service visits</li>
+          <li>Priority booking</li>
+          <li>15% discount on repairs</li>
+          <li>Phone support</li>
+          <li>30-day parts warranty</li>
+        </ul>
+        <a href="#contact" class="amc-cta">Get Started</a>
+      </div>
+      <div class="amc-card pop rv">
+        <div class="amc-pop-tag">MOST POPULAR</div>
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=310&q=80&fit=crop" alt="Standard AMC" class="amc-card-img">
+        <div class="amc-plan-lbl">Standard Plan</div>
+        <h3>Complete Home</h3>
+        <div class="amc-price">₹3,999 <span>/ year</span></div>
+        <p class="amc-desc">Covers up to 3 ACs or any 3 home appliances</p>
+        <ul class="amc-feats">
+          <li>4 scheduled service visits</li>
+          <li>Priority 2-hour response</li>
+          <li>25% discount on spare parts</li>
+          <li>Free gas top-up (1 unit)</li>
+          <li>24/7 WhatsApp support</li>
+          <li>90-day service warranty</li>
+        </ul>
+        <a href="#contact" class="amc-cta">Get Started</a>
+      </div>
+      <div class="amc-card rv">
+        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&h=310&q=80&fit=crop" alt="Premium AMC" class="amc-card-img">
+        <div class="amc-plan-lbl">Premium Plan</div>
+        <h3>Business &amp; Enterprise</h3>
+        <div class="amc-price">₹9,999 <span>/ year</span></div>
+        <p class="amc-desc">For offices, hotels and VRV/VRF commercial systems</p>
+        <ul class="amc-feats">
+          <li>Monthly service visits</li>
+          <li>Dedicated account manager</li>
+          <li>35% discount on all repairs</li>
+          <li>Emergency weekend support</li>
+          <li>Fault reporting dashboard</li>
+          <li>1-year parts warranty</li>
+        </ul>
+        <a href="#contact" class="amc-cta">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands">
+  <div class="brands-in rv">
+    <div class="lbl">Brands We Service</div>
+    <h2 class="h2" style="margin-top:8px">All major brands covered</h2>
+    <p class="body">Our certified technicians are trained on every leading brand available in India.</p>
+    <div class="brands-row" style="margin-top:28px">
+      <span class="brand-p">Daikin</span><span class="brand-p">LG</span><span class="brand-p">Samsung</span>
+      <span class="brand-p">Voltas</span><span class="brand-p">Blue Star</span><span class="brand-p">Carrier</span>
+      <span class="brand-p">Hitachi</span><span class="brand-p">Whirlpool</span><span class="brand-p">Godrej</span>
+      <span class="brand-p">Panasonic</span><span class="brand-p">Haier</span><span class="brand-p">O General</span>
+      <span class="brand-p">Mitsubishi</span><span class="brand-p">IFB</span><span class="brand-p">Bosch</span>
+      <span class="brand-p">Videocon</span>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="sec" id="coverage">
+  <div class="sec-inner">
+    <div class="cov-grid">
+      <div class="cov-img-w rv-l">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&h=840&q=80&fit=crop" alt="Bangalore city coverage" class="cov-img">
+        <div class="cov-cap"><strong>30+</strong>Areas covered in Bangalore</div>
+      </div>
+      <div class="rv-r">
+        <div class="lbl">Service Coverage</div>
+        <h2 class="h2" style="margin:8px 0 12px">We serve all of Bangalore</h2>
+        <p class="body">ArcticCool operates across 30+ areas. Can't find your locality? Call us — we likely cover it!</p>
+        <div class="areas-grid">
+          <div class="area-chip"><span class="area-dot"></span>Indiranagar</div>
+          <div class="area-chip"><span class="area-dot"></span>Koramangala</div>
+          <div class="area-chip"><span class="area-dot"></span>HSR Layout</div>
+          <div class="area-chip"><span class="area-dot"></span>Whitefield</div>
+          <div class="area-chip"><span class="area-dot"></span>Marathahalli</div>
+          <div class="area-chip"><span class="area-dot"></span>Jayanagar</div>
+          <div class="area-chip"><span class="area-dot"></span>JP Nagar</div>
+          <div class="area-chip"><span class="area-dot"></span>BTM Layout</div>
+          <div class="area-chip"><span class="area-dot"></span>Electronic City</div>
+          <div class="area-chip"><span class="area-dot"></span>Banashankari</div>
+          <div class="area-chip"><span class="area-dot"></span>Malleshwaram</div>
+          <div class="area-chip"><span class="area-dot"></span>MG Road</div>
+          <div class="area-chip"><span class="area-dot"></span>Yelahanka</div>
+          <div class="area-chip"><span class="area-dot"></span>Rajajinagar</div>
+          <div class="area-chip"><span class="area-dot"></span>Bellandur</div>
+          <div class="area-chip"><span class="area-dot"></span>Sarjapur Road</div>
+          <div class="area-chip"><span class="area-dot"></span>Vijayanagar</div>
+          <div class="area-chip"><span class="area-dot"></span>KR Puram</div>
+          <div class="area-chip"><span class="area-dot"></span>Hebbal</div>
+          <div class="area-chip"><span class="area-dot"></span>Bannerghatta Rd</div>
+        </div>
+        <a href="#contact" class="btn btn-dark" style="margin-top:28px">Check Your Area</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="ctabanner">
+  <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&h=800&q=80&fit=crop" alt="CTA" class="cta-img">
+  <div class="cta-ov">
+    <div class="lbl">Ready to Get Started?</div>
+    <h2 class="h2">Speak with our team — we're just a call away</h2>
+    <p class="body">Book a service in 60 seconds or call us directly. Certified technicians available 7 days a week including holidays.</p>
+    <div class="cta-btns">
+      <a href="#contact" class="btn btn-white">Book a Service</a>
+      <a href="tel:6238054003" class="btn btn-ghost">6238054003</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="sec-inner">
+    <div class="faq-layout">
+      <div class="faq-img-col rv-l">
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&h=880&q=80&fit=crop" alt="FAQ technician" class="faq-img1">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&h=350&q=80&fit=crop" alt="FAQ service" class="faq-img2">
+      </div>
+      <div class="rv-r">
+        <div class="lbl">FAQ</div>
+        <h2 class="h2" style="margin:8px 0 28px">Frequently asked questions</h2>
+        <div class="faq-list">
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How quickly can a technician reach me?<span class="faq-arr">▾</span></button><div class="faq-a">Our average response time is under 2 hours for most areas in Bangalore. In peak summer (April–June) it may be up to 3 hours. After booking, you receive the technician's name and live tracking via WhatsApp.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What warranty do you provide on repairs?<span class="faq-arr">▾</span></button><div class="faq-a">All repairs come with a 90-day service warranty. If the same issue recurs within this period, we fix it at no additional cost. Spare parts also carry the manufacturer's warranty on top of ours.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you use genuine original spare parts?<span class="faq-arr">▾</span></button><div class="faq-a">Yes, always. We source only OEM (Original Equipment Manufacturer) approved spare parts. We never use duplicates or low-quality components, ensuring your appliance performs reliably for years after every repair.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How is the service charge calculated?<span class="faq-arr">▾</span></button><div class="faq-a">There's a nominal visit/inspection charge (₹199–₹299) which is waived if you proceed with the repair. Before any repair begins, our technician provides a complete cost breakdown. You only pay for what you approve.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you service all AC and appliance brands?<span class="faq-arr">▾</span></button><div class="faq-a">Yes — our technicians are trained on all major brands: Daikin, LG, Samsung, Voltas, Blue Star, Carrier, Hitachi, O General, Mitsubishi, Panasonic, Whirlpool, Godrej, IFB, Bosch and more. Both older and latest models.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is an AMC and is it worth it?<span class="faq-arr">▾</span></button><div class="faq-a">An AMC (Annual Maintenance Contract) is a yearly plan covering scheduled visits, priority support and repair discounts. Customers typically save 40–60% compared to pay-per-service pricing, and it significantly extends appliance lifespan.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are services available on weekends and holidays?<span class="faq-arr">▾</span></button><div class="faq-a">Yes! ArcticCool operates 7 days a week including Sundays and public holidays. Premium AMC customers get emergency weekend support. We recommend early booking on Sundays as slots fill up quickly.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How often should I service my AC?<span class="faq-arr">▾</span></button><div class="faq-a">We recommend servicing your AC at least twice a year — before and after summer (March and October). For heavily used or dusty environments, quarterly servicing is advisable. Regular servicing improves efficiency and lowers electricity bills.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you handle commercial and office AC systems?<span class="faq-arr">▾</span></button><div class="faq-a">Absolutely — we specialize in VRV/VRF multi-split systems, cassette ACs and central cooling for offices, hotels, hospitals and malls. We offer customized AMC plans for businesses with dedicated account managers.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What payment methods do you accept?<span class="faq-arr">▾</span></button><div class="faq-a">We accept all modes — cash, UPI (GPay, PhonePe, Paytm), net banking, debit/credit cards and bank transfers. Payment is made only after work is completed to your satisfaction. Digital invoice sent via WhatsApp/email.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact">
+  <div class="sec-inner">
+    <div class="contact-grid">
+      <div class="contact-left rv-l">
+        <div class="lbl">Get In Touch</div>
+        <h2 class="h2">Book your service today</h2>
+        <p class="body">Fill in the form or reach us directly. Our team confirms your booking and dispatches a certified technician at the earliest slot.</p>
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&h=440&q=80&fit=crop" alt="ArcticCool team" class="c-img">
+        <div class="c-details">
+          <div class="cd">
+            <img class="cd-thumb" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=96&q=80&fit=crop" alt="phone">
+            <div><div class="cd-lbl">Phone / WhatsApp</div><div class="cd-val">6238054003</div></div>
+          </div>
+          <div class="cd">
+            <img class="cd-thumb" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=96&q=80&fit=crop" alt="email">
+            <div><div class="cd-lbl">Email</div><div class="cd-val">bestcoolcare97@gmail.com</div></div>
+          </div>
+          <div class="cd">
+            <img class="cd-thumb" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=96&q=80&fit=crop" alt="address">
+            <div><div class="cd-lbl">Office Address</div><div class="cd-val">42, 3rd Cross, Indiranagar, Bangalore — 560 038</div></div>
+          </div>
+          <div class="cd">
+            <img class="cd-thumb" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=96&q=80&fit=crop" alt="hours">
+            <div><div class="cd-lbl">Working Hours</div><div class="cd-val">Mon–Sun: 8:00 AM – 9:00 PM</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="rv-r">
+        <div class="cf-box">
+          <div class="cf-title">Book a Service</div>
+          <div class="form-row">
+            <div class="fg"><label>Your Name</label><input type="text" placeholder="e.g. Rahul Sharma"></div>
+            <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 98XXXXXXXX"></div>
+          </div>
+          <div class="fg"><label>Email Address</label><input type="email" placeholder="you@example.com"></div>
+          <div class="form-row">
+            <div class="fg"><label>Service Type</label>
+              <select>
+                <option value="">Select service…</option>
+                <option>AC — Split / Window</option>
+                <option>AC — Cassette</option>
+                <option>AC — VRV / VRF</option>
+                <option>Washing Machine</option>
+                <option>Refrigerator</option>
+                <option>Geyser / Water Heater</option>
+                <option>AMC Plan</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="fg"><label>Service Required</label>
+              <select>
+                <option>Repair</option>
+                <option>Servicing / Cleaning</option>
+                <option>Installation</option>
+                <option>AMC / Contract</option>
+                <option>Gas Refill</option>
+                <option>Inspection / Diagnosis</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg"><label>Your Area in Bangalore</label><input type="text" placeholder="e.g. Koramangala, HSR Layout…"></div>
+          <div class="fg"><label>Preferred Date &amp; Time</label><input type="datetime-local"></div>
+          <div class="fg"><label>Additional Details (optional)</label><textarea placeholder="Describe the issue or any specific requirements…"></textarea></div>
+          <button class="btn-form" onclick="submitForm()">Send Booking Request →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=88&h=88&q=80&fit=crop" alt="logo" class="fb-img">
+      <div class="fb-name">Arctic<span>Cool</span></div>
+      <p class="fb-desc">Bangalore's most trusted AC and home appliance service company. Certified technicians, transparent pricing, and guaranteed satisfaction since 2012.</p>
+      <div class="soc-row">
+        <a href="#" class="soc-b">f</a>
+        <a href="#" class="soc-b">in</a>
+        <a href="#" class="soc-b">tw</a>
+        <a href="#" class="soc-b">yt</a>
+        <a href="#" class="soc-b">wa</a>
+      </div>
+    </div>
+    <div class="fc">
+      <h4>Services</h4>
+      <ul class="fl">
+        <li><a href="#services">Split / Window AC</a></li>
+        <li><a href="#services">Cassette AC</a></li>
+        <li><a href="#services">VRV / VRF Systems</a></li>
+        <li><a href="#services">Washing Machine</a></li>
+        <li><a href="#services">Refrigerator</a></li>
+        <li><a href="#services">Geyser / Water Heater</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Company</h4>
+      <ul class="fl">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#amc">AMC Plans</a></li>
+        <li><a href="#gallery">Our Work</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#coverage">Service Areas</a></li>
+        <li><a href="#contact">Careers</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Contact</h4>
+      <ul class="fl">
+        <li><a href="tel:6238054003">6238054003</a></li>
+        <li><a href="mailto:bestcoolcare97@gmail.com">bestcoolcare97@gmail.com</a></li>
+        <li><a href="#">WhatsApp Us</a></li>
+      </ul>
+      <div style="margin-top:18px">
+        <div style="font-size:.74rem;color:rgba(255,255,255,.32);margin-bottom:5px;text-transform:uppercase;letter-spacing:.07em">Hours</div>
+        <div style="font-size:.86rem">Mon–Sun: 8:00 AM – 9:00 PM</div>
+      </div>
+      <div style="margin-top:16px">
+        <div style="font-size:.74rem;color:rgba(255,255,255,.32);margin-bottom:6px;text-transform:uppercase;letter-spacing:.07em">Office</div>
+        <div style="font-size:.84rem;line-height:1.6">42, 3rd Cross, Indiranagar,<br>Bangalore — 560 038</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span>© 2025 ArcticCool Services Pvt. Ltd. All rights reserved.</span>
+    <div class="fbl">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING -->
+<div class="float-w">
+  <a href="tel:6238054003" class="fl-btn fl-call">📞 Call Now</a>
+  <a href="https://wa.me/918012345678" class="fl-btn fl-wa">💬 WhatsApp</a>
+</div>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('nb').classList.toggle('bg',scrollY>10)});
+function toggleMenu(){document.getElementById('mm').classList.toggle('open')}
+function closeMM(){document.getElementById('mm').classList.remove('open')}
+function toggleFaq(btn){const item=btn.parentElement,open=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open')}
+function submitForm(){alert('Thank you! Your booking request has been received.\nOur team will call you within 30 minutes to confirm your appointment.')}
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.07,rootMargin:'0px 0px -28px 0px'});
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>obs.observe(el));
+document.querySelectorAll('.svc-grid,.testi-grid,.amc-grid,.proc-grid').forEach(g=>{Array.from(g.children).forEach((c,i)=>c.style.transitionDelay=(i*.1)+'s')});
+</script>
+</body>
+</html>

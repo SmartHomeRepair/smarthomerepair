@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}About Us – Smart Home  Kochi (Kakkanad){% endblock %}
+
+{% block content %}
+
+<!-- BANNER -->
+<section class="about-banner">
+  <img src="{{ url_for('static', filename='images/ac_repair_2.jpg') }}" alt="Smart Home Kochi" class="ab-bg" fetchpriority="high">
+  <h1 class="ab-ttl">About Us</h1>
+</section>
+
+<!-- MISSION -->
+<!-- <section class="mission-sec rv">
+  <div class="lbl">Our Mission</div>
+  <h2 class="h2">To elevate every indoor environment with technology-driven comfort and unwavering trust.</h2>
+</section> -->
+
+<!-- STORY -->
+<section class="about-info">
+  <div class="ai-grid">
+    <div class="ai-l rv-l">
+      <div class="lbl">Our Mission</div>
+      <h2 class="h2">Keeping Your Home Cool & Running</h2>
+      <p class="body">Air smart home repair was founded with one goal — to make appliance repair fast, honest, and stress-free. We believe every household deserves reliable cooling and working appliances, backed by technicians you can actually trust.</p>
+      <p class="body">We dispatch certified technicians within hours of booking — because breakdowns don't wait. <br> Every repair comes with a 30-day service warranty and genuine spare parts only. <br> Upfront quotes before any work begins. No hidden charges, no surprises on the bill.</p>
+      
+      <div class="ai-stats">
+        <div class="ais-item">
+          <div class="ais-n">12+</div>
+          <div class="ais-l">Years Experience</div>
+        </div>
+        <div class="ais-item">
+          <div class="ais-n">100%</div>
+          <div class="ais-l">Genuine Parts</div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-r rv-r">
+      <img loading="lazy" src="{{ url_for('static', filename='images/repairing_ac.jpg') }}" alt="Expert AC repair">
+      <img loading="lazy" src="{{ url_for('static', filename='images/technician_dispatched.webp') }}" alt="Smart Home technician">
+    </div>
+  </div>
+</section>
+
+<!-- VALUES (Existing) -->
+<section id="why" class="sec" style="background:#fff">
+  <div class="sec-inner">
+    <div class="sec-head center rv">
+      <div class="lbl">Our Values</div>
+      <h2 class="h2">What drives Smart Home</h2>
+      <p class="body">We believe that a repair service should be as stress-free as possible. That's why we focus on three core pillars.</p>
+    </div>
+    <div class="why-grid-v">
+        <div class="ais-item center" style="text-align:center">
+            <img loading="lazy" src="{{ url_for('static', filename='images/diagnosis.webp') }}" style="width:100%; border-radius:12px; margin-bottom:20px" alt="Trust">
+            <h3 class="h3">Unmatched Trust</h3>
+            <p class="body" style="font-size:0.9rem">Background-verified and certified technicians you can feel safe with.</p>
+        </div>
+        <div class="ais-item center" style="text-align:center">
+            <img loading="lazy" src="{{ url_for('static', filename='images/maintenance_services.jpg') }}" style="width:100%; border-radius:12px; margin-bottom:20px" alt="Precision">
+            <h3 class="h3">Precision Service</h3>
+            <p class="body" style="font-size:0.9rem">Factory-trained engineers diagnostic tools for zero-error fixing.</p>
+        </div>
+        <div class="ais-item center" style="text-align:center">
+            <img loading="lazy" src="{{ url_for('static', filename='images/ac_installation.jpg') }}" style="width:100%; border-radius:12px; margin-bottom:20px" alt="Speed">
+            <h3 class="h3">Rapid Response</h3>
+            <p class="body" style="font-size:0.9rem">A 2-hour response guarantee across all 30+ service areas.</p>
+        </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CTA -->
+<section class="about-cta rv">
+  <div class="lbl" style="color:#fff; margin-bottom:12px">Get Started Today</div>
+  <h2 class="h2">Have an appliance emergency or need a regular checkup?</h2>
+  <p class="body">Experience the Smart Home difference. Expert technicians are ready to assist you anywhere in Kochi.</p>
+  <div class="hero-ctas" style="justify-content:center">
+    <a href="/#contact" class="btn btn-sky">Book a Service Now</a>
+    <a href="tel:6238054003" class="btn btn-ghost">Call Support</a>
+  </div>
+</section>
+
+{% endblock %}
