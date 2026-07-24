@@ -20,6 +20,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function toggleMenu(){document.getElementById('mm').classList.toggle('open')}
 function closeMM(){document.getElementById('mm').classList.remove('open')}
+function toggleFaq(btn){
+    const item = btn.parentElement;
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if(!open) item.classList.add('open');
+}
 function submitForm(){alert('Thank you! Your booking request has been received.\nOur team will call you within 30 minutes to confirm your appointment.')}
 
 function submitToWhatsapp() {
