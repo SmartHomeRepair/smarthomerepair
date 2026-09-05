@@ -1,12 +1,22 @@
 {% extends "base.html" %}
+{% block title %}AC Repair in Kochi | Smart Home Repair Kakkanad - 2-Hour Service, 90-Day Warranty{% endblock %}
+{% block meta_desc %}AC repair, fridge, washing machine & geyser service in Kochi. 50K+ customers, 15+ years. Same-day in Kakkanad, Edappally, Vyttila. 2-hour reach, 90-day warranty. Call 6238054003.{% endblock %}
+{% block meta_keys %}AC repair Kochi, AC service Kakkanad, AC installation Kochi, fridge repair Ernakulam, washing machine repair, microwave service, geyser repair, VRV AC Kochi{% endblock %}
+{% block og_title %}Smart Home Repair - #1 AC & Appliance Service in Kochi{% endblock %}
+{% block og_desc %}50K+ Kochi homes trust us. AC, fridge, washing machine in 2 hours. Genuine parts, 90-day warranty. Kakkanad/Edappally/Vyttila.{% endblock %}
+{% block extra_head %}
+<link rel="preload" as="image" href="{{ url_for('static', filename='images/services/ac_repair.jpg') }}" fetchpriority="high">
+{% endblock %}
 
 {% block content %}
+<!-- Breadcrumb for SEO -->
+<nav aria-label="Breadcrumb" style="position:absolute;left:-9999px"><ol><li><a href="https://www.smarthomerepair.in/">Home</a></li><li>AC Repair Kochi</li></ol></nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-l">
-    <div class="hero-pill"><span class="material-symbols-outlined icon-inline">check_circle</span> Trusted by 50,000+ Ernakulam Residents</div>
-    <h1 class="h1">Fast, reliable <span>AC repair &amp; installation</span></h1>
+    <div class="hero-pill">Trusted by 50,000+ Ernakulam Residents</div>
+    <h1 class="h1">Fast, reliable <span>AC repair &amp; installation in Kochi - Kakkanad, Edappally, Vyttila</span></h1>
     <div class="hero-tags">
       <div class="h-tag"><span class="material-symbols-outlined icon-inline">bolt</span> 2 Hour Response Rate</div>
       <div class="h-tag"><span class="material-symbols-outlined icon-inline">currency_rupee</span> Visiting charges ₹399 Only</div>
@@ -18,8 +28,8 @@
   </div>
   <div class="hero-r">
     <div class="hero-slider">
-      <img src="{{ url_for('static', filename='images/services/ac_repair.jpg') }}" alt="Expert AC repair Kochi" class="hero-img-main slider-1" fetchpriority="high">
-      <img src="{{ url_for('static', filename='images/fridge_reqpairing.webp') }}" alt="Fridge repair Kochi" class="hero-img-main slider-2" fetchpriority="high">
+      <img src="{{ url_for('static', filename='images/services/ac_repair.jpg') }}" alt="AC repair Kakkanad Kochi - certified technician cleaning split AC" class="hero-img-main slider-1" width="900" height="720" fetchpriority="high" decoding="async">
+      <img src="{{ url_for('static', filename='images/fridge_reqpairing.webp') }}" alt="Fridge repair Kochi - same day service Ernakulam" class="hero-img-main slider-2" width="900" height="720" loading="lazy" decoding="async">
     </div>
 
   </div>
@@ -662,6 +672,23 @@
     </div>
   </div>
 </div>
+
+<!-- SEO MAX: FAQ + Service + Breadcrumb Schema -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How quickly can a technician reach me in Kochi?","acceptedAnswer":{"@type":"Answer","text":"Average response under 2 hours across Kakkanad, Edappally, Vyttila, Palarivattom. WhatsApp tracking after booking."}},
+{"@type":"Question","name":"What warranty on AC repairs?","acceptedAnswer":{"@type":"Answer","text":"90-day service warranty + manufacturer parts warranty. Same issue recurs, we fix free."}},
+{"@type":"Question","name":"Do you use genuine parts?","acceptedAnswer":{"@type":"Answer","text":"Yes, only OEM approved parts for all brands: Daikin, LG, Samsung, Voltas, Blue Star, Carrier, Hitachi, etc."}},
+{"@type":"Question","name":"How much is AC service charge?","acceptedAnswer":{"@type":"Answer","text":"Visit charge ₹399, waived if you proceed. Upfront quote before work, no hidden charges."}},
+{"@type":"Question","name":"Do you handle commercial VRV/VRF?","acceptedAnswer":{"@type":"Answer","text":"Yes, VRV/VRF, cassette AC for offices, hotels, hospitals with dedicated AMC."}}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","serviceType":"AC Repair Service","provider":{"@type":"LocalBusiness","name":"Smart Home Repair"},"areaServed":{"@type":"City","name":"Kochi"},"description":"AC, refrigerator, washing machine, microwave and geyser repair in Kochi - Kakkanad, Edappally, Vyttila with 2-hour response","offers":{"@type":"Offer","price":"399","priceCurrency":"INR"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.smarthomerepair.in/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://www.smarthomerepair.in/#services"},{"@type":"ListItem","position":3,"name":"AC Repair Kochi","item":"https://www.smarthomerepair.in/"}]}
+</script>
 
 <!-- CONTACT POPUP MODAL -->
 <div class="modal-ov" id="contactModalOverlay">

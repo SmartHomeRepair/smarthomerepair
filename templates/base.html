@@ -9,20 +9,64 @@
     <link rel="manifest" href="{{ url_for('static', filename='images/favicon/site.webmanifest') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon/favicon.ico') }}">
     
-    <title>{% block title %}Smart Home – AC & Appliance Support  Kochi (Kakkanad){% endblock %}</title>
+    <title>{% block title %}Smart Home Repair - AC & Appliance Repair in Kochi (Kakkanad) | 2-Hour Service, 90-Day Warranty{% endblock %}</title>
+    <meta name="description" content="{% block meta_desc %}Kochi's #1 AC & home appliance repair - AC, fridge, washing machine, microwave & geyser service in Kakkanad, Edappally, Vyttila, Palarivattom. 2-hour response, 90-day warranty, 12K+ 5-star reviews. Call 6238054003.{% endblock %}">
+    <meta name="keywords" content="{% block meta_keys %}AC repair Kochi, AC service Kakkanad, fridge repair Kochi, washing machine repair Kochi, microwave repair, geyser service, appliance repair Ernakulam, VRV AC service{% endblock %}">
+    <meta name="author" content="Smart Home Repair">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#200045">
+    <link rel="canonical" href="https://www.smarthomerepair.in{{ request.path }}">
+    <meta name="google-site-verification" content="">
     
-    <!-- Performance Optimizations -->
+    <!-- Open Graph MAX -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Smart Home Repair">
+    <meta property="og:title" content="{% block og_title %}Smart Home Repair - Trusted AC & Appliance Service in Kochi{% endblock %}">
+    <meta property="og:description" content="{% block og_desc %}15+ years, 50K+ customers. Same-day AC, fridge, washing machine service across Kochi. 2-hour reach, genuine parts, 90-day warranty.{% endblock %}">
+    <meta property="og:url" content="https://www.smarthomerepair.in{{ request.path }}">
+    <meta property="og:image" content="https://www.smarthomerepair.in/static/images/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_IN">
+    
+    <!-- Twitter MAX -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@smarthomerepair">
+    <meta name="twitter:title" content="Smart Home Repair - Kochi 2-Hour AC Service">
+    <meta name="twitter:description" content="AC, fridge, washing machine, geyser repair in Kochi. 90-day warranty. Call 6238054003.">
+    <meta name="twitter:image" content="https://www.smarthomerepair.in/static/images/logo.png">
+    
+    <!-- Performance MAX (limit fonts for FCP) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-    <!-- Google Material Symbols (icons) -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- JSON-LD MAX: Organization + LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Smart Home Repair",
+      "alternateName": "SmartHome Repair Kochi",
+      "image": "https://www.smarthomerepair.in/static/images/logo.png",
+      "logo": "https://www.smarthomerepair.in/static/images/logo.png",
+      "url": "https://www.smarthomerepair.in",
+      "telephone": "+916238054003",
+      "email": "smarthomerepair402@gmail.com",
+      "address": {"@type": "PostalAddress", "streetAddress": "Kakkanad", "addressLocality": "Kochi", "addressRegion": "Kerala", "postalCode": "682030", "addressCountry": "IN"},
+      "geo": {"@type": "GeoCoordinates", "latitude": "10.0104", "longitude": "76.3101"},
+      "areaServed": [{"@type":"City","name":"Kochi"},{"@type":"City","name":"Ernakulam"},{"@type":"AdministrativeArea","name":"Kakkanad"},{"@type":"AdministrativeArea","name":"Edappally"},{"@type":"AdministrativeArea","name":"Vyttila"},{"@type":"AdministrativeArea","name":"Palarivattom"}],
+      "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "08:00", "closes": "20:00"},
+      "priceRange": "₹₹",
+      "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "12000", "bestRating": "5"},
+      "sameAs": ["https://www.smarthomerepair.in", "https://wa.me/916238054003"]
+    }
+    </script>
     
     {% block extra_head %}{% endblock %}
 </head>
@@ -45,7 +89,7 @@
     {% include 'includes/footer.html' %}
 
     <!-- Custom JS -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
     
     {% block extra_js %}{% endblock %}
 </body>
