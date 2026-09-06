@@ -4,7 +4,8 @@ import os
 from functools import wraps
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
+    load_dotenv()  # also try cwd
 except: pass
 
 try:
@@ -140,6 +141,18 @@ def add_headers(resp):
     return resp
 
 
+
+@app.route("/debug/env")
+def debug_env():
+    # safe check - shows only if set, not values
+    return jsonify({
+        "SUPABASE_URL_set": bool(os.getenv("SUPABASE_URL")),
+        "SUPABASE_ANON_KEY_set": bool(os.getenv("SUPABASE_ANON_KEY")),
+        "SECRET_KEY_set": bool(os.getenv("SECRET_KEY")),
+        "supabase_client": bool(supabase),
+        "cwd": os.getcwd(),
+        "env_file_exists": os.path.exists(os.path.join(os.path.dirname(__file__), '.env'))
+    })
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
