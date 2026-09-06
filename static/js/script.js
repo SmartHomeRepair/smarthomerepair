@@ -20,6 +20,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function toggleMenu(){document.getElementById('mm').classList.toggle('open')}
 function closeMM(){document.getElementById('mm').classList.remove('open')}
+// Fix desktop hash links without reload
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('a[href^="/#"],a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const h=a.getAttribute('href');
+      const id=h.substring(h.indexOf('#')+1);
+      if(id && location.pathname==='/' && document.getElementById(id)){
+        e.preventDefault();
+        document.getElementById(id).scrollIntoView({behavior:'smooth'});
+        history.pushState(null,'','#'+id);
+      }
+    });
+  });
+});
 function toggleFaq(btn){
     const item = btn.parentElement;
     const open = item.classList.contains('open');

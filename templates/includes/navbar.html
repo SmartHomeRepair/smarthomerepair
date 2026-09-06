@@ -5,9 +5,9 @@
   </a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
-    <li><a href="/#services">Services</a></li>
+    <li><a href="/#services" onclick="if(location.pathname==='/'){event.preventDefault();document.getElementById('services')?.scrollIntoView({behavior:'smooth'})}">Services</a></li>
     <li><a href="/about">About</a></li>
-    <li><a href="/#contact">Contact</a></li>
+    <li><a href="/#contact" onclick="if(location.pathname==='/'){event.preventDefault();document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})}">Contact</a></li>
   </ul>
   <div class="nav-right">
     <a href="tel:6238054003" class="btn btn-navy">Call Now</a>
