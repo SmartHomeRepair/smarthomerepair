@@ -19,6 +19,15 @@ except Exception as e:
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "dev-secret-change-in-prod")
+# Single admin account (simple DB) - set in .env / GitHub Secrets, never hardcode
+ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "admin@smarthomerepair.in")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "")  # plain for Hostinger shared, or hash check
+ADMIN_PASSWORD_HASH = os.getenv("ADMIN_PASSWORD_HASH", "")  # bcrypt hash if set
+try:
+    import bcrypt
+    HAS_BCRYPT = True
+except:
+    HAS_BCRYPT = False
 
 @app.route('/')
 def index():
@@ -69,29 +78,36 @@ def admin_login():
     if request.method == "POST":
         email = request.form.get("email", "").strip()
         password = request.form.get("password", "")
-        if not supabase:
-            flash("Supabase not configured. Set SUPABASE_URL/ANON_KEY in env/GitHub Secrets.", "error")
-            return render_template("admin/login.html")
-        try:
-            res = supabase.auth.sign_in_with_password({"email": email, "password": password})
-            if res.user:
-                session["admin_user"] = {"email": res.user.email, "id": res.user.id}
-                return redirect(url_for("admin_dashboard"))
-            # keep old /admin/login from being discoverable
-            # no redirect to old path
-            flash("Invalid credentials", "error")
-        except Exception as e:
-            flash(f"Login failed: {e}", "error")
+        # Single account check - DB/env, no Supabase Auth needed
+        ok = False
+        if ADMIN_PASSWORD_HASH and HAS_BCRYPT:
+            try:
+                ok = (email == ADMIN_EMAIL and bcrypt.checkpw(password.encode(), ADMIN_PASSWORD_HASH.encode()))
+            except: ok = False
+        elif ADMIN_PASSWORD:
+            ok = (email == ADMIN_EMAIL and password == ADMIN_PASSWORD)
+        else:
+            # Fallback: check Supabase table admins (id, email, password_hash) if supabase exists
+            if supabase:
+                try:
+                    r = supabase.table("admins").select("password_hash").eq("email", email).limit(1).execute()
+                    if r.data and HAS_BCRYPT and bcrypt.checkpw(password.encode(), r.data[0]["password_hash"].encode()):
+                        ok = True
+                    elif r.data and r.data[0].get("password_hash") == password:
+                        ok = True
+                except: pass
+            if not ok:
+                flash("Admin not configured. Set ADMIN_EMAIL/ADMIN_PASSWORD in .env / GitHub Secrets or create admins table.", "error")
+                return render_template("admin/login.html")
+        if ok:
+            session["admin_user"] = {"email": email}
+            return redirect(url_for("admin_dashboard"))
+        flash("Invalid credentials", "error")
     return render_template("admin/login.html")
 
 @app.route("/ogugubouvouv/fuigyfcdufuhis/logout")
 def admin_logout():
     session.pop("admin_user", None)
-    # supabase sign out if needed
-    try:
-        if supabase:
-            supabase.auth.sign_out()
-    except: pass
     return redirect(url_for("admin_login"))
 
 @app.route("/ogugubouvouv/fuigyfcdufuhis/panel")
@@ -149,6 +165,8 @@ def debug_env():
         "SUPABASE_URL_set": bool(os.getenv("SUPABASE_URL")),
         "SUPABASE_ANON_KEY_set": bool(os.getenv("SUPABASE_ANON_KEY")),
         "SECRET_KEY_set": bool(os.getenv("SECRET_KEY")),
+        "ADMIN_EMAIL_set": bool(os.getenv("ADMIN_EMAIL")),
+        "ADMIN_PASSWORD_set": bool(os.getenv("ADMIN_PASSWORD") or os.getenv("ADMIN_PASSWORD_HASH")),
         "supabase_client": bool(supabase),
         "cwd": os.getcwd(),
         "env_file_exists": os.path.exists(os.path.join(os.path.dirname(__file__), '.env'))
