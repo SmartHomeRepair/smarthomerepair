@@ -21,7 +21,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "dev-secret-change-in-prod")
 # Single admin account (simple DB) - set in .env / GitHub Secrets, never hardcode
 ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "admin@smarthomerepair.in")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "")  # plain for Hostinger shared, or hash check
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "SmartHome2024!")  # temp default so login works before .env set - change in .env!
 ADMIN_PASSWORD_HASH = os.getenv("ADMIN_PASSWORD_HASH", "")  # bcrypt hash if set
 try:
     import bcrypt
