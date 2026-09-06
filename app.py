@@ -59,7 +59,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated
 
-@app.route("/admin/login", methods=["GET", "POST"])
+@app.route("/ogugubouvouv/fuigyfcdufuhis", methods=["GET", "POST"])
 def admin_login():
     if request.method == "POST":
         email = request.form.get("email", "").strip()
@@ -72,12 +72,14 @@ def admin_login():
             if res.user:
                 session["admin_user"] = {"email": res.user.email, "id": res.user.id}
                 return redirect(url_for("admin_dashboard"))
+            # keep old /admin/login from being discoverable
+            # no redirect to old path
             flash("Invalid credentials", "error")
         except Exception as e:
             flash(f"Login failed: {e}", "error")
     return render_template("admin/login.html")
 
-@app.route("/admin/logout")
+@app.route("/ogugubouvouv/fuigyfcdufuhis/logout")
 def admin_logout():
     session.pop("admin_user", None)
     # supabase sign out if needed
@@ -87,7 +89,7 @@ def admin_logout():
     except: pass
     return redirect(url_for("admin_login"))
 
-@app.route("/admin")
+@app.route("/ogugubouvouv/fuigyfcdufuhis/panel")
 @login_required
 def admin_dashboard():
     blogs = []
@@ -104,7 +106,7 @@ def admin_dashboard():
             flash(f"Supabase fetch error: {e}", "error")
     return render_template("admin/dashboard.html", blogs=blogs, site_texts=site_texts, user=session.get("admin_user"))
 
-@app.route("/admin/blogs", methods=["POST"])
+@app.route("/ogugubouvouv/fuigyfcdufuhis/blogs", methods=["POST"])
 @login_required
 def admin_create_blog():
     if not supabase:
