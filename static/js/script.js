@@ -18,8 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function toggleMenu(){document.getElementById('mm').classList.toggle('open')}
-function closeMM(){document.getElementById('mm').classList.remove('open')}
+// toggleMenu/closeMM moved inline in base.html for instant click
 // Fix desktop hash links without reload
 document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('a[href^="/#"],a[href^="#"]').forEach(a=>{
