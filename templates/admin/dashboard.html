@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<section class="sec">
+  <div class="sec-inner">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px">
+      <div><div class="lbl">Admin</div><h2 class="h2">Dashboard</h2><p class="small">Logged as {{ user.email }} • Supabase RLS protected</p></div>
+      <a href="{{ url_for('admin_logout') }}" class="btn btn-outline">Logout</a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <!-- Site Texts -->
+      <div class="cf-box">
+        <h3 class="h3" style="margin-bottom:16px">Home Texts (site_texts table)</h3>
+        <p class="small" style="margin-bottom:12px">Keys: hero_h1, hero_sub, contact_phone</p>
+        {% for k,v in site_texts.items() %}
+          <div style="padding:10px 12px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px"><strong>{{k}}</strong><br><span class="small">{{v[:80]}}</span></div>
+        {% else %}
+          <p class="small">No texts yet. Insert in Supabase → site_texts (key,value)</p>
+        {% endfor %}
+        <p class="small" style="margin-top:12px">Edit directly in Supabase Table Editor — auto live.</p>
+      </div>
+
+      <!-- Blogs -->
+      <div class="cf-box">
+        <h3 class="h3" style="margin-bottom:16px">Post Blog (blogs table)</h3>
+        <form id="blogForm" onsubmit="createBlog(event)">
+          <div class="fg"><label>Title</label><input id="bTitle" required placeholder="AC Maintenance Tips"></div>
+          <div class="fg"><label>Slug</label><input id="bSlug" placeholder="ac-maintenance-tips"></div>
+          <div class="fg"><label>Excerpt</label><input id="bExcerpt" placeholder="Short 1-line"></div>
+          <div class="fg"><label>Body (markdown)</label><textarea id="bBody" rows="4" placeholder="Full post..."></textarea></div>
+          <button type="submit" class="btn btn-sky" style="width:100%">Publish</button>
+        </form>
+        <div id="blogMsg" class="small" style="margin-top:10px"></div>
+        <hr style="margin:20px 0;border:none;border-top:1px solid var(--border)">
+        <h4 style="font-size:.9rem;font-weight:800;margin-bottom:8px">Recent Posts</h4>
+        {% for b in blogs %}
+          <div style="padding:8px 0;border-bottom:1px solid var(--border)"><strong>{{b.title}}</strong><br><span class="small">{{b.slug}} • {{b.created_at[:10] if b.created_at else ''}}</span></div>
+        {% else %}
+          <p class="small">No blogs yet.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+async function createBlog(e){
+  e.preventDefault();
+  const payload={title:document.getElementById('bTitle').value, slug:document.getElementById('bSlug').value, excerpt:document.getElementById('bExcerpt').value, body:document.getElementById('bBody').value};
+  const r=await fetch('{{ url_for("admin_create_blog") }}',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const j=await r.json();
+  document.getElementById('blogMsg').textContent=j.ok?'Published! Reload to see.':'Error: '+(j.error||'unknown');
+  if(j.ok) setTimeout(()=>location.reload(),800);
+}
+</script>
+{% endblock %}

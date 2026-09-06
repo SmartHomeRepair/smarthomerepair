@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Admin Login - Smart Home Repair{% endblock %}
+{% block content %}
+<section class="sec" style="min-height:70vh;display:grid;place-items:center">
+  <div class="cf-box" style="max-width:420px;width:100%">
+    <h1 class="h3" style="margin-bottom:8px">Admin Login</h1>
+    <p class="small" style="margin-bottom:20px">Supabase Auth • creds in Supabase, keys in GitHub Secrets</p>
+    {% with msgs=get_flashed_messages(with_categories=true) %}
+      {% for cat,msg in msgs %}<div style="padding:10px 14px;border-radius:10px;margin-bottom:12px;background:{% if cat=='error' %}#fee2e2;color:#991b1b{% else %}#e6f7f1;color:#065f46{% endif %}">{{msg}}</div>{% endfor %}
+    {% endwith %}
+    <form method="POST" action="{{ url_for('admin_login') }}">
+      <div class="fg"><label>Email</label><input type="email" name="email" required placeholder="admin@smarthomerepair.in"></div>
+      <div class="fg"><label>Password</label><input type="password" name="password" required></div>
+      <button type="submit" class="btn-form" style="margin-top:8px">Login</button>
+    </form>
+    <p class="small" style="margin-top:16px">Create user in Supabase Dashboard → Auth → Add User</p>
+  </div>
+</section>
+{% endblock %}

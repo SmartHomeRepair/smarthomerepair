@@ -1,7 +1,19 @@
-from flask import Flask, render_template, Response, request, send_from_directory
+from flask import Flask, render_template, Response, request, send_from_directory, redirect, url_for, session, jsonify, flash
 from datetime import datetime
+import os
+from functools import wraps
+
+try:
+    from supabase import create_client, Client
+    SUPABASE_URL = os.getenv("SUPABASE_URL")
+    SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
+    supabase: Client | None = create_client(SUPABASE_URL, SUPABASE_ANON_KEY) if SUPABASE_URL and SUPABASE_ANON_KEY else None
+except Exception as e:
+    supabase = None
+    print(f"Supabase not configured: {e}")
 
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY", "dev-secret-change-in-prod")
 
 @app.route('/')
 def index():
@@ -38,6 +50,79 @@ def sitemap():
         xml.append(f"  <url><loc>{p['loc']}</loc><lastmod>{datetime.now().date()}</lastmod><changefreq>{p['changefreq']}</changefreq><priority>{p['priority']}</priority></url>")
     xml.append('</urlset>')
     return Response('\n'.join(xml), mimetype='application/xml')
+
+def login_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if not session.get("admin_user"):
+            return redirect(url_for("admin_login"))
+        return f(*args, **kwargs)
+    return decorated
+
+@app.route("/admin/login", methods=["GET", "POST"])
+def admin_login():
+    if request.method == "POST":
+        email = request.form.get("email", "").strip()
+        password = request.form.get("password", "")
+        if not supabase:
+            flash("Supabase not configured. Set SUPABASE_URL/ANON_KEY in env/GitHub Secrets.", "error")
+            return render_template("admin/login.html")
+        try:
+            res = supabase.auth.sign_in_with_password({"email": email, "password": password})
+            if res.user:
+                session["admin_user"] = {"email": res.user.email, "id": res.user.id}
+                return redirect(url_for("admin_dashboard"))
+            flash("Invalid credentials", "error")
+        except Exception as e:
+            flash(f"Login failed: {e}", "error")
+    return render_template("admin/login.html")
+
+@app.route("/admin/logout")
+def admin_logout():
+    session.pop("admin_user", None)
+    # supabase sign out if needed
+    try:
+        if supabase:
+            supabase.auth.sign_out()
+    except: pass
+    return redirect(url_for("admin_login"))
+
+@app.route("/admin")
+@login_required
+def admin_dashboard():
+    blogs = []
+    site_texts = {}
+    if supabase:
+        try:
+            # blogs table: id, title, slug, excerpt, body, created_at
+            r = supabase.table("blogs").select("*").order("created_at", desc=True).limit(20).execute()
+            blogs = r.data if r.data else []
+            # site_texts table: key, value
+            t = supabase.table("site_texts").select("*").execute()
+            site_texts = {x["key"]: x["value"] for x in (t.data or [])}
+        except Exception as e:
+            flash(f"Supabase fetch error: {e}", "error")
+    return render_template("admin/dashboard.html", blogs=blogs, site_texts=site_texts, user=session.get("admin_user"))
+
+@app.route("/admin/blogs", methods=["POST"])
+@login_required
+def admin_create_blog():
+    if not supabase:
+        return jsonify({"error": "Supabase not configured"}), 500
+    data = request.get_json() or request.form
+    payload = {
+        "title": data.get("title"),
+        "slug": data.get("slug") or data.get("title","").lower().replace(" ","-"),
+        "excerpt": data.get("excerpt",""),
+        "body": data.get("body",""),
+    }
+    try:
+        supabase.table("blogs").insert(payload).execute()
+        if request.is_json:
+            return jsonify({"ok": True})
+        return redirect(url_for("admin_dashboard"))
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.after_request
 def add_headers(resp):
