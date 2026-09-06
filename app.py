@@ -2,6 +2,10 @@ from flask import Flask, render_template, Response, request, send_from_directory
 from datetime import datetime
 import os
 from functools import wraps
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except: pass
 
 try:
     from supabase import create_client, Client
