@@ -68,7 +68,7 @@
     }
     </script>
     
-    <script>function toggleMenu(){var m=document.getElementById('mm');m&&m.classList.toggle('open')}function closeMM(){var m=document.getElementById('mm');m&&m.classList.remove('open')}</script>
+    <script>function toggleMenu(){var m=document.getElementById('mm');m&&m.classList.toggle('open')}function closeMM(){var m=document.getElementById('mm');m&&m.classList.remove('open')}function closeModal(){var m=document.getElementById('modalOverlay');m&&m.classList.remove('active')}function closeContactModal(){var m=document.getElementById('contactModalOverlay');m&&m.classList.remove('active');localStorage.setItem('popupShown','true')}</script>
     {% block extra_head %}{% endblock %}
 </head>
 <body>

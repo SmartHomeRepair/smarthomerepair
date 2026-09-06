@@ -156,6 +156,7 @@ function closeContactModal() {
     const popup = document.getElementById('contactModalOverlay');
     if(popup) {
         popup.classList.remove('active');
+        localStorage.setItem('popupShown','true');
     }
 }
 
