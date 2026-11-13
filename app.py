@@ -44,6 +44,18 @@ def guide():
 def ac_repair_kochi():
     return render_template('ac-repair-kochi.html')
 
+@app.route('/fridge-repair-kochi')
+def fridge_repair_kochi():
+    return render_template('fridge-repair-kochi.html')
+
+@app.route('/washing-machine-repair-kochi')
+def washing_machine_repair_kochi():
+    return render_template('washing-machine-repair-kochi.html')
+
+@app.route('/ac-gas-refill-kochi')
+def ac_gas_refill_kochi():
+    return render_template('ac-gas-refill-kochi.html')
+
 @app.route('/robots.txt')
 def robots():
     return send_from_directory('static', 'robots.txt', mimetype='text/plain')
@@ -56,6 +68,9 @@ def sitemap():
         {'loc': 'https://www.smarthomerepair.in/services', 'priority': '0.9', 'changefreq': 'weekly'},
         {'loc': 'https://www.smarthomerepair.in/contact', 'priority': '0.7', 'changefreq': 'monthly'},
         {'loc': 'https://www.smarthomerepair.in/ac-repair-kochi', 'priority': '0.9', 'changefreq': 'weekly'},
+        {'loc': 'https://www.smarthomerepair.in/fridge-repair-kochi', 'priority': '0.9', 'changefreq': 'weekly'},
+        {'loc': 'https://www.smarthomerepair.in/washing-machine-repair-kochi', 'priority': '0.9', 'changefreq': 'weekly'},
+        {'loc': 'https://www.smarthomerepair.in/ac-gas-refill-kochi', 'priority': '0.9', 'changefreq': 'weekly'},
         {'loc': 'https://www.smarthomerepair.in/guide', 'priority': '0.6', 'changefreq': 'monthly'},
     ]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
