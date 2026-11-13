@@ -21,7 +21,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "dev-secret-change-in-prod")
 # Single admin account (simple DB) - set in .env / GitHub Secrets, never hardcode
 ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "admin@smarthomerepair.in")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "SmartHome2024!")  # temp default so login works before .env set - change in .env!
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")  # set ADMIN_PASSWORD in .env / server environment variables - no default for security
 ADMIN_PASSWORD_HASH = os.getenv("ADMIN_PASSWORD_HASH", "")  # bcrypt hash if set
 try:
     import bcrypt
@@ -45,6 +45,10 @@ def services():
 def contact():
     return render_template('contact.html')
 
+@app.route('/guide')
+def guide():
+    return render_template('guide.html')
+
 @app.route('/robots.txt')
 def robots():
     return send_from_directory('static', 'robots.txt', mimetype='text/plain')
@@ -56,8 +60,7 @@ def sitemap():
         {'loc': 'https://www.smarthomerepair.in/about', 'priority': '0.8', 'changefreq': 'monthly'},
         {'loc': 'https://www.smarthomerepair.in/services', 'priority': '0.9', 'changefreq': 'weekly'},
         {'loc': 'https://www.smarthomerepair.in/contact', 'priority': '0.7', 'changefreq': 'monthly'},
-        {'loc': 'https://www.smarthomerepair.in/#services', 'priority': '0.6', 'changefreq': 'weekly'},
-        {'loc': 'https://www.smarthomerepair.in/#faq', 'priority': '0.5', 'changefreq': 'monthly'},
+        {'loc': 'https://www.smarthomerepair.in/guide', 'priority': '0.6', 'changefreq': 'monthly'},
     ]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for p in pages:
@@ -159,6 +162,7 @@ def add_headers(resp):
 
 
 @app.route("/debug/env")
+@login_required
 def debug_env():
     # safe check - shows only if set, not values
     return jsonify({
