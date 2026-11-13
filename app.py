@@ -1,33 +1,24 @@
-from flask import Flask, render_template, Response, request, send_from_directory, redirect, url_for, session, jsonify, flash
+from flask import Flask, render_template, Response, send_from_directory, request
 from datetime import datetime
 import os
-from functools import wraps
+import secrets as _secrets
+
 try:
     from dotenv import load_dotenv
     load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
     load_dotenv()  # also try cwd
-except: pass
-
-try:
-    from supabase import create_client, Client
-    SUPABASE_URL = os.getenv("SUPABASE_URL")
-    SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
-    supabase: Client | None = create_client(SUPABASE_URL, SUPABASE_ANON_KEY) if SUPABASE_URL and SUPABASE_ANON_KEY else None
-except Exception as e:
-    supabase = None
-    print(f"Supabase not configured: {e}")
+except Exception:
+    pass
 
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY", "dev-secret-change-in-prod")
-# Single admin account (simple DB) - set in .env / GitHub Secrets, never hardcode
-ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "admin@smarthomerepair.in")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")  # set ADMIN_PASSWORD in .env / server environment variables - no default for security
-ADMIN_PASSWORD_HASH = os.getenv("ADMIN_PASSWORD_HASH", "")  # bcrypt hash if set
-try:
-    import bcrypt
-    HAS_BCRYPT = True
-except:
-    HAS_BCRYPT = False
+
+# Security: never use a known default secret. Random fallback if SECRET_KEY is unset.
+app.secret_key = os.getenv("SECRET_KEY") or _secrets.token_hex(32)
+app.config.update(
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE="Lax",
+)
 
 @app.route('/')
 def index():
@@ -68,113 +59,16 @@ def sitemap():
     xml.append('</urlset>')
     return Response('\n'.join(xml), mimetype='application/xml')
 
-def login_required(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        if not session.get("admin_user"):
-            return redirect(url_for("admin_login"))
-        return f(*args, **kwargs)
-    return decorated
-
-@app.route("/ogugubouvouv/fuigyfcdufuhis", methods=["GET", "POST"])
-def admin_login():
-    if request.method == "POST":
-        email = request.form.get("email", "").strip()
-        password = request.form.get("password", "")
-        # Single account check - DB/env, no Supabase Auth needed
-        ok = False
-        if ADMIN_PASSWORD_HASH and HAS_BCRYPT:
-            try:
-                ok = (email == ADMIN_EMAIL and bcrypt.checkpw(password.encode(), ADMIN_PASSWORD_HASH.encode()))
-            except: ok = False
-        elif ADMIN_PASSWORD:
-            ok = (email == ADMIN_EMAIL and password == ADMIN_PASSWORD)
-        else:
-            # Fallback: check Supabase table admins (id, email, password_hash) if supabase exists
-            if supabase:
-                try:
-                    r = supabase.table("admins").select("password_hash").eq("email", email).limit(1).execute()
-                    if r.data and HAS_BCRYPT and bcrypt.checkpw(password.encode(), r.data[0]["password_hash"].encode()):
-                        ok = True
-                    elif r.data and r.data[0].get("password_hash") == password:
-                        ok = True
-                except: pass
-            if not ok:
-                flash("Admin not configured. Set ADMIN_EMAIL/ADMIN_PASSWORD in .env / GitHub Secrets or create admins table.", "error")
-                return render_template("admin/login.html")
-        if ok:
-            session["admin_user"] = {"email": email}
-            return redirect(url_for("admin_dashboard"))
-        flash("Invalid credentials", "error")
-    return render_template("admin/login.html")
-
-@app.route("/ogugubouvouv/fuigyfcdufuhis/logout")
-def admin_logout():
-    session.pop("admin_user", None)
-    return redirect(url_for("admin_login"))
-
-@app.route("/ogugubouvouv/fuigyfcdufuhis/panel")
-@login_required
-def admin_dashboard():
-    blogs = []
-    site_texts = {}
-    if supabase:
-        try:
-            # blogs table: id, title, slug, excerpt, body, created_at
-            r = supabase.table("blogs").select("*").order("created_at", desc=True).limit(20).execute()
-            blogs = r.data if r.data else []
-            # site_texts table: key, value
-            t = supabase.table("site_texts").select("*").execute()
-            site_texts = {x["key"]: x["value"] for x in (t.data or [])}
-        except Exception as e:
-            flash(f"Supabase fetch error: {e}", "error")
-    return render_template("admin/dashboard.html", blogs=blogs, site_texts=site_texts, user=session.get("admin_user"))
-
-@app.route("/ogugubouvouv/fuigyfcdufuhis/blogs", methods=["POST"])
-@login_required
-def admin_create_blog():
-    if not supabase:
-        return jsonify({"error": "Supabase not configured"}), 500
-    data = request.get_json() or request.form
-    payload = {
-        "title": data.get("title"),
-        "slug": data.get("slug") or data.get("title","").lower().replace(" ","-"),
-        "excerpt": data.get("excerpt",""),
-        "body": data.get("body",""),
-    }
-    try:
-        supabase.table("blogs").insert(payload).execute()
-        if request.is_json:
-            return jsonify({"ok": True})
-        return redirect(url_for("admin_dashboard"))
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
 @app.after_request
 def add_headers(resp):
     if request.path.startswith('/static/'):
         resp.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
-    elif request.path in ['/sitemap.xml','/robots.txt']:
+    elif request.path in ['/sitemap.xml', '/robots.txt']:
         resp.headers['Cache-Control'] = 'public, max-age=3600'
     resp.headers['X-Content-Type-Options'] = 'nosniff'
+    resp.headers['X-Frame-Options'] = 'DENY'
+    resp.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
     return resp
-
-
-
-@app.route("/debug/env")
-@login_required
-def debug_env():
-    # safe check - shows only if set, not values
-    return jsonify({
-        "SUPABASE_URL_set": bool(os.getenv("SUPABASE_URL")),
-        "SUPABASE_ANON_KEY_set": bool(os.getenv("SUPABASE_ANON_KEY")),
-        "SECRET_KEY_set": bool(os.getenv("SECRET_KEY")),
-        "ADMIN_EMAIL_set": bool(os.getenv("ADMIN_EMAIL")),
-        "ADMIN_PASSWORD_set": bool(os.getenv("ADMIN_PASSWORD") or os.getenv("ADMIN_PASSWORD_HASH")),
-        "supabase_client": bool(supabase),
-        "cwd": os.getcwd(),
-        "env_file_exists": os.path.exists(os.path.join(os.path.dirname(__file__), '.env'))
-    })
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)

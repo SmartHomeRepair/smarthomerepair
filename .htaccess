@@ -2,9 +2,9 @@
 RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-# Clean URLs for Flask / static fallback (Hostinger Shared)
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^about/?$ about.html [L]
-RewriteRule ^services/?$ services.html [L]
-RewriteRule ^contact/?$ contact.html [L]
+
+# Security: block sensitive files from direct web access
+<FilesMatch "(^\.env|\.env\.|\.gitignore$|\.md$|\.py$|\.pyc$|\.txt$|\.bak$|\.cfg$|\.ini$|test\.html$)">
+  Require all denied
+</FilesMatch>
+RedirectMatch 404 ^/\.git
