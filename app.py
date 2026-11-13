@@ -40,6 +40,10 @@ def contact():
 def guide():
     return render_template('guide.html')
 
+@app.route('/ac-repair-kochi')
+def ac_repair_kochi():
+    return render_template('ac-repair-kochi.html')
+
 @app.route('/robots.txt')
 def robots():
     return send_from_directory('static', 'robots.txt', mimetype='text/plain')
@@ -51,6 +55,7 @@ def sitemap():
         {'loc': 'https://www.smarthomerepair.in/about', 'priority': '0.8', 'changefreq': 'monthly'},
         {'loc': 'https://www.smarthomerepair.in/services', 'priority': '0.9', 'changefreq': 'weekly'},
         {'loc': 'https://www.smarthomerepair.in/contact', 'priority': '0.7', 'changefreq': 'monthly'},
+        {'loc': 'https://www.smarthomerepair.in/ac-repair-kochi', 'priority': '0.9', 'changefreq': 'weekly'},
         {'loc': 'https://www.smarthomerepair.in/guide', 'priority': '0.6', 'changefreq': 'monthly'},
     ]
     xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
