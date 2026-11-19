@@ -9,7 +9,7 @@
 
 <!-- BANNER -->
 <section class="srv-banner">
-  <img src="{{ url_for('static', filename='images/services/geyser_and_water_heater.jpg') }}" alt="Geyser and water heater repair service in Kochi by Smart Home Repair" class="sb-bg" fetchpriority="high">
+  <img src="{{ url_for('static', filename='images/services/geyser_and_water_heater.jpg') }}" alt="Geyser and water heater repair service in Kochi by Smart Home Repair" width="800" height="1200" class="sb-bg" fetchpriority="high">
   <h1 class="sb-ttl">Geyser Repair in Kochi</h1>
 </section>
 
@@ -27,7 +27,7 @@
   <div class="lbl">What we fix</div>
   <h2 class="h2">Complete geyser repair services in Kochi</h2>
   <p class="body" style="max-width:640px">Instant and storage water heaters from 1L to 25L+ — one team, genuine parts, upfront quotes on every job.</p>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:28px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px;margin-top:28px">
     <div style="border:1px solid var(--border);border-radius:16px;padding:24px;background:var(--white)">
       <h3 class="srv-ttl" style="margin-bottom:8px">Heating Element Replacement</h3>
       <p class="srv-desc">A burnt-out element is the most common reason a geyser stops heating. We test, confirm and replace it with an exact-fit OEM element.</p>
@@ -67,7 +67,7 @@
   <h2 class="h2">Geyser repair charges in Kochi — no surprises</h2>
   <p class="body" style="max-width:640px">You approve the final quote before any work begins. No hidden charges, no "extra parts" surprises after the bill.</p>
   <div style="max-width:860px;margin:26px auto 0;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--white)">
-    <table style="width:100%;border-collapse:collapse;font-size:.95rem">
+    <table class="price-table" style="width:100%;border-collapse:collapse;font-size:.95rem">
       <thead>
         <tr style="background:var(--frost)">
           <th style="text-align:left;padding:14px 18px;font-weight:800">Service</th>
@@ -138,7 +138,7 @@
   <div class="lbl">Real customer reviews</div>
   <h2 class="h2">What Kochi customers say on Google</h2>
   <p class="body" style="text-align:center">50+ reviews on Google — ★★★★★ from real, verified customers</p>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:20px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:18px;margin-top:20px">
     <div style="border:1px solid var(--border);border-radius:16px;padding:22px;background:var(--white)">
       <div style="color:#f5a623;letter-spacing:2px">★★★★★</div>
       <p class="body" style="margin:10px 0">"Very good and fast service. Mr. Sehsad did his job very well."</p>
@@ -217,14 +217,32 @@
 <section class="mission-sec rv">
   <div class="lbl">FAQ</div>
   <h2 class="h2">Geyser repair in Kochi — your questions answered</h2>
-  <div style="max-width:760px;margin:24px auto 0">
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How much does geyser repair cost in Kochi?<span class="faq-arr">▾</span></button><div class="faq-a">We charge a visit and diagnosis fee of ₹399, which is waived if you proceed with the repair. After diagnosing the problem, the technician gives you a complete upfront quote — you only pay for what you approve. No hidden charges.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">My geyser is not heating water — what could be wrong?<span class="faq-arr">▾</span></button><div class="faq-a">The most common causes are a burnt heating element, a faulty thermostat or thermal cutout, or a wiring issue. Our technician tests each possibility on the spot and tells you exactly what needs fixing before any work starts.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">My geyser is leaking water — can it be repaired?<span class="faq-arr">▾</span></button><div class="faq-a">Often yes — many leaks come from fittings, pipe joints, gaskets or the safety valve, which we repair or replace. If the inner tank itself is corroded, we tell you honestly and quote for replacement rather than a repair that won't last.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How fast can a technician reach me?<span class="faq-arr">▾</span></button><div class="faq-a">Our average response time is under 2 hours for most areas of Kochi. Leaking or tripping geysers are treated as urgent for safety. After booking you receive the technician's name and live updates via WhatsApp.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Which geyser brands do you service?<span class="faq-arr">▾</span></button><div class="faq-a">All major brands — Bajaj, V-Guard, Venus, Racold, AO Smith, Crompton, Havells, Usha, Orient and more. Instant and storage water heaters, older models and the latest ranges.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you give a warranty on geyser repairs?<span class="faq-arr">▾</span></button><div class="faq-a">Every repair comes with a 90-day service warranty. If the same issue recurs within 90 days, we fix it at no extra cost. New spare parts also carry the manufacturer's warranty.</div></div>
-  </div>
+  <div class="faq-list" style="max-width:760px;margin:24px auto 0">
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">How much does geyser repair cost in Kochi?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">We charge a visit and diagnosis fee of ₹399, which is waived if you proceed with the repair. After diagnosing the problem, the technician gives you a complete upfront quote — you only pay for what you approve. No hidden charges.</div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">My geyser is not heating water — what could be wrong?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">The most common causes are a burnt heating element, a faulty thermostat or thermal cutout, or a wiring issue. Our technician tests each possibility on the spot and tells you exactly what needs fixing before any work starts.</div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">My geyser is leaking water — can it be repaired?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">Often yes — many leaks come from fittings, pipe joints, gaskets or the safety valve, which we repair or replace. If the inner tank itself is corroded, we tell you honestly and quote for replacement rather than a repair that won't last.</div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">How fast can a technician reach me?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">Our average response time is under 2 hours for most areas of Kochi. Leaking or tripping geysers are treated as urgent for safety. After booking you receive the technician's name and live updates via WhatsApp.</div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">Which geyser brands do you service?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">All major brands — Bajaj, V-Guard, Venus, Racold, AO Smith, Crompton, Havells, Usha, Orient and more. Instant and storage water heaters, older models and the latest ranges.</div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">Do you give a warranty on geyser repairs?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">Every repair comes with a 90-day service warranty. If the same issue recurs within 90 days, we fix it at no extra cost. New spare parts also carry the manufacturer's warranty.</div>
+      </details>
+    </div>
 </section>
 
 <p class="body" style="text-align:center;max-width:700px;margin:10px auto 30px">Related services: <a href="/ac-repair-kochi" style="color:var(--sky);font-weight:600">AC Repair in Kochi</a> · <a href="/fridge-repair-kochi" style="color:var(--sky);font-weight:600">Fridge Repair</a> · <a href="/washing-machine-repair-kochi" style="color:var(--sky);font-weight:600">Washing Machine Repair</a> · <a href="/ac-gas-refill-kochi" style="color:var(--sky);font-weight:600">AC Gas Refill</a></p>
@@ -263,6 +281,7 @@
   "name": "Geyser Repair in Kochi",
   "description": "Geyser and water heater repair in Kochi with 2-hour technician response, genuine spare parts and a 90-day service warranty. Visit and diagnosis ₹399, waived if you proceed with the repair.",
   "provider": {
+    "@id": "https://www.smarthomerepair.in/#business",
     "@type": "HomeAndConstructionBusiness",
     "name": "Smart Home Repair",
     "telephone": "+916238054003",

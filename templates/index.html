@@ -4,15 +4,19 @@
 {% block og_title %}Smart Home Repair - #1 AC & Appliance Service in Kochi{% endblock %}
 {% block og_desc %}Same-day AC, fridge, washing machine service across Kochi. Genuine parts, 90-day warranty. Kakkanad/Edappally/Vyttila.{% endblock %}
 {% block extra_head %}
-<link rel="preload" as="image" href="{{ url_for('static', filename='images/services/ac_repair.jpg') }}" fetchpriority="high">
+<link rel="preload" as="image"
+      href="{{ url_for('static', filename='images/services/ac_repair-900.jpg') }}"
+      imagesrcset="{{ url_for('static', filename='images/services/ac_repair-480.jpg') }} 480w, {{ url_for('static', filename='images/services/ac_repair-900.jpg') }} 900w, {{ url_for('static', filename='images/services/ac_repair.jpg') }} 1400w"
+      imagesizes="(max-width: 1024px) 92vw, 45vw" fetchpriority="high">
 {% endblock %}
 
 {% block content %}
 <!-- HERO -->
 <section id="hero">
   <div class="hero-l">
-    <div class="hero-pill">Serving homes across Kochi & Ernakulam</div>
-    <h1 class="h1">Fast, reliable <span>AC repair &amp; installation in Kochi - Kakkanad, Edappally, Vyttila</span></h1>
+    <div class="hero-pill">Serving homes across Kochi &amp; Ernakulam</div>
+    <h1 class="h1">Fast, reliable <span>AC repair in Kochi</span></h1>
+    <p class="hero-sub">AC installation, gas refill and same-day appliance servicing in Kakkanad, Edappally, Vyttila and all of Ernakulam — backed by a 90-day warranty.</p>
     <div class="hero-tags">
       <div class="h-tag"><span class="material-symbols-outlined icon-inline">bolt</span> 2 Hour Response Rate</div>
       <div class="h-tag"><span class="material-symbols-outlined icon-inline">currency_rupee</span> Visiting charges ₹399 Only</div>
@@ -24,8 +28,16 @@
   </div>
   <div class="hero-r">
     <div class="hero-slider">
-      <img src="{{ url_for('static', filename='images/services/ac_repair.jpg') }}" alt="AC repair Kakkanad Kochi - certified technician cleaning split AC" class="hero-img-main slider-1" width="900" height="720" fetchpriority="high" decoding="async">
-      <img src="{{ url_for('static', filename='images/fridge_reqpairing.webp') }}" alt="Fridge repair Kochi - same day service Ernakulam" class="hero-img-main slider-2" width="900" height="720" loading="lazy" decoding="async">
+      <img src="{{ url_for('static', filename='images/services/ac_repair.jpg') }}"
+           srcset="{{ url_for('static', filename='images/services/ac_repair-480.jpg') }} 480w, {{ url_for('static', filename='images/services/ac_repair-900.jpg') }} 900w, {{ url_for('static', filename='images/services/ac_repair.jpg') }} 1400w"
+           sizes="(max-width: 1024px) 92vw, 45vw"
+           alt="AC repair in Kochi - certified technician servicing a split AC in Kakkanad"
+           class="hero-img-main slider-1" width="1400" height="933" fetchpriority="high" decoding="async">
+      <img src="{{ url_for('static', filename='images/fridge_reqpairing.webp') }}"
+           srcset="{{ url_for('static', filename='images/fridge_reqpairing-480.jpg') }} 480w, {{ url_for('static', filename='images/fridge_reqpairing-760.jpg') }} 760w, {{ url_for('static', filename='images/fridge_reqpairing.webp') }} 900w"
+           sizes="(max-width: 1024px) 92vw, 45vw"
+           alt="Refrigerator repair in Kochi - same-day fridge service in Ernakulam"
+           class="hero-img-main slider-2" width="900" height="900" loading="lazy" decoding="async">
     </div>
 
   </div>
@@ -38,9 +50,9 @@
     <div class="ann-item"><span class="ann-dot"></span> <span class="material-symbols-outlined icon-inline">call</span> Same-Day Emergency Service in Kochi — Call: <strong>6238054003</strong></div>
     <div class="ann-item"><span class="ann-dot"></span> <span class="material-symbols-outlined icon-inline">ac_unit</span> 100% Genuine Spare Parts Guaranteed</div>
     <div class="ann-item"><span class="ann-dot"></span> <span class="material-symbols-outlined icon-inline">rocket_launch</span> 2-Hour Rapid Response in Edappally, Kakkanad, Vyttila & beyond</div>
-    <div class="ann-item"><span class="ann-dot"></span> <span class="material-symbols-outlined icon-inline">call</span> Same-Day Emergency Service in Kochi — Call: <strong>6238054003</strong></div>
-    <div class="ann-item"><span class="ann-dot"></span> <span class="material-symbols-outlined icon-inline">ac_unit</span> 100% Genuine Spare Parts Guaranteed</div>
-    <div class="ann-item"><span class="ann-dot"></span> <span class="material-symbols-outlined icon-inline">rocket_launch</span> 2-Hour Rapid Response in Edappally, Kakkanad, Vyttila & beyond</div>
+    <div class="ann-item" aria-hidden="true"><span class="ann-dot"></span> <span class="material-symbols-outlined icon-inline">call</span> Same-Day Emergency Service in Kochi — Call: <strong>6238054003</strong></div>
+    <div class="ann-item" aria-hidden="true"><span class="ann-dot"></span> <span class="material-symbols-outlined icon-inline">ac_unit</span> 100% Genuine Spare Parts Guaranteed</div>
+    <div class="ann-item" aria-hidden="true"><span class="ann-dot"></span> <span class="material-symbols-outlined icon-inline">rocket_launch</span> 2-Hour Rapid Response in Edappally, Kakkanad, Vyttila & beyond</div>
   </div>
 </div>
 
@@ -51,7 +63,7 @@
     <h2 class="h2" style="margin-top:8px">All major brands covered</h2>
     <p class="body">Our certified technicians are trained on every leading brand available in India.</p>
     <div class="brands-marquee" style="margin-top:28px">
-      <div class="brands-row brands-row-left" aria-label="Brands we service moving left to right">
+      <div class="brands-row brands-row-left">
         <div class="brands-track">
           <span class="brand-p brand-daikin">Daikin</span><span class="brand-p brand-lg">LG</span><span class="brand-p brand-samsung">Samsung</span>
           <span class="brand-p brand-voltas">Voltas</span><span class="brand-p brand-blue-star">Blue Star</span><span class="brand-p brand-carrier">Carrier</span>
@@ -67,7 +79,7 @@
           <span class="brand-p brand-videocon">Videocon</span>
         </div>
       </div>
-      <div class="brands-row brands-row-right" aria-label="Brands we service moving right to left">
+      <div class="brands-row brands-row-right">
         <div class="brands-track">
           <span class="brand-p brand-daikin">Daikin</span><span class="brand-p brand-lg">LG</span><span class="brand-p brand-samsung">Samsung</span>
           <span class="brand-p brand-voltas">Voltas</span><span class="brand-p brand-blue-star">Blue Star</span><span class="brand-p brand-carrier">Carrier</span>
@@ -102,7 +114,7 @@
     <div class="svc-grid rv">
       <div class="svc-card">
         <div class="svc-img-w">
-          <img loading="lazy" src="{{ url_for('static', filename='images/services/split_and_window_air_conditioners.jpg') }}" alt="Split AC" class="svc-card-img">
+          <img loading="lazy" src="{{ url_for('static', filename='images/services/split_and_window_air_conditioners.jpg') }}" alt="Split and window AC repair in Kochi" class="svc-card-img" width="1000" height="1000">
           <span class="svc-badge">Split / Window AC</span>
         </div>
         <div class="svc-body">
@@ -123,7 +135,7 @@
       </div>
       <div class="svc-card">
         <div class="svc-img-w">
-          <img loading="lazy" src="{{ url_for('static', filename='images/services/refrigerator_repair.jpg') }}" alt="Refrigerator" class="svc-card-img">
+          <img loading="lazy" src="{{ url_for('static', filename='images/services/refrigerator_repair.jpg') }}" alt="Refrigerator repair in Kochi" class="svc-card-img" width="1200" height="675">
           <span class="svc-badge">Refrigerator</span>
         </div>
         <div class="svc-body">
@@ -144,7 +156,7 @@
       </div>
       <div class="svc-card">
         <div class="svc-img-w">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&h=420&q=80&fit=crop" alt="Washing Machine" class="svc-card-img">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&h=420&q=80&fit=crop&auto=format" alt="Washing machine repair in Kochi" class="svc-card-img" width="600" height="420">
           <span class="svc-badge">Washing Machine</span>
         </div>
         <div class="svc-body">
@@ -165,7 +177,7 @@
       </div>
       <div class="svc-card">
         <div class="svc-img-w">
-          <img loading="lazy" src="{{ url_for('static', filename='images/services/microwave_repair.jpg') }}" alt="Microwave" class="svc-card-img">
+          <img loading="lazy" src="{{ url_for('static', filename='images/services/microwave_repair.jpg') }}" alt="Microwave oven repair in Kochi" class="svc-card-img" width="1200" height="800">
           <span class="svc-badge">Microwave Oven</span>
         </div>
         <div class="svc-body">
@@ -186,7 +198,7 @@
       </div>
       <div class="svc-card">
         <div class="svc-img-w">
-          <img loading="lazy" src="{{ url_for('static', filename='images/services/cassette_air_conditioners.png') }}" alt="Cassette AC" class="svc-card-img">
+          <img loading="lazy" src="{{ url_for('static', filename='images/services/cassette_air_conditioners.jpg') }}" alt="Cassette AC servicing in Kochi" class="svc-card-img" width="900" height="600">
           <span class="svc-badge">Cassette AC</span>
         </div>
         <div class="svc-body">
@@ -206,7 +218,7 @@
       </div>
       <div class="svc-card">
         <div class="svc-img-w">
-          <img loading="lazy" src="{{ url_for('static', filename='images/services/vrv_vrf_commercial_ac.jpg') }}" alt="VRV AC" class="svc-card-img">
+          <img loading="lazy" src="{{ url_for('static', filename='images/services/vrv_vrf_commercial_ac.jpg') }}" alt="VRV and VRF commercial AC maintenance in Kochi" class="svc-card-img" width="1080" height="1080">
           <span class="svc-badge">VRV / VRF Systems</span>
         </div>
         <div class="svc-body">
@@ -231,7 +243,7 @@
     <div class="svc-grid rv">
       <div class="svc-card">
         <div class="svc-img-w">
-          <img loading="lazy" src="{{ url_for('static', filename='images/services/geyser_and_water_heater.jpg') }}" alt="Geyser" class="svc-card-img">
+          <img loading="lazy" src="{{ url_for('static', filename='images/services/geyser_and_water_heater.jpg') }}" alt="Geyser and water heater repair in Kochi" class="svc-card-img" width="800" height="1200">
           <span class="svc-badge">Geyser / Water Heater</span>
         </div>
         <div class="svc-body">
@@ -252,7 +264,7 @@
       </div>
       <div class="svc-card">
         <div class="svc-img-w">
-          <img loading="lazy" src="{{ url_for('static', filename='images/services/split_and_window_air_conditioners.jpg') }}" alt="Repair" class="svc-card-img">
+          <img loading="lazy" src="{{ url_for('static', filename='images/services/split_and_window_air_conditioners.jpg') }}" alt="Home appliance repair in Kochi" class="svc-card-img" width="1000" height="1000">
           <span class="svc-badge">Repair Services</span>
         </div>
         <div class="svc-body">
@@ -271,7 +283,7 @@
       </div>
       <div class="svc-card">
         <div class="svc-img-w">
-          <img loading="lazy" src="{{ url_for('static', filename='images/maintenance_services.jpg') }}" alt="Maintenance" class="svc-card-img">
+          <img loading="lazy" src="{{ url_for('static', filename='images/maintenance_services.jpg') }}" alt="Appliance maintenance services in Kochi" class="svc-card-img" width="1200" height="800">
           <span class="svc-badge">Maintenance</span>
         </div>
         <div class="svc-body">
@@ -290,7 +302,7 @@
       </div>
       <div class="svc-card">
         <div class="svc-img-w">
-          <img loading="lazy" src="{{ url_for('static', filename='images/ac_installation.jpg') }}" alt="Installation" class="svc-card-img">
+          <img loading="lazy" src="{{ url_for('static', filename='images/ac_installation.jpg') }}" alt="AC installation service in Kochi" class="svc-card-img" width="1000" height="667">
           <span class="svc-badge">Installation</span>
         </div>
         <div class="svc-body">
@@ -320,22 +332,22 @@
     </div>
     <div class="proc-grid">
       <div class="proc-card rv">
-        <img loading="lazy" src="{{ url_for('static', filename='images/booking.jpg') }}" alt="Book online" class="proc-img">
+        <img loading="lazy" src="{{ url_for('static', filename='images/booking.jpg') }}" alt="Book an appliance repair online in Kochi" class="proc-img" width="740" height="494">
         <div class="proc-num">1</div>
         <div class="proc-body"><h3 class="h3">Book Online or Call</h3><p class="body">Fill our quick form or call us. Choose your preferred time — same-day slots available.</p></div>
       </div>
       <div class="proc-card rv">
-        <img loading="lazy" src="{{ url_for('static', filename='images/technician_dispatched.webp') }}" alt="Technician dispatched" class="proc-img">
+        <img loading="lazy" src="{{ url_for('static', filename='images/technician_dispatched.webp') }}" alt="Technician dispatched across Kochi within 2 hours" class="proc-img" width="1254" height="836">
         <div class="proc-num">2</div>
         <div class="proc-body"><h3 class="h3">Technician Dispatched</h3><p class="body">A certified technician is assigned and reaches you within 2 hours anywhere in Kochi.</p></div>
       </div>
       <div class="proc-card rv">
-        <img loading="lazy" src="{{ url_for('static', filename='images/diagnosis.webp') }}" alt="Diagnosis" class="proc-img">
+        <img loading="lazy" src="{{ url_for('static', filename='images/diagnosis.webp') }}" alt="Technician diagnosing an appliance before quoting" class="proc-img" width="1254" height="836">
         <div class="proc-num">3</div>
         <div class="proc-body"><h3 class="h3">Diagnosis & Transparent Quote</h3><p class="body">The technician diagnoses the issue and gives a detailed, upfront quote before starting any work.</p></div>
       </div>
       <div class="proc-card rv">
-        <img loading="lazy" src="{{ url_for('static', filename='images/repair_done.webp') }}" alt="Repair done" class="proc-img">
+        <img loading="lazy" src="{{ url_for('static', filename='images/repair_done.webp') }}" alt="Repair completed with a 90-day warranty" class="proc-img" width="1257" height="838">
         <div class="proc-num">4</div>
         <div class="proc-body"><h3 class="h3">Repair Done + Warranty</h3><p class="body">Work completed professionally with a 90-day service warranty — backed by our guarantee.</p></div>
       </div>
@@ -360,56 +372,56 @@
     </div>
     <div class="testi-slider-wrapper">
       <button class="testi-nav prev" onclick="scrollTestimonials(-1)" aria-label="Previous">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
       </button>
       
-      <div class="testi-grid" id="testiGrid">
-      <div class="tc rv">
+      <div class="testi-grid rv" id="testiGrid">
+      <div class="tc">
         <div class="tc-qt">"</div>
         <div class="tc-stars">★★★★★</div>
         <p class="tc-txt">Nice service and good behaviour from the staff side and AC now working perfectly.</p>
         <div class="tc-auth"><div><div class="tc-n">Sharath Sadanandan</div><div class="tc-l">Google Review</div></div></div>
       </div>
-      <div class="tc rv">
+      <div class="tc">
         <div class="tc-qt">"</div>
         <div class="tc-stars">★★★★★</div>
         <p class="tc-txt">Excellent AC service done by Hussain Ali.</p>
         <div class="tc-auth"><div><div class="tc-n">Jose Thomas</div><div class="tc-l">Google Review</div></div></div>
       </div>
-      <div class="tc rv">
+      <div class="tc">
         <div class="tc-qt">"</div>
         <div class="tc-stars">★★★★★</div>
         <p class="tc-txt">Very good and fast service. Mr. Sehsad did his job very well.</p>
         <div class="tc-auth"><div><div class="tc-n">Sneha Mary Joseph</div><div class="tc-l">Google Review</div></div></div>
       </div>
-      <div class="tc rv">
+      <div class="tc">
         <div class="tc-qt">"</div>
         <div class="tc-stars">★★★★★</div>
         <p class="tc-txt">Good service, and also it's available any time — that is the main benefit of Smart Home Repair.</p>
         <div class="tc-auth"><div><div class="tc-n">Sneha Roy</div><div class="tc-l">Google Review</div></div></div>
       </div>
-      <div class="tc rv">
+      <div class="tc">
         <div class="tc-qt">"</div>
         <div class="tc-stars">★★★★★</div>
         <p class="tc-txt">Great price. Very good service.</p>
         <div class="tc-auth"><div><div class="tc-n">Kabeer A</div><div class="tc-l">Google Review</div></div></div>
       </div>
-      <div class="tc rv">
+      <div class="tc">
         <div class="tc-qt">"</div>
         <div class="tc-stars">★★★★★</div>
         <p class="tc-txt">Good service, very satisfied.</p>
         <div class="tc-auth"><div><div class="tc-n">Mohd Naeem</div><div class="tc-l">Google Review</div></div></div>
       </div>
-      <div class="tc rv">
+      <div class="tc">
         <div class="tc-qt">"</div>
-        <div class="tc-stars">★★★★★</div>
+        
         <p class="tc-txt">Every repair is backed by our 90-day service warranty and genuine spare parts. If a repaired issue recurs within 90 days, we fix it again at no extra cost.</p>
         <div class="tc-auth"><div><div class="tc-n">Smart Home Repair</div><div class="tc-l">Our Service Guarantee</div></div></div>
       </div>
       </div>
       
       <button class="testi-nav next" onclick="scrollTestimonials(1)" aria-label="Next">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </button>
     </div>
   </div>
@@ -417,7 +429,7 @@
 
 <!-- AMC PLANS -->
 <section class="sec" id="amc">
-  <img loading="lazy" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600&q=50&fit=crop" alt="background" class="amc-bg">
+  <img loading="lazy" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600&q=50&fit=crop&auto=format" alt="" aria-hidden="true" class="amc-bg" width="1600" height="1067">
   <div class="amc-in">
     <div class="amc-hd rv">
       <div class="lbl">AMC Plans</div>
@@ -426,7 +438,7 @@
     </div>
     <div class="amc-grid">
       <div class="amc-card rv">
-        <img loading="lazy" src="{{ url_for('static', filename='images/essential_care.webp') }}" alt="Basic AMC" class="amc-card-img">
+        <img loading="lazy" src="{{ url_for('static', filename='images/essential_care.webp') }}" alt="Essential Care AMC plan for one AC or appliance" class="amc-card-img" width="1344" height="768">
         <div class="amc-plan-lbl">Basic Plan</div>
         <h3>Essential Care</h3>
         <div class="amc-price">₹1,499 <span>/ year</span></div>
@@ -442,7 +454,7 @@
       </div>
       <div class="amc-card pop rv">
         <div class="amc-pop-tag">MOST POPULAR</div>
-        <img loading="lazy" src="{{ url_for('static', filename='images/essential_care.webp') }}" alt="Standard AMC" class="amc-card-img">
+        <img loading="lazy" src="{{ url_for('static', filename='images/essential_care.webp') }}" alt="Complete Home AMC plan covering three appliances" class="amc-card-img" width="1344" height="768">
         <div class="amc-plan-lbl">Standard Plan</div>
         <h3>Complete Home</h3>
         <div class="amc-price">₹3,999 <span>/ year</span></div>
@@ -458,7 +470,7 @@
         <a href="#contact" class="amc-cta">Get Started</a>
       </div>
       <div class="amc-card rv">
-        <img loading="lazy" src="{{ url_for('static', filename='images/business_and_enterprise.webp') }}" alt="Premium AMC" class="amc-card-img">
+        <img loading="lazy" src="{{ url_for('static', filename='images/business_and_enterprise.webp') }}" alt="Business and enterprise AMC plan for VRV and VRF systems" class="amc-card-img" width="1536" height="1024">
         <div class="amc-plan-lbl">Premium Plan</div>
         <h3>Business &amp; Enterprise</h3>
         <div class="amc-price">₹9,999 <span>/ year</span></div>
@@ -482,7 +494,7 @@
   <div class="sec-inner">
     <div class="cov-grid">
       <div class="cov-img-w rv-l">
-        <img loading="lazy" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&h=840&q=80&fit=crop" alt="Kochi city coverage" class="cov-img">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&h=840&q=80&fit=crop&auto=format" alt="Areas served by Smart Home Repair across Kochi and Ernakulam" class="cov-img" width="700" height="840">
         <div class="cov-cap"><strong>15+</strong>Areas covered in Kochi</div>
       </div>
       <div class="rv-r">
@@ -514,7 +526,7 @@
 
 <!-- CTA BANNER -->
 <section id="ctabanner">
-  <img loading="lazy" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&h=800&q=80&fit=crop" alt="CTA" class="cta-img">
+  <img loading="lazy" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&h=800&q=80&fit=crop&auto=format" alt="" aria-hidden="true" class="cta-img" width="1600" height="800">
   <div class="cta-ov">
     <div class="lbl">Ready to Get Started?</div>
     <h2 class="h2">Speak with our team — we're just a call away</h2>
@@ -533,23 +545,53 @@
   <div class="sec-inner">
     <div class="faq-layout">
       <div class="faq-img-col rv-l">
-        <img loading="lazy" src="{{ url_for('static', filename='images/repairing_ac.jpg') }}" alt="AC repair Kochi" class="faq-img1">
-        <img loading="lazy" src="{{ url_for('static', filename='images/ac_installation.jpg') }}" alt="AC installation Kochi" class="faq-img2">
+        <img loading="lazy" src="{{ url_for('static', filename='images/repairing_ac.jpg') }}" alt="Technician repairing a split AC in Kochi" class="faq-img1" width="1200" height="800">
+        <img loading="lazy" src="{{ url_for('static', filename='images/ac_installation.jpg') }}" alt="New AC installation in a Kochi home" class="faq-img2" width="1000" height="667">
       </div>
       <div class="rv-r">
         <div class="lbl">FAQ</div>
         <h2 class="h2" style="margin:8px 0 28px">Frequently asked questions</h2>
         <div class="faq-list">
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How quickly can a technician reach me?<span class="faq-arr">▾</span></button><div class="faq-a">Our average response time is under 2 hours for most areas in Kochi. In peak summer (March–May) it may be up to 3 hours. After booking, you receive the technician's name and live tracking via WhatsApp.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What warranty do you provide on repairs?<span class="faq-arr">▾</span></button><div class="faq-a">All repairs come with a 90-day service warranty. If the same issue recurs within this period, we fix it at no additional cost. Spare parts also carry the manufacturer's warranty on top of ours.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you use genuine original spare parts?<span class="faq-arr">▾</span></button><div class="faq-a">Yes, always. We source only OEM (Original Equipment Manufacturer) approved spare parts. We never use duplicates or low-quality components, ensuring your appliance performs reliably for years after every repair.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How is the service charge calculated?<span class="faq-arr">▾</span></button><div class="faq-a">There's a nominal visit/inspection charge of ₹399, which is waived if you proceed with the repair. Before any repair begins, our technician provides a complete cost breakdown. You only pay for what you approve.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you service all AC and appliance brands?<span class="faq-arr">▾</span></button><div class="faq-a">Yes — our technicians are trained on all major brands: Daikin, LG, Samsung, Voltas, Blue Star, Carrier, Hitachi, O General, Mitsubishi, Panasonic, Whirlpool, Godrej, IFB, Bosch and more. Both older and latest models.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is an AMC and is it worth it?<span class="faq-arr">▾</span></button><div class="faq-a">An AMC (Annual Maintenance Contract) is a yearly plan covering scheduled visits, priority support and repair discounts. Customers typically save 40–60% compared to pay-per-service pricing, and it significantly extends appliance lifespan.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are services available on weekends and holidays?<span class="faq-arr">▾</span></button><div class="faq-a">Yes! Smart Home Repair operates 24 hours a day, 7 days a week — including Sundays and public holidays. Premium AMC customers get emergency weekend support. We recommend early booking on Sundays as slots fill up quickly.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How often should I service my AC?<span class="faq-arr">▾</span></button><div class="faq-a">We recommend servicing your AC at least twice a year — before and after summer (March and October). For heavily used or dusty environments, quarterly servicing is advisable. Regular servicing improves efficiency and lowers electricity bills.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you handle commercial and office AC systems?<span class="faq-arr">▾</span></button><div class="faq-a">Absolutely — we specialize in VRV/VRF multi-split systems, cassette ACs and central cooling for offices, hotels, hospitals and malls. We offer customized AMC plans for businesses with dedicated account managers.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What payment methods do you accept?<span class="faq-arr">▾</span></button><div class="faq-a">We accept cash and UPI (GPay, PhonePe, Paytm). Payment is made only after work is completed to your satisfaction. Digital invoice sent via WhatsApp/email.</div></div>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">How quickly can a technician reach me?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+            <div class="faq-a">Our average response time is under 2 hours for most areas in Kochi. In peak summer (March–May) it may be up to 3 hours. After booking, you receive the technician's name and live tracking via WhatsApp.</div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">What warranty do you provide on repairs?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+            <div class="faq-a">All repairs come with a 90-day service warranty. If the same issue recurs within this period, we fix it at no additional cost. Spare parts also carry the manufacturer's warranty on top of ours.</div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">Do you use genuine original spare parts?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+            <div class="faq-a">Yes, always. We source only OEM (Original Equipment Manufacturer) approved spare parts. We never use duplicates or low-quality components, ensuring your appliance performs reliably for years after every repair.</div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">How is the service charge calculated?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+            <div class="faq-a">There's a nominal visit/inspection charge of ₹399, which is waived if you proceed with the repair. Before any repair begins, our technician provides a complete cost breakdown. You only pay for what you approve.</div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">Do you service all AC and appliance brands?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+            <div class="faq-a">Yes — our technicians are trained on all major brands: Daikin, LG, Samsung, Voltas, Blue Star, Carrier, Hitachi, O General, Mitsubishi, Panasonic, Whirlpool, Godrej, IFB, Bosch and more. Both older and latest models.</div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">What is an AMC and is it worth it?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+            <div class="faq-a">An AMC (Annual Maintenance Contract) is a yearly plan covering scheduled visits, priority support and repair discounts. Customers typically save 40–60% compared to pay-per-service pricing, and it significantly extends appliance lifespan.</div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">Are services available on weekends and holidays?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+            <div class="faq-a">Yes! Smart Home Repair operates 24 hours a day, 7 days a week — including Sundays and public holidays. Premium AMC customers get emergency weekend support. We recommend early booking on Sundays as slots fill up quickly.</div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">How often should I service my AC?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+            <div class="faq-a">We recommend servicing your AC at least twice a year — before and after summer (March and October). For heavily used or dusty environments, quarterly servicing is advisable. Regular servicing improves efficiency and lowers electricity bills.</div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">Do you handle commercial and office AC systems?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+            <div class="faq-a">Absolutely — we specialize in VRV/VRF multi-split systems, cassette ACs and central cooling for offices, hotels, hospitals and malls. We offer customized AMC plans for businesses with dedicated account managers.</div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">What payment methods do you accept?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+            <div class="faq-a">We accept cash and UPI (GPay, PhonePe, Paytm). Payment is made only after work is completed to your satisfaction. Digital invoice sent via WhatsApp/email.</div>
+          </details>
         </div>
       </div>
     </div>
@@ -562,7 +604,7 @@
     <div class="lbl" style="margin-bottom:8px;">Follow Us</div>
     <div class="follow-grid">
       
-      <a href="#contact" class="follow-card inst-card rv-l">
+      <a href="tel:+916238054003" class="follow-card inst-card rv-l">
         <div class="fc-ico">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
         </div>
@@ -574,7 +616,7 @@
         <div class="fc-arr"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
       </a>
       
-      <a href="https://wa.me/916238054003" target="_blank" class="follow-card wa-card rv-r">
+      <a href="https://wa.me/916238054003" target="_blank" rel="noopener" class="follow-card wa-card rv-r">
         <div class="fc-ico">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12.031 2C6.496 2 2 6.496 2 12.031a10.02 10.02 0 0 0 1.543 5.4L2 22l4.673-1.523A9.99 9.99 0 0 0 12.031 22c5.535 0 10.031-4.496 10.031-10.031S17.566 2 12.031 2zm5.405 14.497c-.244.693-1.42 1.32-1.956 1.433-.536.113-1.127.147-1.99-.204a11.12 11.12 0 0 1-4.225-2.61 11.75 11.75 0 0 1-2.91-3.666c-.308-.553-.45-1.114-.45-1.688 0-.573.308-1.077.567-1.386.26-.31.57-.39.757-.39.187 0 .373 0 .538.01.164.009.387-.067.606.467.22.534.757 1.848.824 1.982.067.133.11.29.02.467-.09.176-.134.288-.266.444-.132.155-.278.34-.397.453-.133.12-.27.254-.124.51.147.255.65 1.077 1.397 1.744.965.86 1.776 1.134 2.036 1.258.26.124.413.102.566-.067.153-.169.664-.77.84-1.034.177-.265.353-.22.593-.132.24.088 1.522.718 1.782.846.26.13.434.192.497.299.063.107.063.627-.18 1.32z"/>
@@ -603,63 +645,63 @@
 
         <div class="c-details">
           <div class="cd">
-            <img class="cd-thumb" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=96&q=80&fit=crop" alt="phone">
+            <img class="cd-thumb" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=96&q=80&fit=crop&auto=format" alt="" aria-hidden="true" width="96" height="96">
             <div><div class="cd-lbl">Phone / WhatsApp</div><div class="cd-val">+91 6238054003</div></div>
           </div>
           <div class="cd">
-            <img class="cd-thumb" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=96&q=80&fit=crop" alt="email">
+            <img class="cd-thumb" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=96&q=80&fit=crop&auto=format" alt="" aria-hidden="true" width="96" height="96">
             <div><div class="cd-lbl">Email</div><div class="cd-val">smarthomerepair402@gmail.com</div></div>
           </div>
           <div class="cd">
-            <img class="cd-thumb" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=96&q=80&fit=crop" alt="address">
+            <img class="cd-thumb" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=96&q=80&fit=crop&auto=format" alt="" aria-hidden="true" width="96" height="96">
             <div><div class="cd-lbl">Office Address</div><div class="cd-val">Kunnumpuram - Civil Station Rd, Echamuku, Thrikkakara, Kochi, Kerala 682030</div></div>
           </div>
           <div class="cd">
-            <img class="cd-thumb" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=96&q=80&fit=crop" alt="hours">
+            <img class="cd-thumb" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=96&q=80&fit=crop&auto=format" alt="" aria-hidden="true" width="96" height="96">
             <div><div class="cd-lbl">Working Hours</div><div class="cd-val">Open 24 hours, 7 days a week</div></div>
           </div>
         </div>
       </div>
       <div class="rv-r">
-        <div class="cf-box">
+        <form class="cf-box" id="bookingForm" onsubmit="submitToWhatsapp(event)">
           <div class="cf-title">Book a Service</div>
           <div class="form-row">
-            <div class="fg"><label>Your Name</label><input type="text" id="cName" placeholder="e.g. Rahul Sharma"></div>
-            <div class="fg"><label>Phone Number</label><input type="tel" id="cPhone" placeholder="+91 98XXXXXXXX"></div>
+            <div class="fg"><label for="cName">Your Name</label><input type="text" id="cName" name="name" autocomplete="name" placeholder="e.g. Rahul Sharma" required></div>
+            <div class="fg"><label for="cPhone">Phone Number</label><input type="tel" id="cPhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="+91 98XXXXXXXX" required></div>
           </div>
           <div class="fg">
-            <label>Your Area in Kochi</label>
-            <select id="cArea">
-              <option value="">Select Area in Kochi</option>
-              <option value="Edappally">Edappally</option>
-              <option value="Kakkanad">Kakkanad</option>
-              <option value="Thrikkakara">Thrikkakara</option>
-              <option value="Vazhakkala">Vazhakkala</option>
-              <option value="Palarivattom">Palarivattom</option>
-              <option value="Elamakkara">Elamakkara</option>
-              <option value="Athani">Athani</option>
-              <option value="Vyttila">Vyttila</option>
-              <option value="Maradu">Maradu</option>
-              <option value="Eroor South">Eroor South</option>
-              <option value="Aluva">Aluva</option>
-              <option value="Kalamassery">Kalamassery</option>
-              <option value="Panampilly Nagar">Panampilly Nagar</option>
-              <option value="Tripunithura">Tripunithura</option>
-              <option value="Others">Others</option>
+            <label for="cArea">Your Area in Kochi</label>
+            <select id="cArea" name="area" required>
+                <option value="" disabled selected>Select Area in Kochi</option>
+                <option value="Edappally">Edappally</option>
+                <option value="Kakkanad">Kakkanad</option>
+                <option value="Thrikkakara">Thrikkakara</option>
+                <option value="Vazhakkala">Vazhakkala</option>
+                <option value="Palarivattom">Palarivattom</option>
+                <option value="Elamakkara">Elamakkara</option>
+                <option value="Athani">Athani</option>
+                <option value="Vyttila">Vyttila</option>
+                <option value="Maradu">Maradu</option>
+                <option value="Eroor South">Eroor South</option>
+                <option value="Aluva">Aluva</option>
+                <option value="Kalamassery">Kalamassery</option>
+                <option value="Panampilly Nagar">Panampilly Nagar</option>
+                <option value="Tripunithura">Tripunithura</option>
+                <option value="Others">Others</option>
             </select>
           </div>
-          <div class="fg"><label>Additional Details (optional)</label><textarea id="cDetails" placeholder="Describe the issue or any specific requirements…"></textarea></div>
-          <button class="btn-form" onclick="submitToWhatsapp()">Send Book Request</button>
-        </div>
+          <div class="fg"><label for="cDetails">Additional Details (optional)</label><textarea id="cDetails" name="details" placeholder="Describe the issue or any specific requirements…"></textarea></div>
+          <button type="submit" class="btn-form">Send Book Request</button>
+        </form>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SERVICE MODAL -->
-<div class="modal-ov" id="modalOverlay" onclick="if(event.target==this)closeModal()">
+<div class="modal-ov" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="if(event.target==this)closeModal()">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">×</button>
+    <button type="button" class="modal-close" onclick="closeModal()" aria-label="Close dialog">×</button>
     <div class="modal-head">
       <div class="lbl">Service Details</div>
       <h3 class="h3" id="modalTitle">Service Name</h3>
@@ -678,34 +720,28 @@
   </div>
 </div>
 
-<!-- SEO MAX: FAQ + Service + Breadcrumb Schema -->
+<!-- SEO: FAQ + Service schema (matches the visible page content) -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How quickly can a technician reach me?","acceptedAnswer":{"@type":"Answer","text":"Our average response time is under 2 hours for most areas in Kochi. In peak summer (March–May) it may be up to 3 hours. After booking, you receive the technician's name and live tracking via WhatsApp."}},
-{"@type":"Question","name":"What warranty do you provide on repairs?","acceptedAnswer":{"@type":"Answer","text":"All repairs come with a 90-day service warranty. If the same issue recurs within this period, we fix it at no additional cost. Spare parts also carry the manufacturer's warranty on top of ours."}},
-{"@type":"Question","name":"Do you use genuine original spare parts?","acceptedAnswer":{"@type":"Answer","text":"Yes, always. We source only OEM (Original Equipment Manufacturer) approved spare parts. We never use duplicates or low-quality components, ensuring your appliance performs reliably for years after every repair."}},
-{"@type":"Question","name":"How is the service charge calculated?","acceptedAnswer":{"@type":"Answer","text":"There's a nominal visit/inspection charge of ₹399, which is waived if you proceed with the repair. Before any repair begins, our technician provides a complete cost breakdown. You only pay for what you approve."}},
-{"@type":"Question","name":"Do you handle commercial and office AC systems?","acceptedAnswer":{"@type":"Answer","text":"Absolutely — we specialize in VRV/VRF multi-split systems, cassette ACs and central cooling for offices, hotels, hospitals and malls. We offer customized AMC plans for businesses with dedicated account managers."}}
-]}
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How quickly can a technician reach me?", "acceptedAnswer": {"@type": "Answer", "text": "Our average response time is under 2 hours for most areas in Kochi. In peak summer (March–May) it may be up to 3 hours. After booking, you receive the technician's name and live tracking via WhatsApp."}}, {"@type": "Question", "name": "What warranty do you provide on repairs?", "acceptedAnswer": {"@type": "Answer", "text": "All repairs come with a 90-day service warranty. If the same issue recurs within this period, we fix it at no additional cost. Spare parts also carry the manufacturer's warranty on top of ours."}}, {"@type": "Question", "name": "Do you use genuine original spare parts?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, always. We source only OEM (Original Equipment Manufacturer) approved spare parts. We never use duplicates or low-quality components, ensuring your appliance performs reliably for years after every repair."}}, {"@type": "Question", "name": "How is the service charge calculated?", "acceptedAnswer": {"@type": "Answer", "text": "There's a nominal visit/inspection charge of ₹399, which is waived if you proceed with the repair. Before any repair begins, our technician provides a complete cost breakdown. You only pay for what you approve."}}, {"@type": "Question", "name": "Do you service all AC and appliance brands?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — our technicians are trained on all major brands: Daikin, LG, Samsung, Voltas, Blue Star, Carrier, Hitachi, O General, Mitsubishi, Panasonic, Whirlpool, Godrej, IFB, Bosch and more. Both older and latest models."}}, {"@type": "Question", "name": "What is an AMC and is it worth it?", "acceptedAnswer": {"@type": "Answer", "text": "An AMC (Annual Maintenance Contract) is a yearly plan covering scheduled visits, priority support and repair discounts. Customers typically save 40–60% compared to pay-per-service pricing, and it significantly extends appliance lifespan."}}, {"@type": "Question", "name": "Are services available on weekends and holidays?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Smart Home Repair operates 24 hours a day, 7 days a week — including Sundays and public holidays. Premium AMC customers get emergency weekend support. We recommend early booking on Sundays as slots fill up quickly."}}, {"@type": "Question", "name": "How often should I service my AC?", "acceptedAnswer": {"@type": "Answer", "text": "We recommend servicing your AC at least twice a year — before and after summer (March and October). For heavily used or dusty environments, quarterly servicing is advisable. Regular servicing improves efficiency and lowers electricity bills."}}, {"@type": "Question", "name": "Do you handle commercial and office AC systems?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely — we specialize in VRV/VRF multi-split systems, cassette ACs and central cooling for offices, hotels, hospitals and malls. We offer customized AMC plans for businesses with dedicated account managers."}}, {"@type": "Question", "name": "What payment methods do you accept?", "acceptedAnswer": {"@type": "Answer", "text": "We accept cash and UPI (GPay, PhonePe, Paytm). Payment is made only after work is completed to your satisfaction. Digital invoice sent via WhatsApp/email."}}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service","serviceType":"AC Repair Service","provider":{"@type":"LocalBusiness","name":"Smart Home Repair"},"areaServed":{"@type":"City","name":"Kochi"},"description":"AC, refrigerator, washing machine, microwave and geyser repair in Kochi - Kakkanad, Edappally, Vyttila with 2-hour response","offers":{"@type":"Offer","price":"399","priceCurrency":"INR"}}
+{"@context": "https://schema.org", "@type": "Service", "serviceType": "AC repair and home appliance repair", "provider": {"@id": "https://www.smarthomerepair.in/#business"}, "areaServed": {"@type": "City", "name": "Kochi"}, "description": "AC, refrigerator, washing machine, microwave and geyser repair in Kochi - Kakkanad, Edappally, Vyttila and Ernakulam, with 2-hour response and a 90-day warranty.", "offers": {"@type": "Offer", "price": "399", "priceCurrency": "INR"}}
 </script>
 
 <!-- CONTACT POPUP MODAL -->
-<div class="modal-ov" id="contactModalOverlay">
+<div class="modal-ov" id="contactModalOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
   <div class="modal-box" style="padding:0; overflow:hidden;">
-    <button class="modal-close" onclick="closeContactModal()" style="z-index:10; background:var(--frost);">×</button>
-    <div class="cf-box" style="box-shadow:none; border:none; margin:0;">
-      <div class="cf-title" style="margin-right:20px;">Book a Service</div>
+    <button type="button" class="modal-close" onclick="closeContactModal()" aria-label="Close booking form" style="z-index:10; background:var(--frost);">×</button>
+    <form class="cf-box" id="popupForm" style="box-shadow:none; border:none; margin:0;" onsubmit="submitPopupToWhatsapp(event)">
+      <div class="cf-title" id="popupTitle" style="margin-right:20px;">Book a Service</div>
       <div class="form-row">
-        <div class="fg"><label>Your Name</label><input type="text" id="pName" placeholder="e.g. Rahul Sharma"></div>
-        <div class="fg"><label>Phone Number</label><input type="tel" id="pPhone" placeholder="6238054003"></div>
+        <div class="fg"><label for="pName">Your Name</label><input type="text" id="pName" name="name" autocomplete="name" placeholder="e.g. Rahul Sharma" required></div>
+        <div class="fg"><label for="pPhone">Phone Number</label><input type="tel" id="pPhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="6238054003" required></div>
       </div>
       <div class="fg">
-        <label>Your Area in Kochi</label>
-        <select id="pArea">
-          <option value="">Select Area in Kochi</option>
+        <label for="pArea">Your Area in Kochi</label>
+        <select id="pArea" name="area" required>
+          <option value="" disabled selected>Select Area in Kochi</option>
           <option value="Edappally">Edappally</option>
           <option value="Kakkanad">Kakkanad</option>
           <option value="Thrikkakara">Thrikkakara</option>
@@ -723,9 +759,9 @@
           <option value="Others">Others</option>
         </select>
       </div>
-      <div class="fg"><label>Additional Details (optional)</label><textarea id="pDetails" placeholder="Describe the issue or any specific requirements…"></textarea></div>
-      <button class="btn-form btn-form-navy" onclick="submitPopupToWhatsapp()">Book Now</button>
-    </div>
+      <div class="fg"><label for="pDetails">Additional Details (optional)</label><textarea id="pDetails" name="details" placeholder="Describe the issue or any specific requirements…"></textarea></div>
+      <button type="submit" class="btn-form btn-form-navy">Book Now</button>
+    </form>
   </div>
 </div>
 

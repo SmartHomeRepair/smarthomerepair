@@ -7,7 +7,7 @@
 
 <!-- BANNER -->
 <section class="cont-banner">
-  <img src="{{ url_for('static', filename='images/ac_repair_2.jpg') }}" alt="Contact Smart Home" class="cnt-bg">
+  <img src="{{ url_for('static', filename='images/ac_repair_2.jpg') }}" alt="Contact Smart Home Repair in Kochi" class="cnt-bg" width="1600" height="1069" fetchpriority="high">
   <h1 class="cnt-ttl">Contact Smart Home Repair – Kochi</h1>
 </section>
 
@@ -46,19 +46,20 @@
       <div class="lbl">Inquiry Form</div>
       <h2 class="h2" style="font-size:2.2rem; margin:12px 0 24px">Book Your Slot</h2>
       <p class="body" style="margin-bottom:32px">Fill in your details for a 2-hour rapid response service any locality in Kochi.</p>
-      
+
+      <form id="contactForm" onsubmit="submitContactToWhatsapp(event)">
       <div class="f-group">
-        <label>Your Full Name</label>
-        <input type="text" id="cName" placeholder="Enter your name">
+        <label for="cName">Your Full Name</label>
+        <input type="text" id="cName" name="name" autocomplete="name" placeholder="Enter your name" required>
       </div>
       <div class="f-group">
-        <label>Phone Number</label>
-        <input type="tel" id="cPhone" placeholder="Enter your mobile number">
+        <label for="cPhone">Phone Number</label>
+        <input type="tel" id="cPhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="Enter your mobile number" required>
       </div>
       <div class="f-group">
-        <label>Select Locality</label>
-        <select id="cArea">
-          <option value="">Select Area in Kochi</option>
+        <label for="cArea">Select Locality</label>
+        <select id="cArea" name="area" required>
+          <option value="" disabled selected>Select Area in Kochi</option>
           <option value="Edappally">Edappally</option>
           <option value="Kakkanad">Kakkanad</option>
           <option value="Thrikkakara">Thrikkakara</option>
@@ -77,11 +78,12 @@
         </select>
       </div>
       <div class="f-group">
-        <label>Service / Problem Details</label>
-        <textarea id="cDetails" placeholder="Example: Split AC gas refill or Washing Machine making noise"></textarea>
+        <label for="cDetails">Service / Problem Details</label>
+        <textarea id="cDetails" name="details" placeholder="Example: Split AC gas refill or Washing Machine making noise"></textarea>
       </div>
 
-      <button onclick="submitToWhatsapp()" style="width:100%; justify-content:center; padding:18px" class="btn btn-sky">Confirm Booking via WhatsApp</button>
+      <button type="submit" style="width:100%; justify-content:center; padding:18px" class="btn btn-sky">Confirm Booking via WhatsApp</button>
+      </form>
       
       <div style="margin-top:32px; padding-top:32px; border-top:1px solid var(--border)">
         <div style="display:flex; gap:20px; align-items:center">

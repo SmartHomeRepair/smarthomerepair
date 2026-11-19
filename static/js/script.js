@@ -1,3 +1,7 @@
+/* Smart Home Repair - front-end behaviour
+   Kept dependency-free and defensive: every block checks the element exists. */
+
+/* ---------- sticky header state ---------- */
 function updateNavbarState(){
     const nav = document.getElementById('nb');
     if(!nav) return;
@@ -8,72 +12,147 @@ function updateNavbarState(){
     nav.classList.toggle('bg', shouldUseSolidNav);
 }
 
-window.addEventListener('scroll', updateNavbarState);
-window.addEventListener('resize', updateNavbarState);
+let navTick = false;
+function onScroll(){
+    if(navTick) return;
+    navTick = true;
+    requestAnimationFrame(() => { updateNavbarState(); navTick = false; });
+}
+
+window.addEventListener('scroll', onScroll, {passive:true});
+window.addEventListener('resize', updateNavbarState, {passive:true});
 window.addEventListener('DOMContentLoaded', updateNavbarState);
 
+/* ---------- images ---------- */
 window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('img').forEach(img => {
-        img.decoding = 'async';
+    document.querySelectorAll('img').forEach(img => { img.decoding = 'async'; });
+});
+
+/* ---------- in-page anchors ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('a[href^="/#"],a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const h = a.getAttribute('href');
+            const id = h.substring(h.indexOf('#') + 1);
+            if(id && location.pathname === '/' && document.getElementById(id)){
+                e.preventDefault();
+                document.getElementById(id).scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+                history.pushState(null, '', '#' + id);
+                closeMM();
+            }
+        });
     });
 });
 
-// toggleMenu/closeMM moved inline in base.html for instant click
-// Fix desktop hash links without reload
-document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('a[href^="/#"],a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{
-      const h=a.getAttribute('href');
-      const id=h.substring(h.indexOf('#')+1);
-      if(id && location.pathname==='/' && document.getElementById(id)){
-        e.preventDefault();
-        document.getElementById(id).scrollIntoView({behavior:'smooth'});
-        history.pushState(null,'','#'+id);
-      }
-    });
-  });
-});
-function toggleFaq(btn){
-    const item = btn.parentElement;
-    const open = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if(!open) item.classList.add('open');
-}
-function submitForm(){alert('Thank you! Your booking request has been received.\nOur team will call you within 30 minutes to confirm your appointment.')}
-
-function submitToWhatsapp() {
-    const name = document.getElementById('cName').value;
-    const phone = document.getElementById('cPhone').value;
-    const area = document.getElementById('cArea').value;
-    const details = document.getElementById('cDetails').value;
-    
-    if(!name || !phone || !area) {
-        alert('Please fill in Your Name, Phone Number, and Area.');
-        return;
+/* ---------- mobile menu: focus management ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('mmBtn');
+    const menu = document.getElementById('mm');
+    if(btn && menu){
+        btn.addEventListener('click', () => {
+            if(menu.classList.contains('open')){
+                // let the CSS transition start before moving focus
+                setTimeout(() => { const c = menu.querySelector('.mm-close'); if(c) c.focus(); }, 60);
+            }
+        });
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            setTimeout(() => btn.focus(), 10);
+        }));
     }
-    
-    const message = `*Smart Home Booking Request*\n\n` +
-                    `*Name:* ${name}\n` +
-                    `*Phone:* ${phone}\n` +
-                    `*Area:* ${area}\n` +
-                    `*Details:* ${details || 'N/A'}\n\n` +
-                    `Please confirm my booking.`;
-                    
-    const encoded = encodeURIComponent(message);
-    const waUrl = `https://wa.me/916238054003?text=${encoded}`;
-    
-    window.location.href = waUrl;
+});
+
+/* ---------- FAQ ---------- */
+/* Now a native <details> accordion - no JS needed. */
+
+/* ---------- booking forms -> WhatsApp ---------- */
+function setFormError(form, message){
+    let box = form.querySelector('.form-error');
+    if(!box){
+        box = document.createElement('p');
+        box.className = 'form-error';
+        box.setAttribute('role', 'alert');
+        form.appendChild(box);
+    }
+    box.textContent = message;
+    box.scrollIntoView({block:'center', behavior:'smooth'});
 }
 
-// TESTIMONIAL SCROLL
-function scrollTestimonials(dir) {
+function clearFormError(form){
+    const box = form.querySelector('.form-error');
+    if(box) box.remove();
+}
+
+function sendBooking(form, ids){
+    const nameEl = document.getElementById(ids.name);
+    const phoneEl = document.getElementById(ids.phone);
+    const areaEl = document.getElementById(ids.area);
+    const detailsEl = document.getElementById(ids.details);
+    if(!nameEl || !phoneEl || !areaEl) return false;
+
+    clearFormError(form);
+
+    const name = nameEl.value.trim();
+    const phone = phoneEl.value.trim();
+    const area = areaEl.value;
+    const details = detailsEl ? detailsEl.value.trim() : '';
+    const digits = phone.replace(/\D/g, '');
+
+    if(!name || !area){
+        setFormError(form, 'Please add your name and select your area in Kochi.');
+        return false;
+    }
+    if(digits.length < 10 || digits.length > 13){
+        setFormError(form, 'Please enter a valid phone number so we can confirm your booking.');
+        phoneEl.focus();
+        return false;
+    }
+
+    const message = '*Smart Home Booking Request*\n\n' +
+                    '*Name:* ' + name + '\n' +
+                    '*Phone:* ' + phone + '\n' +
+                    '*Area:* ' + area + '\n' +
+                    '*Details:* ' + (details || 'N/A') + '\n\n' +
+                    'Please confirm my booking.';
+
+    window.location.href = 'https://wa.me/916238054003?text=' + encodeURIComponent(message);
+    return true;
+}
+
+function submitToWhatsapp(e){
+    if(e) e.preventDefault();
+    sendBooking(document.getElementById('bookingForm'),
+        {name:'cName', phone:'cPhone', area:'cArea', details:'cDetails'});
+}
+
+function submitPopupToWhatsapp(e){
+    if(e) e.preventDefault();
+    sendBooking(document.getElementById('popupForm'),
+        {name:'pName', phone:'pPhone', area:'pArea', details:'pDetails'});
+}
+
+function submitContactToWhatsapp(e){
+    if(e) e.preventDefault();
+    sendBooking(document.getElementById('contactForm'),
+        {name:'cName', phone:'cPhone', area:'cArea', details:'cDetails'});
+}
+
+function submitCampaignToWhatsapp(e){
+    if(e) e.preventDefault();
+    sendBooking(document.getElementById('campaignForm'),
+        {name:'qName', phone:'qPhone', area:'qArea', details:'qDetails'});
+}
+
+/* ---------- testimonials ---------- */
+function scrollTestimonials(dir){
     const grid = document.getElementById('testiGrid');
     if(!grid) return;
-    const cardWidth = grid.querySelector('.tc').offsetWidth + 24;
-    grid.scrollBy({ left: cardWidth * dir, behavior: 'smooth' });
+    const card = grid.querySelector('.tc');
+    if(!card) return;
+    grid.scrollBy({ left: (card.offsetWidth + 24) * dir, behavior: 'smooth' });
 }
 
-// MODAL LOGIC
+/* ---------- service detail modal (reserved for future service cards) ---------- */
 const serviceDetails = {
     'ac-split': {
         title: 'Split & Window Air Conditioners',
@@ -112,74 +191,107 @@ const serviceDetails = {
     }
 };
 
-function showModal(id) {
+function showModal(id){
     const data = serviceDetails[id];
     if(!data) return;
-    
-    document.getElementById('modalTitle').innerText = data.title;
-    document.getElementById('modalDesc').innerText = data.desc;
-    
+    const title = document.getElementById('modalTitle');
+    const desc = document.getElementById('modalDesc');
     const list = document.getElementById('modalPoints');
+    const overlay = document.getElementById('modalOverlay');
+    if(!title || !desc || !list || !overlay) return;
+
+    title.textContent = data.title;
+    desc.textContent = data.desc;
     list.innerHTML = '';
     data.points.forEach(pt => {
         const li = document.createElement('li');
-        li.innerText = pt;
+        li.textContent = pt;
         list.appendChild(li);
     });
-    
-    document.getElementById('modalOverlay').classList.add('active');
+
+    overlay.classList.add('active');
+    document.body.classList.add('modal-open');
+    const close = overlay.querySelector('.modal-close');
+    if(close) close.focus();
 }
 
-function closeModal() {
-    document.getElementById('modalOverlay').classList.remove('active');
+function closeModal(){
+    const overlay = document.getElementById('modalOverlay');
+    if(overlay) overlay.classList.remove('active');
+    document.body.classList.remove('modal-open');
 }
 
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.07,rootMargin:'0px 0px -28px 0px'});
-document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>obs.observe(el));
-document.querySelectorAll('.svc-grid,.testi-grid,.amc-grid,.proc-grid').forEach(g=>{Array.from(g.children).forEach((c,i)=>c.style.transitionDelay=(i*.1)+'s')});
-
-// CONTACT POPUP LOGIC
-setTimeout(() => {
-    const isHomePage = window.location.pathname === '/';
-    const hasSeenPopup = localStorage.getItem('popupShown');
-    
-    if (isHomePage && !hasSeenPopup) {
-        const popup = document.getElementById('contactModalOverlay');
-        if(popup) {
-            popup.classList.add('active');
-            localStorage.setItem('popupShown', 'true');
-        }
-    }
-}, 5000);
-
-function closeContactModal() {
+function closeContactModal(){
     const popup = document.getElementById('contactModalOverlay');
-    if(popup) {
-        popup.classList.remove('active');
-        localStorage.setItem('popupShown','true');
-    }
+    if(popup) popup.classList.remove('active');
+    document.body.classList.remove('modal-open');
+    localStorage.setItem('popupShown', 'true');
 }
 
-function submitPopupToWhatsapp() {
-    const name = document.getElementById('pName').value;
-    const phone = document.getElementById('pPhone').value;
-    const area = document.getElementById('pArea').value;
-    const details = document.getElementById('pDetails').value;
-    
-    if(!name || !phone || !area) {
-        alert('Please fill in Your Name, Phone Number, and Area.');
-        return;
-    }
-    
-    const message = `*Smart Home Booking Request*\n\n` +
-                    `*Name:* ${name}\n` +
-                    `*Phone:* ${phone}\n` +
-                    `*Area:* ${area}\n` +
-                    `*Details:* ${details || 'N/A'}\n\n` +
-                    `Please confirm my booking.`;
-                    
-    const encoded = encodeURIComponent(message);
-    const waUrl = `https://wa.me/916238054003?text=${encoded}`;
-    
-    window.location.href = waUrl;
+/* ---------- reveal on scroll ---------- */
+const revealEls = document.querySelectorAll('.rv,.rv-l,.rv-r');
+
+if('IntersectionObserver' in window){
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+    }, {threshold: 0.01, rootMargin: '0px 0px -32px 0px'});
+
+    revealEls.forEach(el => obs.observe(el));
+} else {
+    revealEls.forEach(el => el.classList.add('in'));
 }
+
+document.querySelectorAll('.svc-grid,.testi-grid,.amc-grid,.proc-grid').forEach(g => {
+    Array.from(g.children).forEach((c, i) => { c.style.transitionDelay = (i * .1) + 's'; });
+});
+
+/* ---------- exit-style booking popup ----------
+   Deliberately disabled on phones: a full-screen offer on load is the kind of
+   intrusive interstitial Google demotes, and it blocks the tap-to-call path.
+   Desktop visitors see it only after 15s AND 40% scroll. */
+(function(){
+    if(window.matchMedia('(max-width: 768px)').matches) return;
+    if(localStorage.getItem('popupShown')) return;
+
+    let waited = false;
+    let scrolled = false;
+    let shown = false;
+
+    function openPopup(){
+        if(shown) return;
+        const popup = document.getElementById('contactModalOverlay');
+        if(!popup) return;
+        shown = true;
+        popup.classList.add('active');
+        document.body.classList.add('modal-open');
+        localStorage.setItem('popupShown', 'true');
+        const first = popup.querySelector('input');
+        if(first) setTimeout(() => first.focus(), 120);
+    }
+
+    function maybeOpen(){ if(waited && scrolled) openPopup(); }
+
+    setTimeout(() => { waited = true; maybeOpen(); }, 15000);
+
+    window.addEventListener('scroll', () => {
+        if(scrolled) return;
+        if(window.scrollY > window.innerHeight * 0.4){
+            scrolled = true;
+            maybeOpen();
+        }
+    }, {passive:true});
+})();
+
+/* ---------- keyboard: Escape closes any overlay ---------- */
+document.addEventListener('keydown', e => {
+    if(e.key !== 'Escape') return;
+
+    const popup = document.getElementById('contactModalOverlay');
+    if(popup && popup.classList.contains('active')){ closeContactModal(); return; }
+
+    const modal = document.getElementById('modalOverlay');
+    if(modal && modal.classList.contains('active')){ closeModal(); return; }
+
+    const menu = document.getElementById('mm');
+    if(menu && menu.classList.contains('open')) closeMM();
+});

@@ -9,7 +9,7 @@
 
 <!-- BANNER -->
 <section class="srv-banner">
-  <img src="{{ url_for('static', filename='images/ac_repair_2.jpg') }}" alt="AC gas refill service in Kochi by Smart Home Repair" class="sb-bg" fetchpriority="high">
+  <img src="{{ url_for('static', filename='images/ac_repair_2.jpg') }}" alt="AC gas refill service in Kochi by Smart Home Repair" width="1600" height="1069" class="sb-bg" fetchpriority="high">
   <h1 class="sb-ttl">AC Gas Refill in Kochi</h1>
 </section>
 
@@ -27,7 +27,7 @@
   <div class="lbl">What we do</div>
   <h2 class="h2">AC gas refill &amp; leak repair services in Kochi</h2>
   <p class="body" style="max-width:640px">Every split, window, cassette and VRV system — one team, honest diagnosis, upfront quotes on every job.</p>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:28px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px;margin-top:28px">
     <div style="border:1px solid var(--border);border-radius:16px;padding:24px;background:var(--white)">
       <h3 class="srv-ttl" style="margin-bottom:8px">Leak Detection &amp; Sealing</h3>
       <p class="srv-desc">We pressure-test the system, trace the exact leak — joints, coils or valves — and seal it properly before any gas goes in.</p>
@@ -67,7 +67,7 @@
   <h2 class="h2">AC gas refill charges in Kochi — no surprises</h2>
   <p class="body" style="max-width:640px">The exact price depends on your AC's gas type and whether there's a leak to repair — so you get a written quote before any work starts. No fake flat rates, no hidden charges.</p>
   <div style="max-width:860px;margin:26px auto 0;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--white)">
-    <table style="width:100%;border-collapse:collapse;font-size:.95rem">
+    <table class="price-table" style="width:100%;border-collapse:collapse;font-size:.95rem">
       <thead>
         <tr style="background:var(--frost)">
           <th style="text-align:left;padding:14px 18px;font-weight:800">Service</th>
@@ -138,7 +138,7 @@
   <div class="lbl">Real customer reviews</div>
   <h2 class="h2">What Kochi customers say on Google</h2>
   <p class="body" style="text-align:center">50+ reviews on Google — ★★★★★ from real, verified customers</p>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:20px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:18px;margin-top:20px">
     <div style="border:1px solid var(--border);border-radius:16px;padding:22px;background:var(--white)">
       <div style="color:#f5a623;letter-spacing:2px">★★★★★</div>
       <p class="body" style="margin:10px 0">"Excellent AC service done by Hussain Ali."</p>
@@ -217,14 +217,32 @@
 <section class="mission-sec rv">
   <div class="lbl">FAQ</div>
   <h2 class="h2">AC gas refill in Kochi — your questions answered</h2>
-  <div style="max-width:760px;margin:24px auto 0">
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How much does AC gas refill cost in Kochi?<span class="faq-arr">▾</span></button><div class="faq-a">The refill cost depends on the gas type your AC uses and whether there's a leak to fix. The visit and diagnosis costs ₹399, waived if you proceed, and you get the exact price upfront before any work begins. No hidden charges.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I know if my AC needs gas?<span class="faq-arr">▾</span></button><div class="faq-a">Weak cooling, ice forming on the indoor coil or copper pipes, hissing sounds, or the AC taking much longer to cool. But these symptoms can also come from a dirty filter or a failing part — our technician confirms the real cause before refilling.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Why do you check for leaks before refilling?<span class="faq-arr">▾</span></button><div class="faq-a">Refrigerant doesn't get used up in a healthy AC. If the gas is low, it escaped through a leak somewhere. Refilling without sealing the leak means the gas escapes again — and you pay twice. We fix the cause first.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does an AC gas refill take?<span class="faq-arr">▾</span></button><div class="faq-a">Usually a single visit: leak tracing, repair, vacuum and recharge typically finish within the same appointment. You get before-and-after cooling readings as proof of the fix.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you give a warranty on gas refill work?<span class="faq-arr">▾</span></button><div class="faq-a">Yes — every repair comes with a 90-day service warranty. If the same issue recurs within 90 days, we fix it at no extra cost.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Which areas in Kochi do you cover?<span class="faq-arr">▾</span></button><div class="faq-a">Kakkanad, Thrikkakara, Vazhakkala, Edappally, Vyttila, Palarivattom, Elamakkara, Athani, Maradu, Eroor South, Panampilly Nagar, Tripunithura, Kalamassery, Aluva and Ernakulam — 24 hours a day, 7 days a week.</div></div>
-  </div>
+  <div class="faq-list" style="max-width:760px;margin:24px auto 0">
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">How much does AC gas refill cost in Kochi?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">The refill cost depends on the gas type your AC uses and whether there's a leak to fix. The visit and diagnosis costs ₹399, waived if you proceed, and you get the exact price upfront before any work begins. No hidden charges.</div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">How do I know if my AC needs gas?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">Weak cooling, ice forming on the indoor coil or copper pipes, hissing sounds, or the AC taking much longer to cool. But these symptoms can also come from a dirty filter or a failing part — our technician confirms the real cause before refilling.</div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">Why do you check for leaks before refilling?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">Refrigerant doesn't get used up in a healthy AC. If the gas is low, it escaped through a leak somewhere. Refilling without sealing the leak means the gas escapes again — and you pay twice. We fix the cause first.</div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">How long does an AC gas refill take?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">Usually a single visit: leak tracing, repair, vacuum and recharge typically finish within the same appointment. You get before-and-after cooling readings as proof of the fix.</div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">Do you give a warranty on gas refill work?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">Yes — every repair comes with a 90-day service warranty. If the same issue recurs within 90 days, we fix it at no extra cost.</div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">Which areas in Kochi do you cover?<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">Kakkanad, Thrikkakara, Vazhakkala, Edappally, Vyttila, Palarivattom, Elamakkara, Athani, Maradu, Eroor South, Panampilly Nagar, Tripunithura, Kalamassery, Aluva and Ernakulam — 24 hours a day, 7 days a week.</div>
+      </details>
+    </div>
 </section>
 
 <p class="body" style="text-align:center;max-width:700px;margin:10px auto 30px">Related services: <a href="/ac-repair-kochi" style="color:var(--sky);font-weight:600">AC Repair in Kochi</a> · <a href="/fridge-repair-kochi" style="color:var(--sky);font-weight:600">Fridge Repair</a> · <a href="/washing-machine-repair-kochi" style="color:var(--sky);font-weight:600">Washing Machine Repair</a></p>
@@ -263,6 +281,7 @@
   "name": "AC Gas Refill in Kochi",
   "description": "AC gas refill in Kochi with leak detection and repair before refilling, eco-friendly refrigerant, upfront quotes and a 90-day service warranty. Visit and diagnosis ₹399, waived if you proceed with the repair.",
   "provider": {
+    "@id": "https://www.smarthomerepair.in/#business",
     "@type": "HomeAndConstructionBusiness",
     "name": "Smart Home Repair",
     "telephone": "+916238054003",
