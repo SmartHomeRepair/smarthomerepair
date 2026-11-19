@@ -339,6 +339,7 @@ def add_headers(resp):
     compressible = any(t in ctype for t in ('text/', 'application/json', 'application/xml',
                                             'application/javascript', 'image/svg+xml'))
     if (accepts_gzip and compressible and not path.startswith('/static/')
+            and not resp.direct_passthrough
             and resp.status_code == 200 and not resp.headers.get('Content-Encoding')):
         body = resp.get_data()
         if len(body) > 600:
