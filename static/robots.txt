@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+# Static assets carry a ?v= cache-busting query - they must stay crawlable
+# so Google can render pages with CSS and JavaScript.
+Allow: /static/
 Disallow: /*?*
+
 Sitemap: https://www.smarthomerepair.in/sitemap.xml
