@@ -156,7 +156,7 @@
       </div>
       <div class="svc-card">
         <div class="svc-img-w">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&h=420&q=80&fit=crop&auto=format" alt="Washing machine repair in Kochi" class="svc-card-img" width="600" height="420">
+          <img loading="lazy" src="{{ url_for('static', filename='images/services/washing_machine_repair-760.jpg') }}" srcset="{{ url_for('static', filename='images/services/washing_machine_repair-480.jpg') }} 480w, {{ url_for('static', filename='images/services/washing_machine_repair-760.jpg') }} 760w" sizes="(max-width: 780px) 92vw, (max-width: 1120px) 46vw, 378px" alt="Washing machine repair in Kochi" class="svc-card-img" width="760" height="484">
           <span class="svc-badge">Washing Machine</span>
         </div>
         <div class="svc-body">
@@ -493,7 +493,7 @@
   <div class="sec-inner">
     <div class="cov-grid">
       <div class="cov-img-w rv-l">
-        <img loading="lazy" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&h=840&q=80&fit=crop&auto=format" alt="Areas served by Smart Home Repair across Kochi and Ernakulam" class="cov-img" width="700" height="840">
+        <img loading="lazy" src="{{ url_for('static', filename='images/areas_kochi.jpg') }}" alt="Areas served by Smart Home Repair across Kochi and Ernakulam" class="cov-img" width="1000" height="840">
         <div class="cov-cap"><strong>15+</strong>Areas covered in Kochi</div>
       </div>
       <div class="rv-r">
@@ -525,7 +525,7 @@
 
 <!-- CTA BANNER -->
 <section id="ctabanner">
-  <img loading="lazy" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&h=800&q=80&fit=crop&auto=format" alt="Technician testing a newly installed air conditioner in Kochi" class="cta-img" width="1600" height="800">
+  <img loading="lazy" src="{{ url_for('static', filename='images/cta_technician.jpg') }}" alt="Technician testing a newly installed air conditioner in Kochi" class="cta-img" width="1600" height="450">
   <div class="cta-ov">
     <div class="lbl">Ready to Get Started?</div>
     <h2 class="h2">Speak with our team — we're just a call away</h2>

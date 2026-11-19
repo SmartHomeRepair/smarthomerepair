@@ -177,7 +177,7 @@ CAMPAIGNS = {
         'h1': 'Washing machine repair in Kochi',
         'kicker': 'Washing Machine Campaign',
         'sub': 'Front-load or top-load, all major brands. A technician reaches you within 2 hours across Kochi, diagnoses the fault on the spot and quotes before starting work.',
-        'image': 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=1200&q=80&fit=crop&auto=format',
+        'image': 'images/washing_machine-camp.jpg',
         'image_alt': 'Washing machine repair service in Kochi',
         'image_w': 1200, 'image_h': 800,
         'canonical': '/washing-machine-repair-kochi',
