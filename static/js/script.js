@@ -2,12 +2,18 @@
    Kept dependency-free and defensive: every block checks the element exists. */
 
 /* ---------- sticky header state ---------- */
+/* Cache the viewport width: reading innerWidth inside a scroll handler forces
+   a layout on every frame, which is exactly the kind of main-thread work that
+   shows up as a bad INP on a low-end phone. */
+let viewportWidth = window.innerWidth;
+window.addEventListener('resize', () => { viewportWidth = window.innerWidth; }, {passive:true});
+
 function updateNavbarState(){
     const nav = document.getElementById('nb');
     if(!nav) return;
 
     const isHomePage = window.location.pathname === '/';
-    const shouldUseSolidNav = window.scrollY > 10 || window.innerWidth <= 768 || !isHomePage;
+    const shouldUseSolidNav = window.scrollY > 10 || viewportWidth <= 768 || !isHomePage;
 
     nav.classList.toggle('bg', shouldUseSolidNav);
 }

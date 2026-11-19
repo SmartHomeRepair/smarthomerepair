@@ -1,6 +1,8 @@
 <nav id="nb" aria-label="Main navigation">
   <a href="/" class="nav-logo" aria-label="Smart Home Repair - home">
-    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" width="229" height="300" fetchpriority="high">
+    <img src="{{ url_for('static', filename='images/logo-nav-128.png') }}"
+         srcset="{{ url_for('static', filename='images/logo-nav-128.png') }} 1x, {{ url_for('static', filename='images/logo-nav-192.png') }} 2x"
+         alt="Smart Home Repair" width="98" height="128" fetchpriority="high" decoding="async">
     <span class="nav-wordmark">SmartHome <span style="color: var(--sky);">Repair</span></span>
   </a>
   <ul class="nav-links">

@@ -46,12 +46,13 @@
     <meta name="twitter:image" content="https://www.smarthomerepair.in/static/images/og-image.jpg">
     <meta name="twitter:image:alt" content="Smart Home Repair - same-day AC and home appliance repair in Kochi">
 
-    <!-- Fonts: preconnect, then a subset of icons only (7 glyphs instead of the full 3,000+) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fonts are self-hosted in style.css, so first paint no longer waits on
+         two third-party font stylesheets. The latin subset is preloaded: it is
+         only 27 KB and preloading shortens the fallback window, which is the
+         only thing that can move the hero (measured CLS 0.01 worst case).
+         File names carry a content hash and are cached for a year. -->
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;icon_names=ac_unit,bolt,call,currency_rupee,home_repair_service,rocket_launch,star&amp;display=block" rel="stylesheet">
+    <link rel="preload" href="/static/fonts/plus-jakarta-sans-latin.153fc85b.woff2" as="font" type="font/woff2" crossorigin>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
@@ -73,7 +74,7 @@
       "geo": {"@type": "GeoCoordinates", "latitude": "10.0104", "longitude": "76.3101"},
       "areaServed": [{"@type":"City","name":"Kochi"},{"@type":"City","name":"Ernakulam"},{"@type":"AdministrativeArea","name":"Kakkanad"},{"@type":"AdministrativeArea","name":"Thrikkakara"},{"@type":"AdministrativeArea","name":"Vazhakkala"},{"@type":"AdministrativeArea","name":"Edappally"},{"@type":"AdministrativeArea","name":"Vyttila"},{"@type":"AdministrativeArea","name":"Palarivattom"},{"@type":"AdministrativeArea","name":"Elamakkara"},{"@type":"AdministrativeArea","name":"Athani"},{"@type":"AdministrativeArea","name":"Maradu"},{"@type":"AdministrativeArea","name":"Aluva"},{"@type":"AdministrativeArea","name":"Kalamassery"},{"@type":"AdministrativeArea","name":"Panampilly Nagar"},{"@type":"AdministrativeArea","name":"Tripunithura"}],
       "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59"},
-      "priceRange": "₹₹",
+      "priceRange": "₹399–₹9,999",
       "currenciesAccepted": "INR",
       "paymentAccepted": "Cash, UPI",
       "contactPoint": {"@type": "ContactPoint", "telephone": "+916238054003", "contactType": "customer service", "areaServed": "IN", "availableLanguage": ["en", "ml"]},

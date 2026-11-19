@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+
+# Local duplicate of the repo; never commit it.
+smarthomerepair-main/

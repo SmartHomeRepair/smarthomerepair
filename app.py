@@ -1,8 +1,17 @@
 from flask import Flask, render_template, Response, send_from_directory, request, redirect, url_for
 from datetime import datetime
 import gzip
+import hashlib
+import mimetypes
 import os
 import secrets as _secrets
+
+# Windows' mimetype table has no entry for .woff2, so Flask falls back to
+# application/octet-stream. Fonts are cacheable either way, but a correct
+# Content-Type is required for preload to match the @font-face request.
+mimetypes.add_type('font/woff2', '.woff2')
+mimetypes.add_type('font/woff', '.woff')
+mimetypes.add_type('image/webp', '.webp')
 
 try:
     from dotenv import load_dotenv
@@ -18,20 +27,32 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 
-def _newest_mtime(root):
-    newest = 0
-    for dirpath, _dirnames, filenames in os.walk(root):
-        for name in filenames:
+def _static_fingerprint(root):
+    """Short content hash of everything under static/.
+
+    The old token was the newest file mtime. Deploy hosts (zip upload, Docker
+    COPY, CI artefacts) normalise mtimes to a fixed timestamp, so that token
+    never changed and browsers kept serving the previous CSS/JS for a year.
+    Hashing the bytes makes the token change exactly when an asset changes.
+    """
+    digest = hashlib.sha256()
+    for dirpath, dirnames, filenames in os.walk(root):
+        dirnames.sort()
+        for name in sorted(filenames):
+            path = os.path.join(dirpath, name)
+            rel = os.path.relpath(path, root).replace(os.sep, '/')
             try:
-                newest = max(newest, os.path.getmtime(os.path.join(dirpath, name)))
+                with open(path, 'rb') as fh:
+                    digest.update(rel.encode('utf-8'))
+                    digest.update(hashlib.sha256(fh.read()).digest())
             except OSError:
-                pass
-    return newest
+                continue
+    return digest.hexdigest()[:10]
 
 
 # One version token per deploy, appended to every url_for('static', ...) call.
 # Lets us cache CSS/JS immutably without serving a stale file after an update.
-ASSET_VERSION = str(int(_newest_mtime(STATIC_DIR)))
+ASSET_VERSION = _static_fingerprint(STATIC_DIR)
 
 
 @app.url_defaults
