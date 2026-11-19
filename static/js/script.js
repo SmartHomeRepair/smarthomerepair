@@ -131,12 +131,6 @@ function submitToWhatsapp(e){
         {name:'cName', phone:'cPhone', area:'cArea', details:'cDetails'});
 }
 
-function submitPopupToWhatsapp(e){
-    if(e) e.preventDefault();
-    sendBooking(document.getElementById('popupForm'),
-        {name:'pName', phone:'pPhone', area:'pArea', details:'pDetails'});
-}
-
 function submitContactToWhatsapp(e){
     if(e) e.preventDefault();
     sendBooking(document.getElementById('contactForm'),
@@ -227,13 +221,6 @@ function closeModal(){
     document.body.classList.remove('modal-open');
 }
 
-function closeContactModal(){
-    const popup = document.getElementById('contactModalOverlay');
-    if(popup) popup.classList.remove('active');
-    document.body.classList.remove('modal-open');
-    localStorage.setItem('popupShown', 'true');
-}
-
 /* ---------- reveal on scroll ---------- */
 const revealEls = document.querySelectorAll('.rv,.rv-l,.rv-r');
 
@@ -251,49 +238,9 @@ document.querySelectorAll('.svc-grid,.testi-grid,.amc-grid,.proc-grid').forEach(
     Array.from(g.children).forEach((c, i) => { c.style.transitionDelay = (i * .1) + 's'; });
 });
 
-/* ---------- exit-style booking popup ----------
-   Deliberately disabled on phones: a full-screen offer on load is the kind of
-   intrusive interstitial Google demotes, and it blocks the tap-to-call path.
-   Desktop visitors see it only after 15s AND 40% scroll. */
-(function(){
-    if(window.matchMedia('(max-width: 768px)').matches) return;
-    if(localStorage.getItem('popupShown')) return;
-
-    let waited = false;
-    let scrolled = false;
-    let shown = false;
-
-    function openPopup(){
-        if(shown) return;
-        const popup = document.getElementById('contactModalOverlay');
-        if(!popup) return;
-        shown = true;
-        popup.classList.add('active');
-        document.body.classList.add('modal-open');
-        localStorage.setItem('popupShown', 'true');
-        const first = popup.querySelector('input');
-        if(first) setTimeout(() => first.focus(), 120);
-    }
-
-    function maybeOpen(){ if(waited && scrolled) openPopup(); }
-
-    setTimeout(() => { waited = true; maybeOpen(); }, 15000);
-
-    window.addEventListener('scroll', () => {
-        if(scrolled) return;
-        if(window.scrollY > window.innerHeight * 0.4){
-            scrolled = true;
-            maybeOpen();
-        }
-    }, {passive:true});
-})();
-
 /* ---------- keyboard: Escape closes any overlay ---------- */
 document.addEventListener('keydown', e => {
     if(e.key !== 'Escape') return;
-
-    const popup = document.getElementById('contactModalOverlay');
-    if(popup && popup.classList.contains('active')){ closeContactModal(); return; }
 
     const modal = document.getElementById('modalOverlay');
     if(modal && modal.classList.contains('active')){ closeModal(); return; }
@@ -303,7 +250,7 @@ document.addEventListener('keydown', e => {
 });
 
 /* ---------- backdrop click closes overlays ---------- */
-[['modalOverlay', closeModal], ['contactModalOverlay', closeContactModal]].forEach(([id, close]) => {
+[['modalOverlay', closeModal]].forEach(([id, close]) => {
     const overlay = document.getElementById(id);
     if(overlay){
         overlay.addEventListener('click', e => { if(e.target === overlay) close(); });
