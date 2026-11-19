@@ -295,3 +295,11 @@ document.addEventListener('keydown', e => {
     const menu = document.getElementById('mm');
     if(menu && menu.classList.contains('open')) closeMM();
 });
+
+/* ---------- backdrop click closes overlays ---------- */
+[['modalOverlay', closeModal], ['contactModalOverlay', closeContactModal]].forEach(([id, close]) => {
+    const overlay = document.getElementById(id);
+    if(overlay){
+        overlay.addEventListener('click', e => { if(e.target === overlay) close(); });
+    }
+});
