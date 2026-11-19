@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+
+{% block title %}{{ c.title }}{% endblock %}
+{% block meta_desc %}{{ c.desc }}{% endblock %}
+{% block robots %}noindex, follow{% endblock %}
+{% block canonical %}https://www.smarthomerepair.in{{ c.canonical }}{% endblock %}
+{% block og_url %}https://www.smarthomerepair.in{{ c.canonical }}{% endblock %}
+{% block og_title %}{{ c.title }}{% endblock %}
+{% block og_desc %}{{ c.desc }}{% endblock %}
+
+{% block content %}
+
+<!-- CAMPAIGN HERO -->
+<section class="camp-hero">
+  <div class="camp-hero-in">
+    <div class="camp-copy">
+      <div class="hero-pill">{{ c.kicker }}</div>
+      <h1 class="h1">{{ c.h1 }}</h1>
+      <p class="hero-sub">{{ c.sub }}</p>
+      <div class="hero-ctas">
+        <a href="tel:+916238054003" class="btn btn-sky">Call 6238054003</a>
+        <a href="#camp-book" class="btn btn-outline">Book a slot</a>
+      </div>
+      <div class="camp-trust">
+        <span>2-hour response</span>
+        <span>90-day warranty</span>
+        <span>Genuine parts</span>
+        <span>Upfront quotes</span>
+      </div>
+    </div>
+    <div class="camp-media">
+      <img src="{% if c.image.startswith('http') %}{{ c.image }}{% else %}{{ url_for('static', filename=c.image) }}{% endif %}"
+           {% if c.srcset %}srcset="{% for src, w in c.srcset %}{{ url_for('static', filename=src) }} {{ w }}{% if not loop.last %}, {% endif %}{% endfor %}" sizes="(max-width: 900px) 92vw, 46vw"{% endif %}
+           alt="{{ c.image_alt }}" width="{{ c.image_w }}" height="{{ c.image_h }}"
+           fetchpriority="high" decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="camp-strip" aria-label="Service promises">
+  <div class="camp-strip-in">
+    <div><span class="material-symbols-outlined" aria-hidden="true">bolt</span><strong>2-hour response</strong><small>Across Kochi &amp; Ernakulam</small></div>
+    <div><span class="material-symbols-outlined" aria-hidden="true">currency_rupee</span><strong>₹399 diagnosis</strong><small>Waived when you repair</small></div>
+    <div><span class="material-symbols-outlined" aria-hidden="true">home_repair_service</span><strong>Genuine parts</strong><small>OEM-approved spares only</small></div>
+    <div><span class="material-symbols-outlined" aria-hidden="true">star</span><strong>90-day warranty</strong><small>On every completed repair</small></div>
+  </div>
+</section>
+
+<!-- WHAT WE FIX -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-head center rv">
+      <div class="lbl">What we fix</div>
+      <h2 class="h2">What's covered</h2>
+      <p class="body">One team, upfront pricing and a written quote before any work starts.</p>
+    </div>
+    <div class="camp-grid camp-grid-3 rv">
+      {% for title, text in c.services %}
+      <div class="camp-card">
+        <h3>{{ title }}</h3>
+        <p>{{ text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="camp-more"><a href="{{ c.canonical }}">Read the full service details, areas and charges →</a></p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec" style="background:#fff">
+  <div class="sec-inner">
+    <div class="sec-head center rv">
+      <div class="lbl">How booking works</div>
+      <h2 class="h2">From call to fixed in four steps</h2>
+    </div>
+    <div class="camp-grid rv">
+      <div class="camp-card camp-step"><span>1</span><h3>Call or WhatsApp</h3><p>Tell us the appliance and the fault. The line is open 24x7.</p></div>
+      <div class="camp-card camp-step"><span>2</span><h3>Technician dispatched</h3><p>A certified technician reaches you within 2 hours, across Kochi.</p></div>
+      <div class="camp-card camp-step"><span>3</span><h3>Upfront quote</h3><p>Full diagnosis on the spot, then a clear price. Work starts only after you approve.</p></div>
+      <div class="camp-card camp-step"><span>4</span><h3>Repair + warranty</h3><p>Fixed with genuine parts and backed by a 90-day service warranty.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-head center rv">
+      <div class="lbl">Real customer reviews</div>
+      <h2 class="h2">What Kochi customers say</h2>
+    </div>
+    <div class="camp-grid rv">
+      {% for quote, author in reviews %}
+      <div class="camp-card camp-review">
+        <div class="camp-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p>“{{ quote }}”</p>
+        <div class="camp-author">{{ author }} <span>Google review</span></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="sec" style="background:#fff">
+  <div class="sec-inner">
+    <div class="sec-head center rv">
+      <div class="lbl">Service coverage</div>
+      <h2 class="h2">We cover all of Kochi</h2>
+      <p class="body">Can't find your area? Call <a href="tel:+916238054003" style="color:var(--sky);font-weight:700">6238054003</a> — we very likely cover it.</p>
+    </div>
+    <div class="camp-areas rv">
+      {% for area in areas %}<span>{{ area }}</span>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="sec" id="camp-book">
+  <div class="sec-inner">
+    <div class="camp-book-grid">
+      <div class="rv-l">
+        <div class="lbl">Book a service</div>
+        <h2 class="h2">Get a technician today</h2>
+        <p class="body">Send your details and we confirm the slot on WhatsApp within minutes. Or call us directly — the line is open 24 hours a day, 7 days a week.</p>
+        <div class="camp-contact">
+          <a href="tel:+916238054003" class="btn btn-sky">Call 6238054003</a>
+          <a href="https://wa.me/916238054003" class="btn btn-outline" target="_blank" rel="noopener">WhatsApp us</a>
+        </div>
+        <div class="camp-note">
+          <strong>₹399 visit &amp; diagnosis</strong>
+          <span>Waived when you go ahead with the repair. You approve the quote before work starts.</span>
+        </div>
+      </div>
+
+      <form class="cf-box" id="campaignForm" onsubmit="submitCampaignToWhatsapp(event)">
+        <div class="cf-title">Book a Service</div>
+        <div class="form-row">
+          <div class="fg"><label for="qName">Your Name</label><input type="text" id="qName" name="name" autocomplete="name" placeholder="e.g. Rahul Sharma" required></div>
+          <div class="fg"><label for="qPhone">Phone Number</label><input type="tel" id="qPhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="+91 98XXXXXXXX" required></div>
+        </div>
+        <div class="fg">
+          <label for="qArea">Your Area in Kochi</label>
+          <select id="qArea" name="area" required>
+            <option value="" disabled selected>Select Area in Kochi</option>
+            {% for area in areas %}<option value="{{ area }}">{{ area }}</option>{% endfor %}
+            <option value="Others">Others</option>
+          </select>
+        </div>
+        <div class="fg"><label for="qDetails">Additional Details (optional)</label><textarea id="qDetails" name="details" placeholder="Describe the issue or any specific requirements…"></textarea></div>
+        <button type="submit" class="btn-form">Send Book Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-inner">
+    <div class="sec-head center rv">
+      <div class="lbl">FAQ</div>
+      <h2 class="h2">Common questions, answered</h2>
+    </div>
+    <div class="faq-list camp-faq rv">
+      {% for q, a in c.faqs %}
+      <details class="faq-item" name="faq">
+        <summary class="faq-q">{{ q }}<span class="faq-arr" aria-hidden="true">▾</span></summary>
+        <div class="faq-a">{{ a }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta rv">
+  <div class="lbl" style="color:#fff; margin-bottom:12px">Same-day slots available</div>
+  <h2 class="h2">{{ c.h1 }}</h2>
+  <p class="body" style="max-width:550px">Certified technicians on call 24 hours a day, 7 days a week. 2-hour response across Kochi, 90-day warranty on every repair.</p>
+  <div class="hero-ctas" style="justify-content:center">
+    <a href="tel:+916238054003" class="btn btn-sky">Call 6238054003</a>
+    <a href="https://wa.me/916238054003" class="btn btn-ghost" target="_blank" rel="noopener">WhatsApp Us</a>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for q, a in c.faqs %}{"@type": "Question", "name": {{ q|tojson }}, "acceptedAnswer": {"@type": "Answer", "text": {{ a|tojson }}}}{% if not loop.last %},{% endif %}{% endfor %}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": {{ c.h1|tojson }},
+  "serviceType": {{ c.kicker|tojson }},
+  "provider": {"@id": "https://www.smarthomerepair.in/#business"},
+  "areaServed": {"@type": "City", "name": "Kochi"},
+  "offers": {"@type": "Offer", "price": "399", "priceCurrency": "INR", "description": "Visit and full diagnosis, waived when you proceed with the repair"}
+}
+</script>
+
+{% endblock %}
