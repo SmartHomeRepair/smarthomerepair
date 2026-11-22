@@ -19,7 +19,7 @@
     <p class="hero-sub">AC installation, gas refill and same-day appliance servicing in Kakkanad, Edappally, Vyttila and all of Ernakulam — backed by a 90-day warranty.</p>
     <div class="hero-tags">
       <div class="h-tag"><span class="material-symbols-outlined icon-inline">bolt</span> 2 Hour Response Rate</div>
-      <div class="h-tag"><span class="material-symbols-outlined icon-inline">currency_rupee</span> Visiting charges ₹399 Only</div>
+      <div class="h-tag"><span class="material-symbols-outlined icon-inline">currency_rupee</span> Visiting charges ₹349 Only</div>
     </div>
     <div class="hero-ctas">
       <a href="#contact" class="btn btn-sky">Book a Service</a>
@@ -290,8 +290,8 @@
   <div class="sec-inner">
     <div class="testi-top rv">
       <div>
-        <div class="lbl">Customer Reviews</div>
-        <h2 class="h2" style="margin-top:6px">What our customers say on Google</h2>
+        <div class="lbl">Review</div>
+        <h2 class="h2" style="margin-top:6px">Reviews — what our customers say on Google</h2>
       </div>
       <div class="testi-pill">
         <div class="tp-avs" style="display:none"></div>
@@ -493,7 +493,7 @@
           </details>
           <details class="faq-item" name="faq">
             <summary class="faq-q">How is the service charge calculated?<span class="faq-arr" aria-hidden="true">▾</span></summary>
-            <div class="faq-a">There's a nominal visit/inspection charge of ₹399, which is waived if you proceed with the repair. Before any repair begins, our technician provides a complete cost breakdown. You only pay for what you approve.</div>
+            <div class="faq-a">There's a nominal visit/inspection charge of ₹349, which is waived if you proceed with the repair. Before any repair begins, our technician provides a complete cost breakdown. You only pay for what you approve.</div>
           </details>
           <details class="faq-item" name="faq">
             <summary class="faq-q">Do you service all AC and appliance brands?<span class="faq-arr" aria-hidden="true">▾</span></summary>
@@ -561,6 +561,21 @@
   </div>
 </section>
 
+<!-- FEEDBACK / COMPLAINT SUPPORT -->
+<section class="sec" id="support">
+  <div class="sec-inner">
+    <div class="sec-head center rv">
+      <div class="lbl">Feedback &amp; Complaints</div>
+      <h2 class="h2">Feedback, complaints &amp; reviews — we're listening</h2>
+      <p class="body">Something not right, or want to leave feedback or a review? Reach our support team directly on Call or WhatsApp — <strong>8077736696</strong>. Complaints are automatically flagged and answered first.</p>
+      <div class="cta-btns" style="justify-content:center;margin-top:22px">
+        <a href="tel:+918077736696" class="btn btn-navy">Call 8077736696</a>
+        <a href="https://wa.me/918077736696" target="_blank" rel="noopener" class="btn btn-sky">WhatsApp 8077736696</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="sec" id="contact">
   <div class="sec-inner">
@@ -617,6 +632,16 @@
                 <option value="Others">Others</option>
             </select>
           </div>
+          <div class="fg">
+            <label for="cPurpose">I want to</label>
+            <select id="cPurpose" name="purpose" onchange="onPurposeChange(this)">
+                <option value="booking" selected>Book a Service</option>
+                <option value="feedback">Give Feedback</option>
+                <option value="complaint">Register a Complaint</option>
+                <option value="review">Leave a Review</option>
+            </select>
+          </div>
+          <p class="complaint-tag" id="complaintTag">🚨 This message will be sent as a <strong>COMPLAINT</strong> to our support team on WhatsApp 8077736696</p>
           <div class="fg"><label for="cDetails">Additional Details (optional)</label><textarea id="cDetails" name="details" placeholder="Describe the issue or any specific requirements…"></textarea></div>
           <button type="submit" class="btn-form">Send Book Request</button>
         </form>
@@ -649,10 +674,10 @@
 
 <!-- SEO: FAQ + Service schema (matches the visible page content) -->
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How quickly can a technician reach me?", "acceptedAnswer": {"@type": "Answer", "text": "Our average response time is under 2 hours for most areas in Kochi. In peak summer (March–May) it may be up to 3 hours. After booking, you receive the technician's name and live tracking via WhatsApp."}}, {"@type": "Question", "name": "What warranty do you provide on repairs?", "acceptedAnswer": {"@type": "Answer", "text": "All repairs come with a 90-day service warranty. If the same issue recurs within this period, we fix it at no additional cost. Spare parts also carry the manufacturer's warranty on top of ours."}}, {"@type": "Question", "name": "Do you use genuine original spare parts?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, always. We source only OEM (Original Equipment Manufacturer) approved spare parts. We never use duplicates or low-quality components, ensuring your appliance performs reliably for years after every repair."}}, {"@type": "Question", "name": "How is the service charge calculated?", "acceptedAnswer": {"@type": "Answer", "text": "There's a nominal visit/inspection charge of ₹399, which is waived if you proceed with the repair. Before any repair begins, our technician provides a complete cost breakdown. You only pay for what you approve."}}, {"@type": "Question", "name": "Do you service all AC and appliance brands?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — our technicians are trained on all major brands: Daikin, LG, Samsung, Voltas, Blue Star, Carrier, Hitachi, O General, Mitsubishi, Panasonic, Whirlpool, Godrej, IFB, Bosch and more. Both older and latest models."}}, {"@type": "Question", "name": "What is an AMC and is it worth it?", "acceptedAnswer": {"@type": "Answer", "text": "An AMC (Annual Maintenance Contract) is a yearly plan covering scheduled visits, priority support and repair discounts. Customers typically save 40–60% compared to pay-per-service pricing, and it significantly extends appliance lifespan."}}, {"@type": "Question", "name": "Are services available on weekends and holidays?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Smart Home Repair operates 24 hours a day, 7 days a week — including Sundays and public holidays. Premium AMC customers get emergency weekend support. We recommend early booking on Sundays as slots fill up quickly."}}, {"@type": "Question", "name": "How often should I service my AC?", "acceptedAnswer": {"@type": "Answer", "text": "We recommend servicing your AC at least twice a year — before and after summer (March and October). For heavily used or dusty environments, quarterly servicing is advisable. Regular servicing improves efficiency and lowers electricity bills."}}, {"@type": "Question", "name": "Do you handle commercial and office AC systems?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely — we specialize in VRV/VRF multi-split systems, cassette ACs and central cooling for offices, hotels, hospitals and malls. We offer customized AMC plans for businesses with dedicated account managers."}}, {"@type": "Question", "name": "What payment methods do you accept?", "acceptedAnswer": {"@type": "Answer", "text": "We accept cash and UPI (GPay, PhonePe, Paytm). Payment is made only after work is completed to your satisfaction. Digital invoice sent via WhatsApp/email."}}]}
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How quickly can a technician reach me?", "acceptedAnswer": {"@type": "Answer", "text": "Our average response time is under 2 hours for most areas in Kochi. In peak summer (March–May) it may be up to 3 hours. After booking, you receive the technician's name and live tracking via WhatsApp."}}, {"@type": "Question", "name": "What warranty do you provide on repairs?", "acceptedAnswer": {"@type": "Answer", "text": "All repairs come with a 90-day service warranty. If the same issue recurs within this period, we fix it at no additional cost. Spare parts also carry the manufacturer's warranty on top of ours."}}, {"@type": "Question", "name": "Do you use genuine original spare parts?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, always. We source only OEM (Original Equipment Manufacturer) approved spare parts. We never use duplicates or low-quality components, ensuring your appliance performs reliably for years after every repair."}}, {"@type": "Question", "name": "How is the service charge calculated?", "acceptedAnswer": {"@type": "Answer", "text": "There's a nominal visit/inspection charge of ₹349, which is waived if you proceed with the repair. Before any repair begins, our technician provides a complete cost breakdown. You only pay for what you approve."}}, {"@type": "Question", "name": "Do you service all AC and appliance brands?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — our technicians are trained on all major brands: Daikin, LG, Samsung, Voltas, Blue Star, Carrier, Hitachi, O General, Mitsubishi, Panasonic, Whirlpool, Godrej, IFB, Bosch and more. Both older and latest models."}}, {"@type": "Question", "name": "What is an AMC and is it worth it?", "acceptedAnswer": {"@type": "Answer", "text": "An AMC (Annual Maintenance Contract) is a yearly plan covering scheduled visits, priority support and repair discounts. Customers typically save 40–60% compared to pay-per-service pricing, and it significantly extends appliance lifespan."}}, {"@type": "Question", "name": "Are services available on weekends and holidays?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Smart Home Repair operates 24 hours a day, 7 days a week — including Sundays and public holidays. Premium AMC customers get emergency weekend support. We recommend early booking on Sundays as slots fill up quickly."}}, {"@type": "Question", "name": "How often should I service my AC?", "acceptedAnswer": {"@type": "Answer", "text": "We recommend servicing your AC at least twice a year — before and after summer (March and October). For heavily used or dusty environments, quarterly servicing is advisable. Regular servicing improves efficiency and lowers electricity bills."}}, {"@type": "Question", "name": "Do you handle commercial and office AC systems?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely — we specialize in VRV/VRF multi-split systems, cassette ACs and central cooling for offices, hotels, hospitals and malls. We offer customized AMC plans for businesses with dedicated account managers."}}, {"@type": "Question", "name": "What payment methods do you accept?", "acceptedAnswer": {"@type": "Answer", "text": "We accept cash and UPI (GPay, PhonePe, Paytm). Payment is made only after work is completed to your satisfaction. Digital invoice sent via WhatsApp/email."}}]}
 </script>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "Service", "serviceType": "AC repair and home appliance repair", "provider": {"@id": "https://www.smarthomerepair.in/#business"}, "areaServed": {"@type": "City", "name": "Kochi"}, "description": "AC, refrigerator, washing machine, microwave and geyser repair in Kochi - Kakkanad, Edappally, Vyttila and Ernakulam, with 2-hour response and a 90-day warranty.", "offers": {"@type": "Offer", "price": "399", "priceCurrency": "INR"}}
+{"@context": "https://schema.org", "@type": "Service", "serviceType": "AC repair and home appliance repair", "provider": {"@id": "https://www.smarthomerepair.in/#business"}, "areaServed": {"@type": "City", "name": "Kochi"}, "description": "AC, refrigerator, washing machine, microwave and geyser repair in Kochi - Kakkanad, Edappally, Vyttila and Ernakulam, with 2-hour response and a 90-day warranty.", "offers": {"@type": "Offer", "price": "349", "priceCurrency": "INR"}}
 </script>
 
 

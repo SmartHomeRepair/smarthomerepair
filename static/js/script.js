@@ -89,11 +89,31 @@ function clearFormError(form){
     if(box) box.remove();
 }
 
+/* ---------- purpose (booking / feedback / complaint / review) ----------
+   Selecting "Register a Complaint" highlights the form and flags the
+   outgoing WhatsApp message as a COMPLAINT, sent to the support line
+   8077736696 instead of the booking line. */
+function onPurposeChange(sel){
+    const form = sel.closest('form');
+    if(!form) return;
+    const isComplaint = sel.value === 'complaint';
+    form.classList.toggle('complaint-mode', isComplaint);
+    const tag = form.querySelector('.complaint-tag');
+    if(tag) tag.style.display = isComplaint ? 'block' : '';
+    const btn = form.querySelector('button[type="submit"]');
+    if(btn){
+        if(isComplaint) btn.textContent = '🚨 Send Complaint';
+        else if(sel.value === 'booking') btn.textContent = btn.closest('#contactForm') ? 'Confirm Booking via WhatsApp' : 'Send Book Request';
+        else btn.textContent = 'Send on WhatsApp';
+    }
+}
+
 function sendBooking(form, ids){
     const nameEl = document.getElementById(ids.name);
     const phoneEl = document.getElementById(ids.phone);
     const areaEl = document.getElementById(ids.area);
     const detailsEl = document.getElementById(ids.details);
+    const purposeEl = ids.purpose ? document.getElementById(ids.purpose) : null;
     if(!nameEl || !phoneEl || !areaEl) return false;
 
     clearFormError(form);
@@ -102,6 +122,8 @@ function sendBooking(form, ids){
     const phone = phoneEl.value.trim();
     const area = areaEl.value;
     const details = detailsEl ? detailsEl.value.trim() : '';
+    const purpose = purposeEl ? purposeEl.value : 'booking';
+    if(purposeEl) onPurposeChange(purposeEl);
     const digits = phone.replace(/\D/g, '');
 
     if(!name || !area){
@@ -114,27 +136,46 @@ function sendBooking(form, ids){
         return false;
     }
 
-    const message = '*Smart Home Booking Request*\n\n' +
+    /* Support line for feedback / complaints / reviews; booking line otherwise. */
+    let waNumber = '916238054003';
+    let title = '*Smart Home Booking Request*';
+    let typeLine = '';
+    if(purpose === 'complaint'){
+        waNumber = '918077736696';
+        title = '🚨 *COMPLAINT — Smart Home Repair*';
+        typeLine = '*Type:* COMPLAINT\n';
+    } else if(purpose === 'feedback'){
+        waNumber = '918077736696';
+        title = '💬 *Feedback — Smart Home Repair*';
+        typeLine = '*Type:* Feedback\n';
+    } else if(purpose === 'review'){
+        waNumber = '918077736696';
+        title = '⭐ *Review — Smart Home Repair*';
+        typeLine = '*Type:* Review\n';
+    }
+
+    const message = title + '\n\n' +
                     '*Name:* ' + name + '\n' +
                     '*Phone:* ' + phone + '\n' +
                     '*Area:* ' + area + '\n' +
+                    typeLine +
                     '*Details:* ' + (details || 'N/A') + '\n\n' +
-                    'Please confirm my booking.';
+                    (purpose === 'booking' ? 'Please confirm my booking.' : 'Please review this ' + purpose + '.');
 
-    window.location.href = 'https://wa.me/916238054003?text=' + encodeURIComponent(message);
+    window.location.href = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(message);
     return true;
 }
 
 function submitToWhatsapp(e){
     if(e) e.preventDefault();
     sendBooking(document.getElementById('bookingForm'),
-        {name:'cName', phone:'cPhone', area:'cArea', details:'cDetails'});
+        {name:'cName', phone:'cPhone', area:'cArea', details:'cDetails', purpose:'cPurpose'});
 }
 
 function submitContactToWhatsapp(e){
     if(e) e.preventDefault();
     sendBooking(document.getElementById('contactForm'),
-        {name:'cName', phone:'cPhone', area:'cArea', details:'cDetails'});
+        {name:'cName', phone:'cPhone', area:'cArea', details:'cDetails', purpose:'cPurpose'});
 }
 
 function submitCampaignToWhatsapp(e){

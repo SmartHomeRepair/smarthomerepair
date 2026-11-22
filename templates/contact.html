@@ -78,6 +78,16 @@
         </select>
       </div>
       <div class="f-group">
+        <label for="cPurpose">I want to</label>
+        <select id="cPurpose" name="purpose" onchange="onPurposeChange(this)">
+          <option value="booking" selected>Book a Service</option>
+          <option value="feedback">Give Feedback</option>
+          <option value="complaint">Register a Complaint</option>
+          <option value="review">Leave a Review</option>
+        </select>
+      </div>
+      <p class="complaint-tag" id="complaintTag">🚨 This message will be sent as a <strong>COMPLAINT</strong> to our support team on WhatsApp 8077736696</p>
+      <div class="f-group">
         <label for="cDetails">Service / Problem Details</label>
         <textarea id="cDetails" name="details" placeholder="Example: Split AC gas refill or Washing Machine making noise"></textarea>
       </div>
